@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -102,7 +103,7 @@ const Marketplace = () => {
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">
-                  {new Set(nfts.map(nft => nft.user.name)).size}
+                  {new Set(nfts.filter(nft => nft.user && nft.user.name).map(nft => nft.user.name)).size}
                 </p>
                 <p className="text-gray-400">Atletas</p>
               </div>
