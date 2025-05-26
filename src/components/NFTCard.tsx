@@ -62,9 +62,9 @@ const NFTCard = ({ nft, isWalletConnected }: NFTCardProps) => {
         
         {/* Rarity Badge */}
         <div className={`absolute top-4 left-4 px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r ${getRarityColor(nft.rarity)} shadow-lg`}>
-          {rarity === "Legendary" ? "Legendario" : 
-           rarity === "Epic" ? "Épico" : 
-           rarity === "Rare" ? "Raro" : rarity}
+          {nft.rarity === "Legendary" ? "Legendario" : 
+           nft.rarity === "Epic" ? "Épico" : 
+           nft.rarity === "Rare" ? "Raro" : nft.rarity}
         </div>
 
         {/* Like Button */}
