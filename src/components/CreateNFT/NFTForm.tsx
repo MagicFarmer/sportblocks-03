@@ -23,7 +23,8 @@ const NFTForm = () => {
     beneficiaryProject: "",
     rarity: "common",
     price: "",
-    totalCopies: "1"
+    totalCopies: "1",
+    imageUrl: ""
   });
   
   const [mediaFile, setMediaFile] = useState<File | null>(null);
@@ -33,6 +34,37 @@ const NFTForm = () => {
   const handleMediaChange = (file: File | null, preview: string) => {
     setMediaFile(file);
     setMediaPreview(preview);
+    // Clear image URL when file is selected
+    if (file) {
+      setFormData({...formData, imageUrl: ""});
+    }
+  };
+
+  const handleImageUrlChange = (url: string) => {
+    setFormData({...formData, imageUrl: url});
+    // Clear file upload when URL is provided
+    if (url.trim()) {
+      setMediaFile(null);
+      setMediaPreview("");
+    }
+  };
+
+  const validateImageUrl = (url: string): boolean => {
+    if (!url.trim()) return true; // Empty URL is valid (optional field)
+    
+    try {
+      const urlObj = new URL(url);
+      // Check if it's http or https
+      if (!['http:', 'https:'].includes(urlObj.protocol)) {
+        return false;
+      }
+      // Check if it looks like an image URL
+      const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+      const pathname = urlObj.pathname.toLowerCase();
+      return imageExtensions.some(ext => pathname.includes(ext)) || pathname.includes('image');
+    } catch {
+      return false;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -60,21 +92,32 @@ const NFTForm = () => {
         throw new Error('Wallet account not available. Please reconnect your wallet.');
       }
 
+      // Validate image URL if provided
+      if (formData.imageUrl && !validateImageUrl(formData.imageUrl)) {
+        throw new Error('La URL de imagen no es válida. Debe ser una URL completa (http/https) que apunte a una imagen.');
+      }
+
       let mediaUrl = "";
       let mediaType = "";
 
-      // Upload media file if provided
+      // Determine media source: file upload or URL
       if (mediaFile) {
         try {
+          console.log('Uploading media file:', mediaFile.name);
           mediaUrl = await uploadMediaFile(mediaFile, userData.id);
           mediaType = mediaFile.type.startsWith('video') ? 'video' : 'image';
+          console.log('Media file uploaded successfully:', mediaUrl);
         } catch (uploadError) {
-          console.warn('Media upload failed, continuing without media:', uploadError);
-          // Continue without media if upload fails
+          console.warn('Media upload failed:', uploadError);
+          throw new Error('Error al subir el archivo multimedia. Por favor, inténtalo de nuevo.');
         }
+      } else if (formData.imageUrl.trim()) {
+        mediaUrl = formData.imageUrl.trim();
+        mediaType = 'image';
+        console.log('Using provided image URL:', mediaUrl);
       }
 
-      // Create NFT record in database first
+      // Create NFT record in database
       const nftData = {
         user_id: userData.id,
         name: formData.name.trim(),
@@ -141,11 +184,42 @@ const NFTForm = () => {
   return (
     <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 border border-white/20">
       <form onSubmit={handleSubmit} className="space-y-6">
-        <MediaUpload 
-          mediaFile={mediaFile}
-          mediaPreview={mediaPreview}
-          onFileChange={handleMediaChange}
-        />
+        {/* Media Upload Section */}
+        <div className="space-y-4">
+          <MediaUpload 
+            mediaFile={mediaFile}
+            mediaPreview={mediaPreview}
+            onFileChange={handleMediaChange}
+          />
+          
+          {/* Image URL Alternative */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-white/20" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 px-2 text-gray-400">
+                O proporciona una URL de imagen
+              </span>
+            </div>
+          </div>
+          
+          <div>
+            <Label htmlFor="imageUrl" className="text-white">URL de Imagen</Label>
+            <Input
+              id="imageUrl"
+              type="url"
+              value={formData.imageUrl}
+              onChange={(e) => handleImageUrlChange(e.target.value)}
+              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+              placeholder="https://ejemplo.com/mi-imagen.jpg"
+              disabled={!!mediaFile}
+            />
+            <p className="text-xs text-gray-400 mt-1">
+              Proporciona una URL directa a una imagen online (JPG, PNG, GIF, etc.)
+            </p>
+          </div>
+        </div>
 
         {/* Name */}
         <div>
