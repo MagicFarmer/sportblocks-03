@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -52,13 +53,13 @@ const SocialProjects = () => {
               {mockSocialProjects.map((project) => (
                 <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
                   <CardContent className="p-6">
-                    <h3 className="text-2xl font-bold mb-4">{project.name}</h3>
+                    <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                     <p className="text-gray-300 mb-4">{project.description}</p>
                     <p className="text-green-300 font-semibold mb-2">
-                      Goal: {project.goal}
+                      Impact: {project.impact}
                     </p>
                     <p className="text-gray-400 mb-4">
-                      Raised: ${project.raised} / ${project.target}
+                      Raised: ${project.currentAmount} / ${project.targetAmount}
                     </p>
                     <Button variant="secondary" className="w-full">
                       Learn More
@@ -75,13 +76,13 @@ const SocialProjects = () => {
                 .map((project) => (
                   <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
                     <CardContent className="p-6">
-                      <h3 className="text-2xl font-bold mb-4">{project.name}</h3>
+                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                       <p className="text-gray-300 mb-4">{project.description}</p>
                       <p className="text-green-300 font-semibold mb-2">
-                        Goal: {project.goal}
+                        Impact: {project.impact}
                       </p>
                       <p className="text-gray-400 mb-4">
-                        Raised: ${project.raised} / ${project.target}
+                        Raised: ${project.currentAmount} / ${project.targetAmount}
                       </p>
                       <Button variant="secondary" className="w-full">
                         Learn More
@@ -98,13 +99,13 @@ const SocialProjects = () => {
                 .map((project) => (
                   <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
                     <CardContent className="p-6">
-                      <h3 className="text-2xl font-bold mb-4">{project.name}</h3>
+                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                       <p className="text-gray-300 mb-4">{project.description}</p>
                       <p className="text-green-300 font-semibold mb-2">
-                        Goal: {project.goal}
+                        Impact: {project.impact}
                       </p>
                       <p className="text-gray-400 mb-4">
-                        Raised: ${project.raised} / ${project.target}
+                        Raised: ${project.currentAmount} / ${project.targetAmount}
                       </p>
                       <Button variant="secondary" className="w-full">
                         Learn More
@@ -121,13 +122,13 @@ const SocialProjects = () => {
                 .map((project) => (
                   <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
                     <CardContent className="p-6">
-                      <h3 className="text-2xl font-bold mb-4">{project.name}</h3>
+                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
                       <p className="text-gray-300 mb-4">{project.description}</p>
                       <p className="text-green-300 font-semibold mb-2">
-                        Goal: {project.goal}
+                        Impact: {project.impact}
                       </p>
                       <p className="text-gray-400 mb-4">
-                        Raised: ${project.raised} / ${project.target}
+                        Raised: ${project.currentAmount} / ${project.targetAmount}
                       </p>
                       <Button variant="secondary" className="w-full">
                         Learn More
