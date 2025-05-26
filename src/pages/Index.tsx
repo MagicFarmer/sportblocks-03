@@ -3,6 +3,8 @@ import { useState } from "react";
 import Hero from "@/components/Hero";
 import WalletConnect from "@/components/WalletConnect";
 import FeaturedNFTs from "@/components/FeaturedNFTs";
+import FeaturedSocialProjects from "@/components/FeaturedSocialProjects";
+import FeaturedFans from "@/components/FeaturedFans";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useStarkNet } from "@/hooks/useStarkNet";
@@ -153,6 +155,16 @@ const Index = () => {
       {/* Featured NFTs Section - Dark blue to purple gradient */}
       <div className="bg-gradient-to-br from-slate-800 via-blue-900 to-purple-900">
         <FeaturedNFTs isWalletConnected={isWalletConnected} />
+      </div>
+
+      {/* Featured Social Projects Section - Dark green gradient */}
+      <div className="bg-gradient-to-br from-slate-800 via-green-900 to-emerald-900">
+        <FeaturedSocialProjects isWalletConnected={isWalletConnected} />
+      </div>
+
+      {/* Featured Fans Section - Dark purple gradient */}
+      <div className="bg-gradient-to-br from-slate-800 via-purple-900 to-blue-900">
+        <FeaturedFans isWalletConnected={isWalletConnected} />
       </div>
       
       {/* Footer Section - Dark gradient */}
