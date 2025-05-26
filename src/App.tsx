@@ -12,6 +12,7 @@ import Marketplace from "./pages/Marketplace";
 import Athletes from "./pages/Athletes";
 import CreateNFT from "./pages/CreateNFT";
 import Profile from "./pages/Profile";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/marketplace" element={<Marketplace />} />
