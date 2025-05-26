@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -124,8 +125,8 @@ const About = () => {
               </div>
               <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
                 <img 
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=400&fit=crop" 
-                  alt="Blockchain Technology" 
+                  src="https://images.unsplash.com/photo-1639322537504-6427a16b0a28?w=500&h=400&fit=crop" 
+                  alt="Advanced blockchain network visualization" 
                   className="w-full h-64 object-cover rounded-xl mb-6"
                 />
                 <h4 className="text-xl font-bold text-white mb-3">Cutting-Edge Technology</h4>
@@ -138,6 +139,13 @@ const About = () => {
             {/* Legacy Cards Section */}
             <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
               <h3 className="text-3xl font-bold text-white text-center mb-8">Legacy Cards - Digital Tokens</h3>
+              <div className="mb-8">
+                <img 
+                  src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=800&h=300&fit=crop" 
+                  alt="Digital NFT cards representing athlete legacy" 
+                  className="w-full h-48 object-cover rounded-xl mb-6"
+                />
+              </div>
               <p className="text-xl text-gray-200 text-center mb-12 max-w-4xl mx-auto">
                 Each athlete creates their Legacy Card, an evolving digital token that acts as an NFT, 
                 building their digital legacy and connecting them with fans.
@@ -214,8 +222,8 @@ const About = () => {
               
               <div className="bg-white rounded-2xl p-8 shadow-2xl border border-orange-100">
                 <img 
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=400&fit=crop" 
-                  alt="Athlete empowerment" 
+                  src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=500&h=400&fit=crop" 
+                  alt="Athletes taking control of their digital presence" 
                   className="w-full h-64 object-cover rounded-xl mb-6"
                 />
                 <h4 className="text-xl font-bold text-slate-900 mb-3">Taking Control</h4>
@@ -234,6 +242,11 @@ const About = () => {
             <h2 className="text-4xl font-bold text-white text-center mb-16">Social Impact Business Model</h2>
             
             <div className="text-center mb-12">
+              <img 
+                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=300&fit=crop" 
+                alt="Community working together on social impact projects" 
+                className="w-full h-48 object-cover rounded-xl mb-8"
+              />
               <p className="text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
                 Sport Blocks operates as an impact company with transparency and traceability in the use of funds, 
                 directly supporting social projects through fan-driven initiatives.
@@ -291,6 +304,14 @@ const About = () => {
         <section className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-20 px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-slate-900 text-center mb-16">Platform Features</h2>
+            
+            <div className="mb-12">
+              <img 
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=300&fit=crop" 
+                alt="Modern digital platform interface showcasing various features" 
+                className="w-full h-48 object-cover rounded-xl mb-8"
+              />
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               <Card className="bg-white shadow-xl border border-blue-100">
@@ -380,10 +401,18 @@ const About = () => {
           </div>
         </section>
 
-        {/* Institutional Alignment */}
+        {/* About StarkNet Section */}
         <section className="bg-gradient-to-br from-slate-800 via-blue-900 to-indigo-900 py-20 px-6">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-white text-center mb-16">Global Impact Alignment</h2>
+            <h2 className="text-4xl font-bold text-white text-center mb-16">About StarkNet</h2>
+            
+            <div className="mb-12">
+              <img 
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=300&fit=crop" 
+                alt="Advanced blockchain network technology" 
+                className="w-full h-48 object-cover rounded-xl mb-8"
+              />
+            </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
@@ -449,73 +478,14 @@ const About = () => {
           <PunchLines style="banner" />
         </div>
 
-        {/* About StarkNet Section */}
-        <section className="bg-gradient-to-br from-slate-800 via-blue-900 to-indigo-900 py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-white text-center mb-16">About StarkNet</h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-8 text-center">Mission & Vision</h3>
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-lg font-bold text-blue-400 mb-3">Mission</h4>
-                    <p className="text-gray-200">Empower people to freely implement and use any social function they desire.</p>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-purple-400 mb-3">Vision</h4>
-                    <p className="text-gray-200">Build a decentralized and transparent network that facilitates social functions, ensuring integrity through mathematical proofs and distributing power equitably.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-8 text-center">Core Values</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <Shield className="text-blue-400 w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-sm font-bold text-white">Decentralization</h4>
-                      <p className="text-gray-200 text-sm">Avoiding the concentration of power and authority</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Eye className="text-amber-400 w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-sm font-bold text-white">Transparency</h4>
-                      <p className="text-gray-200 text-sm">Public and open governance</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Globe className="text-green-400 w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-sm font-bold text-white">Neutrality</h4>
-                      <p className="text-gray-200 text-sm">Open platform for all social functions</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Zap className="text-purple-400 w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-sm font-bold text-white">Censorship Resistance</h4>
-                      <p className="text-gray-200 text-sm">Interference-free transaction processing</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Users className="text-cyan-400 w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-sm font-bold text-white">Individual Empowerment</h4>
-                      <p className="text-gray-200 text-sm">Education and culture centered on Starknet's mission and values</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Call to Action */}
         <section className="bg-gradient-to-br from-amber-100 via-orange-50 to-red-50 py-20 px-6">
           <div className="max-w-4xl mx-auto text-center">
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=300&fit=crop" 
+              alt="Team working together towards a common goal" 
+              className="w-full h-48 object-cover rounded-xl mb-12"
+            />
             <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Ready to Join the Movement?
             </h2>

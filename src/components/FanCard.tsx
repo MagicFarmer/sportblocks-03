@@ -13,8 +13,10 @@ interface FanCardProps {
 const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
   const { connectWallet } = useStarkNet();
 
-  const handleConnectWallet = () => {
-    connectWallet();
+  const handleConnectWallet = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    await connectWallet();
   };
 
   const getRoleColor = (role: string) => {
@@ -67,10 +69,13 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
         </div>
         {!isWalletConnected && (
           <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] rounded-t-lg flex items-center justify-center">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2">
-              <Lock className="w-4 h-4 text-white mx-auto mb-1" />
-              <span className="text-white text-xs font-medium">Connect Wallet</span>
-            </div>
+            <Button
+              onClick={handleConnectWallet}
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2 text-white text-xs font-medium hover:bg-white/30 transition-all duration-200"
+            >
+              <Lock className="w-4 h-4 mr-2" />
+              Connect Wallet
+            </Button>
           </div>
         )}
       </div>
