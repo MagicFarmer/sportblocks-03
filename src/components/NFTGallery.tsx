@@ -24,47 +24,97 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
       price: "0.5 ETH",
       image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400",
       rarity: "Legendary",
-      description: "Historic goal from the 2022 World Cup Final"
+      description: "Historic goal from the 2022 World Cup Final that sealed Argentina's victory",
+      date: "December 18, 2022",
+      edition: "1 of 100",
+      totalSupply: 100,
+      minted: 87,
+      attributes: {
+        category: "Goal Moment",
+        achievement: "World Cup Final",
+        location: "Lusail Stadium, Qatar",
+        season: "2022-23"
+      }
     },
     {
       id: 2,
-      name: "LeBron's Dunk",
+      name: "LeBron's Championship Dunk",
       athlete: "LeBron James",
       sport: "Basketball",
       price: "0.3 ETH",
       image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400",
       rarity: "Epic",
-      description: "Iconic slam dunk from the playoffs"
+      description: "Iconic slam dunk from the NBA Finals that energized the crowd",
+      date: "June 12, 2023",
+      edition: "1 of 250",
+      totalSupply: 250,
+      minted: 203,
+      attributes: {
+        category: "Dunk Highlight",
+        achievement: "NBA Finals Game 5",
+        location: "Crypto.com Arena",
+        season: "2022-23"
+      }
     },
     {
       id: 3,
-      name: "Serena's Ace",
+      name: "Serena's Match Point Ace",
       athlete: "Serena Williams",
       sport: "Tennis",
       price: "0.4 ETH",
       image: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400",
       rarity: "Rare",
-      description: "Match-winning ace at Wimbledon"
+      description: "Match-winning ace that secured her 23rd Grand Slam title at Wimbledon",
+      date: "July 15, 2023",
+      edition: "1 of 150",
+      totalSupply: 150,
+      minted: 134,
+      attributes: {
+        category: "Serve Moment",
+        achievement: "Wimbledon Final",
+        location: "Centre Court, Wimbledon",
+        season: "2023"
+      }
     },
     {
       id: 4,
-      name: "Brady's Touchdown",
+      name: "Brady's Record Touchdown",
       athlete: "Tom Brady",
       sport: "Football",
       price: "0.6 ETH",
       image: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400",
       rarity: "Legendary",
-      description: "Super Bowl winning touchdown pass"
+      description: "Super Bowl winning touchdown pass that broke multiple NFL records",
+      date: "February 12, 2023",
+      edition: "1 of 50",
+      totalSupply: 50,
+      minted: 48,
+      attributes: {
+        category: "Touchdown Pass",
+        achievement: "Super Bowl LVII",
+        location: "State Farm Stadium",
+        season: "2022-23"
+      }
     },
     {
       id: 5,
-      name: "Curry's Three-Pointer",
+      name: "Curry's Logo Three",
       athlete: "Stephen Curry",
       sport: "Basketball",
       price: "0.35 ETH",
       image: "https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?w=400",
       rarity: "Epic",
-      description: "Record-breaking three-point shot"
+      description: "Record-breaking three-point shot from the logo that became legendary",
+      date: "April 3, 2023",
+      edition: "1 of 200",
+      totalSupply: 200,
+      minted: 156,
+      attributes: {
+        category: "Three-Point Shot",
+        achievement: "NBA Regular Season",
+        location: "Chase Center",
+        season: "2022-23"
+      }
     },
     {
       id: 6,
@@ -74,7 +124,17 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
       price: "0.7 ETH",
       image: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400",
       rarity: "Legendary",
-      description: "Spectacular bicycle kick goal"
+      description: "Spectacular bicycle kick goal that defied physics and amazed the world",
+      date: "March 25, 2023",
+      edition: "1 of 75",
+      totalSupply: 75,
+      minted: 71,
+      attributes: {
+        category: "Bicycle Kick",
+        achievement: "Champions League",
+        location: "Old Trafford",
+        season: "2022-23"
+      }
     }
   ];
 
