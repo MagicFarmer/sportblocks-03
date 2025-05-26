@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,6 +14,10 @@ import {
 
 const ExecutiveSummary = () => {
   const navigate = useNavigate();
+
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-800 via-blue-900 to-slate-900">
@@ -210,8 +215,8 @@ const ExecutiveSummary = () => {
                   </div>
                   <div>
                     <img 
-                      src="https://images.unsplash.com/photo-1594736797933-d0101ba2fe65?w=600&h=400&fit=crop" 
-                      alt="Global sustainable development and Olympic values" 
+                      src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop" 
+                      alt="Global collaboration and strategic alignment with Olympic and UN SDG values" 
                       className="rounded-xl shadow-lg w-full"
                     />
                   </div>
@@ -273,7 +278,10 @@ const ExecutiveSummary = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
-                    onClick={() => navigate('/gallery')}
+                    onClick={() => {
+                      navigate('/gallery');
+                      handleLinkClick();
+                    }}
                     size="lg"
                     className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-lg font-bold rounded-xl shadow-xl transition-all duration-300 hover:scale-105"
                   >
@@ -281,7 +289,10 @@ const ExecutiveSummary = () => {
                     <ArrowRight className="ml-2" size={20} />
                   </Button>
                   <Button
-                    onClick={() => navigate('/campaign-board')}
+                    onClick={() => {
+                      navigate('/campaign-board');
+                      handleLinkClick();
+                    }}
                     size="lg"
                     variant="outline"
                     className="px-8 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white text-lg font-bold rounded-xl transition-all duration-300 hover:scale-105"

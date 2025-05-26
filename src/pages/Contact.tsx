@@ -55,12 +55,12 @@ const Contact = () => {
   };
 
   const teamMembers = [
-    { name: "Roberto Lujan", role: "Original Idea & Team Leader" },
-    { name: "Eliot Rojas", role: "Main Developer" },
-    { name: "Carlos Vargas", role: "Product Support" },
-    { name: "Jason Espinoza", role: "Product Support" },
-    { name: "Keylor Angulo", role: "Marketing Advisor" },
-    { name: "David Alonso", role: "Marketing Advisor" }
+    { name: "Roberto Lujan", role: "Original Idea & Team Leader", highlight: true },
+    { name: "Eliot Rojas", role: "Main Developer", highlight: true },
+    { name: "Carlos Vargas", role: "Product Support", highlight: false },
+    { name: "Jason Espinoza", role: "Product Support", highlight: false },
+    { name: "Keylor Angulo", role: "Marketing Advisor", highlight: false },
+    { name: "David Alonso", role: "Marketing Advisor", highlight: false }
   ];
 
   const handleWhatsAppClick = () => {
@@ -280,35 +280,61 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {/* Team Photo */}
-              <div className="relative">
-                <img
-                  src="/lovable-uploads/3296473a-da66-4064-ab09-c4e8c4e56254.png"
-                  alt="SportBlocks Team at Blockchain Event"
-                  className="w-full rounded-2xl shadow-2xl border-4 border-amber-400/50"
-                />
-                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm rounded-lg px-3 py-2">
-                  <p className="text-white text-sm font-semibold">Team SportBlocks</p>
+              <div className="relative order-2 lg:order-1">
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl border-4 border-amber-400/50">
+                  <img
+                    src="/lovable-uploads/3296473a-da66-4064-ab09-c4e8c4e56254.png"
+                    alt="SportBlocks Team at Blockchain Event"
+                    className="w-full h-auto transform hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm rounded-lg px-3 py-2">
+                    <p className="text-white text-sm font-semibold">Team SportBlocks</p>
+                  </div>
+                  <div className="absolute bottom-4 right-4 bg-gradient-to-r from-blue-600/80 to-purple-600/80 backdrop-blur-sm rounded-lg px-3 py-2">
+                    <p className="text-white text-xs font-medium">Costa Rica 2024</p>
+                  </div>
                 </div>
               </div>
 
               {/* Team Members List */}
-              <div className="space-y-6">
+              <div className="space-y-6 order-1 lg:order-2">
                 <h3 className="text-2xl font-bold text-white mb-6 text-center lg:text-left">Our Amazing Team</h3>
-                <div className="space-y-4">
-                  {teamMembers.map((member, index) => (
-                    <div 
-                      key={index}
-                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300"
-                    >
-                      <h4 className="text-xl font-bold text-white mb-1">{member.name}</h4>
-                      <p className="text-amber-300 font-semibold">{member.role}</p>
-                    </div>
-                  ))}
+                
+                {/* Core Team */}
+                <div className="mb-8">
+                  <h4 className="text-lg font-semibold text-amber-300 mb-4">Core Team</h4>
+                  <div className="space-y-3">
+                    {teamMembers.filter(member => member.highlight).map((member, index) => (
+                      <div 
+                        key={index}
+                        className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-xl p-5 border border-blue-400/30 hover:border-blue-400/50 transition-all duration-300"
+                      >
+                        <h5 className="text-xl font-bold text-white mb-1">{member.name}</h5>
+                        <p className="text-amber-300 font-semibold text-lg">{member.role}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Support Team */}
+                <div>
+                  <h4 className="text-lg font-semibold text-amber-300 mb-4">Support Team</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {teamMembers.filter(member => !member.highlight).map((member, index) => (
+                      <div 
+                        key={index}
+                        className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300"
+                      >
+                        <h5 className="text-lg font-bold text-white mb-1">{member.name}</h5>
+                        <p className="text-gray-300 font-medium text-sm">{member.role}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl p-6 border border-blue-400/30 mt-8">
+                <div className="bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-xl p-6 border border-red-400/30 mt-8">
                   <div className="flex items-center mb-3">
                     <Heart className="text-pink-400 w-6 h-6 mr-3" />
                     <h4 className="text-lg font-bold text-white">Passionate About Innovation</h4>
@@ -319,25 +345,6 @@ const Contact = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Additional Information */}
-        <div className="mt-16 text-center">
-          <div className="bg-white/5 backdrop-blur-lg rounded-xl p-8 border border-white/20">
-            <h3 className="text-2xl font-bold text-white mb-4">Join Our Community</h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Stay updated with the latest SportBlocks news, exclusive drops, and community events. 
-              Follow us on social media and join our growing community of sports enthusiasts and collectors.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                Join Discord
-              </Button>
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                Follow Twitter
-              </Button>
             </div>
           </div>
         </div>

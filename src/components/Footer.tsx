@@ -102,7 +102,7 @@ const Footer = () => {
                 <Linkedin size={20} className="text-white" />
               </a>
               <a 
-                href="https://github.com" 
+                href="https://github.com/MagicFarmer/sportblocks-03" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
@@ -231,17 +231,6 @@ const Footer = () => {
                   Wikimedia Foundation
                 </a>
               </li>
-              <li>
-                <a 
-                  href="https://github.com/MagicFarmer/sportblocks-03" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2"
-                >
-                  <Github size={16} />
-                  <span>GitHub Repository</span>
-                </a>
-              </li>
             </ul>
           </div>
         </div>
@@ -265,9 +254,21 @@ const Footer = () => {
 
         <div className="text-center mt-16">
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between">
-            <p className="text-gray-500 text-sm">
-              © {currentYear} SportBlocks. All rights reserved.
-            </p>
+            <div className="flex items-center space-x-4">
+              <p className="text-gray-500 text-sm">
+                © {currentYear} SportBlocks. All rights reserved.
+              </p>
+              <a 
+                id="_bottom"
+                href="https://github.com/MagicFarmer/sportblocks-03" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-500 text-sm hover:text-white transition-colors flex items-center space-x-1"
+              >
+                <Github size={14} />
+                <span>View Source</span>
+              </a>
+            </div>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
               <Link to="/privacy-policy" className="text-gray-500 text-sm hover:text-white transition-colors">Privacy Policy</Link>
               <Link to="/terms-of-service" className="text-gray-500 text-sm hover:text-white transition-colors">Terms of Service</Link>
