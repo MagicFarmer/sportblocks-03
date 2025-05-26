@@ -23,17 +23,21 @@ interface NFT {
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { wallet, userData } = useStarkNet();
+  const { wallet, userData, isInitialized } = useStarkNet();
   const [nfts, setNfts] = useState<NFT[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Wait for initialization before checking auth
+    if (!isInitialized) return;
+    
     if (!wallet.isConnected || !userData) {
       navigate('/');
       return;
     }
+    
     fetchUserNFTs();
-  }, [wallet.isConnected, userData, navigate]);
+  }, [wallet.isConnected, userData, isInitialized, navigate]);
 
   const fetchUserNFTs = async () => {
     try {
@@ -52,6 +56,23 @@ const Dashboard = () => {
     }
   };
 
+  // Show loading while initializing
+  if (!isInitialized) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <Navbar />
+        <div className="container mx-auto px-6 py-12">
+          <div className="text-center py-12">
+            <div className="w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <p className="text-gray-400 mt-4">Inicializando...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Redirect if not authenticated
   if (!wallet.isConnected || !userData) {
     return null;
   }

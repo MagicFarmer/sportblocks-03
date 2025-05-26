@@ -10,10 +10,25 @@ const WalletConnect = () => {
     wallet, 
     userData, 
     isLoading, 
+    isInitialized,
     connectWallet, 
     disconnectWallet, 
     handleRegistrationComplete 
   } = useStarkNet();
+
+  // Show loading while initializing
+  if (!isInitialized) {
+    return (
+      <section className="px-6 py-12">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
+            <div className="w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-400">Inicializando conexión...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   // Show registration form if wallet is connected but no user data
   if (wallet.isConnected && !userData) {

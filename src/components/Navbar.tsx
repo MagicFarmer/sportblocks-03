@@ -1,13 +1,13 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, User, Plus, BarChart3, Image, Trophy, ShoppingBag } from "lucide-react";
+import { Menu, X, User, Plus, BarChart3, Image, Trophy, ShoppingBag, LogOut } from "lucide-react";
 import { useStarkNet } from "@/hooks/useStarkNet";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { wallet, userData } = useStarkNet();
+  const { wallet, userData, isInitialized, disconnectWallet } = useStarkNet();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -18,11 +18,16 @@ const Navbar = () => {
     { name: "Atletas", path: "/athletes", icon: Trophy },
   ];
 
-  const authenticatedItems = wallet.isConnected && userData ? [
+  const authenticatedItems = (wallet.isConnected && userData && isInitialized) ? [
     { name: "Dashboard", path: "/dashboard", icon: BarChart3 },
     { name: "Crear NFT", path: "/create-nft", icon: Plus },
     { name: "Mi Perfil", path: "/profile", icon: User },
   ] : [];
+
+  const handleDisconnect = async () => {
+    await disconnectWallet();
+    setIsOpen(false);
+  };
 
   return (
     <nav className="bg-black/20 backdrop-blur-lg border-b border-white/10 sticky top-0 z-50">
@@ -70,6 +75,17 @@ const Navbar = () => {
                 </Link>
               );
             })}
+
+            {/* Disconnect button when connected */}
+            {wallet.isConnected && userData && isInitialized && (
+              <button
+                onClick={handleDisconnect}
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200"
+              >
+                <LogOut size={18} />
+                <span>Desconectar</span>
+              </button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -103,6 +119,17 @@ const Navbar = () => {
                   </Link>
                 );
               })}
+
+              {/* Mobile disconnect button */}
+              {wallet.isConnected && userData && isInitialized && (
+                <button
+                  onClick={handleDisconnect}
+                  className="flex items-center space-x-2 px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-200"
+                >
+                  <LogOut size={18} />
+                  <span>Desconectar</span>
+                </button>
+              )}
             </div>
           </div>
         )}
