@@ -90,76 +90,125 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  /* Focus Mode - Relaxed color palette with muted tones */
+  /* Focus Mode - Enhanced with better contrast and light colors */
   .focus-mode {
-    filter: brightness(0.85) contrast(0.9);
+    /* Reduce overall brightness and contrast for comfort */
+    filter: brightness(0.9) contrast(0.85) saturate(0.7);
     
-    /* Override specific colors for focus mode */
-    --background: 210 20% 98%;
-    --foreground: 210 10% 25%;
-    --card: 210 20% 96%;
-    --primary: 210 15% 45%;
-    --secondary: 210 25% 92%;
-    --muted: 210 25% 90%;
-    --border: 210 20% 85%;
+    /* Override specific colors for focus mode with improved contrast */
+    --background: 220 25% 97%;
+    --foreground: 220 15% 20%;
+    --card: 220 20% 95%;
+    --primary: 210 20% 40%;
+    --secondary: 220 30% 88%;
+    --muted: 220 25% 85%;
+    --border: 220 20% 80%;
   }
 
-  /* Focus mode specific overrides */
+  /* Enhanced focus mode overrides with better contrast and light colors */
   .focus-mode .bg-gradient-to-br {
     background: linear-gradient(to bottom right, 
-      rgb(248 250 252), 
-      rgb(241 245 249), 
-      rgb(226 232 240)) !important;
+      rgb(250 251 252), 
+      rgb(244 246 250), 
+      rgb(235 239 245)) !important;
   }
 
   .focus-mode .bg-gradient-to-r {
     background: linear-gradient(to right, 
-      rgb(226 232 240), 
-      rgb(203 213 225)) !important;
+      rgb(235 239 245), 
+      rgb(220 228 235)) !important;
   }
 
-  /* Reduce saturation for colorful elements */
+  /* Light, calming colors for interactive elements */
   .focus-mode .text-blue-600,
-  .focus-mode .text-blue-500,
+  .focus-mode .text-blue-500 {
+    color: rgb(67 94 130) !important;
+  }
+
   .focus-mode .bg-blue-500,
   .focus-mode .bg-blue-600 {
-    color: rgb(71 85 105) !important;
-    background-color: rgb(148 163 184) !important;
+    background-color: rgb(140 162 190) !important;
   }
 
   .focus-mode .text-purple-600,
-  .focus-mode .text-purple-500,
+  .focus-mode .text-purple-500 {
+    color: rgb(95 79 130) !important;
+  }
+
   .focus-mode .bg-purple-500,
   .focus-mode .bg-purple-600 {
-    color: rgb(71 85 105) !important;
-    background-color: rgb(148 163 184) !important;
+    background-color: rgb(162 140 190) !important;
   }
 
   .focus-mode .text-amber-500,
   .focus-mode .text-amber-400 {
-    color: rgb(120 113 108) !important;
+    color: rgb(140 120 85) !important;
   }
 
-  /* Soften gradients */
+  /* Soften gradients with warmer, lighter tones */
   .focus-mode .from-slate-900,
   .focus-mode .from-blue-900,
   .focus-mode .from-slate-800 {
-    --tw-gradient-from: rgb(226 232 240) !important;
+    --tw-gradient-from: rgb(235 239 245) !important;
   }
 
   .focus-mode .to-slate-800,
   .focus-mode .to-blue-900,
   .focus-mode .to-purple-900,
   .focus-mode .via-blue-900 {
-    --tw-gradient-to: rgb(203 213 225) !important;
+    --tw-gradient-to: rgb(220 228 235) !important;
   }
 
+  /* Improved text contrast for better readability */
   .focus-mode .text-white {
-    color: rgb(51 65 85) !important;
+    color: rgb(40 55 75) !important;
   }
 
   .focus-mode .text-gray-400 {
-    color: rgb(100 116 139) !important;
+    color: rgb(85 105 130) !important;
+  }
+
+  .focus-mode .text-gray-300 {
+    color: rgb(70 90 115) !important;
+  }
+
+  .focus-mode .text-gray-200 {
+    color: rgb(55 75 100) !important;
+  }
+
+  /* Enhanced borders and shadows for better definition */
+  .focus-mode .border-blue-400 {
+    border-color: rgb(180 195 215) !important;
+  }
+
+  .focus-mode .border-white {
+    border-color: rgb(200 210 225) !important;
+  }
+
+  /* Improved button contrast */
+  .focus-mode .hover\:bg-blue-600:hover {
+    background-color: rgb(120 145 175) !important;
+  }
+
+  .focus-mode .hover\:bg-purple-700:hover {
+    background-color: rgb(140 120 170) !important;
+  }
+
+  /* Better card backgrounds */
+  .focus-mode .bg-white {
+    background-color: rgb(248 250 252) !important;
+  }
+
+  /* Softer shadows for depth without harshness */
+  .focus-mode .shadow-2xl,
+  .focus-mode .shadow-xl {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Enhanced backdrop blur elements */
+  .focus-mode .backdrop-blur-lg,
+  .focus-mode .backdrop-blur-xl {
+    background-color: rgba(248, 250, 252, 0.85) !important;
   }
 }
 

@@ -31,8 +31,8 @@ const FeaturedNFTs = ({ isWalletConnected }: FeaturedNFTsProps) => {
           </p>
         </div>
 
-        {/* Featured NFTs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8 px-4 sm:px-0 mb-12">
+        {/* Featured NFTs Grid - 2 columns layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 px-4 sm:px-0 mb-12 max-w-4xl mx-auto">
           {featuredNFTs.map((nft) => (
             <NFTCard 
               key={nft.id} 
