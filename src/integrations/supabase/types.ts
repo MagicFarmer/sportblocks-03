@@ -9,6 +9,74 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      nfts: {
+        Row: {
+          beneficiary_project: string
+          contract_address: string | null
+          created_at: string
+          description: string | null
+          id: string
+          is_minted: boolean
+          media_type: string | null
+          media_url: string | null
+          metadata_hash: string | null
+          minted_copies: number
+          name: string
+          price: number
+          rarity: string
+          token_id: string | null
+          total_copies: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          beneficiary_project: string
+          contract_address?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_minted?: boolean
+          media_type?: string | null
+          media_url?: string | null
+          metadata_hash?: string | null
+          minted_copies?: number
+          name: string
+          price: number
+          rarity: string
+          token_id?: string | null
+          total_copies: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          beneficiary_project?: string
+          contract_address?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_minted?: boolean
+          media_type?: string | null
+          media_url?: string | null
+          metadata_hash?: string | null
+          minted_copies?: number
+          name?: string
+          price?: number
+          rarity?: string
+          token_id?: string | null
+          total_copies?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_nfts_user_id"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_contracts: {
         Row: {
           contract_address: string
