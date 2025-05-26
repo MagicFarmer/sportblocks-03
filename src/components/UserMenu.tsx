@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, LogOut, Circle, LayoutDashboard, Plus } from "lucide-react";
+import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,11 @@ import { Button } from "@/components/ui/button";
 import { useStarkNet } from "@/hooks/useStarkNet";
 
 const UserMenu = () => {
-  const { wallet, userData, isInitialized, disconnectWallet } = useStarkNet();
+  const { wallet, userData, isInitialized, connectWallet, disconnectWallet } = useStarkNet();
+
+  const handleConnect = async () => {
+    await connectWallet();
+  };
 
   const handleDisconnect = async () => {
     await disconnectWallet();
@@ -113,11 +117,21 @@ const UserMenu = () => {
         )}
 
         {!isConnected && (
-          <div className="px-4 py-3">
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Connect your wallet to access all SportBlocks features
-            </p>
-          </div>
+          <>
+            <DropdownMenuItem 
+              onClick={handleConnect}
+              className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-blue-50 text-blue-600 transition-all duration-200"
+            >
+              <Wallet size={18} />
+              <span className="font-medium">Connect Wallet</span>
+            </DropdownMenuItem>
+            
+            <div className="px-4 py-3">
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Connect your wallet to access all SportBlocks features
+              </p>
+            </div>
+          </>
         )}
       </DropdownMenuContent>
     </DropdownMenu>
