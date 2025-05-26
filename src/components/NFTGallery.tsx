@@ -1,11 +1,7 @@
 
 import { useState } from "react";
 import NFTCard from "./NFTCard";
-import FilterButtons from "./Gallery/FilterButtons";
-import AlbumHeader from "./Gallery/AlbumHeader";
-import MarketplaceBanner from "./Gallery/MarketplaceBanner";
 import { mockNFTs } from "../data/mockNFTs";
-import { generateAlbumName, filterNFTs } from "../utils/galleryUtils";
 
 interface NFTGalleryProps {
   isWalletConnected: boolean;
@@ -20,28 +16,14 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
   });
 
   // Filter NFTs based on selected filters
-  const filteredNFTs = filterNFTs(mockNFTs, filters);
-
-  // Generate dynamic album name based on active filters
-  const albumName = generateAlbumName(filters);
-
-  const handleFilterChange = (filterType: string, value: string) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterType]: value
-    }));
-  };
-
-  const clearAllFilters = () => {
-    setFilters({
-      sport: "All",
-      event: "All",
-      country: "All",
-      rarity: "All"
-    });
-  };
-
-  const hasActiveFilters = Object.values(filters).some(filter => filter !== "All");
+  const filteredNFTs = mockNFTs.filter(nft => {
+    return (
+      (filters.sport === "All" || nft.sport === filters.sport) &&
+      (filters.event === "All" || nft.event === filters.event) &&
+      (filters.country === "All" || nft.country === filters.country) &&
+      (filters.rarity === "All" || nft.rarity === filters.rarity)
+    );
+  });
 
   return (
     <section id="gallery" className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -53,18 +35,7 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-6 px-4">
             Discover and collect exclusive digital moments from the world's greatest athletes
           </p>
-          
-          <MarketplaceBanner />
         </div>
-
-        <AlbumHeader albumName={albumName} nftCount={filteredNFTs.length} />
-
-        <FilterButtons
-          filters={filters}
-          onFilterChange={handleFilterChange}
-          onClearFilters={clearAllFilters}
-          hasActiveFilters={hasActiveFilters}
-        />
 
         {/* NFT Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4 sm:px-0">
@@ -82,12 +53,6 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
             <p className="text-gray-400 text-base sm:text-lg mb-4">
               No NFTs found for the selected filters
             </p>
-            <button
-              onClick={clearAllFilters}
-              className="text-blue-400 hover:text-blue-300 underline"
-            >
-              Clear all filters to show all NFTs
-            </button>
           </div>
         )}
       </div>

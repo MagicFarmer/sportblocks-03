@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,7 +10,6 @@ import { useStarkNet } from '@/hooks/useStarkNet';
 import PunchLines from '@/components/PunchLines';
 
 const Gallery = () => {
-  const [searchTerm, setSearchTerm] = useState('');
   const [currentCategory, setCurrentCategory] = useState('All');
   const { wallet } = useStarkNet();
   const isWalletConnected = wallet.isConnected;
@@ -19,7 +19,7 @@ const Gallery = () => {
       <Navbar />
       
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <AlbumHeader />
+        <AlbumHeader albumName="Sports NFT Collection" nftCount={0} />
         
         {/* Punch Lines */}
         <div className="mb-8">
@@ -32,8 +32,6 @@ const Gallery = () => {
         />
         <MarketplaceBanner />
         <NFTGallery 
-          searchTerm={searchTerm}
-          currentCategory={currentCategory}
           isWalletConnected={isWalletConnected}
         />
       </div>
