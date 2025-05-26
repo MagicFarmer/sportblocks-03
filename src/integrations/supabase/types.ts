@@ -77,6 +77,44 @@ export type Database = {
           },
         ]
       }
+      purchases: {
+        Row: {
+          amount_paid: number
+          buyer_wallet: string
+          created_at: string
+          id: string
+          nft_id: string
+          timestamp: string
+          tx_hash: string | null
+        }
+        Insert: {
+          amount_paid: number
+          buyer_wallet: string
+          created_at?: string
+          id?: string
+          nft_id: string
+          timestamp?: string
+          tx_hash?: string | null
+        }
+        Update: {
+          amount_paid?: number
+          buyer_wallet?: string
+          created_at?: string
+          id?: string
+          nft_id?: string
+          timestamp?: string
+          tx_hash?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "purchases_nft_id_fkey"
+            columns: ["nft_id"]
+            isOneToOne: false
+            referencedRelation: "nfts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_contracts: {
         Row: {
           contract_address: string

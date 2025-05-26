@@ -1,6 +1,8 @@
-
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import NFTCard from "./NFTCard";
+import { Button } from "./ui/button";
+import { Store } from "lucide-react";
 
 interface NFTGalleryProps {
   isWalletConnected: boolean;
@@ -8,6 +10,7 @@ interface NFTGalleryProps {
 
 const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
   const [selectedSport, setSelectedSport] = useState("All");
+  const navigate = useNavigate();
 
   const sports = ["All", "Football", "Basketball", "Soccer", "Tennis", "Baseball"];
 
@@ -85,9 +88,24 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
           <h2 className="text-4xl font-bold text-white mb-4">
             Featured Sports NFTs
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-6">
             Discover and collect exclusive digital moments from the world's greatest athletes
           </p>
+          
+          {/* Call to Action for Real Marketplace */}
+          <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-lg rounded-xl p-6 border border-blue-400/30 mb-8">
+            <h3 className="text-xl font-bold text-white mb-2">¡Marketplace Real Disponible!</h3>
+            <p className="text-gray-300 mb-4">
+              Compra NFTs reales creados por atletas verificados en nuestra plataforma
+            </p>
+            <Button
+              onClick={() => navigate('/marketplace')}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium"
+            >
+              <Store className="w-5 h-5 mr-2" />
+              Ir al Marketplace Real
+            </Button>
+          </div>
         </div>
 
         {/* Sport Filter */}
