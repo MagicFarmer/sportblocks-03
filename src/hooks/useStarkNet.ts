@@ -17,7 +17,7 @@ export const useStarkNet = () => {
   const connectWallet = async () => {
     setIsLoading(true);
     try {
-      const { wallet } = await connect({ 
+      const connection = await connect({ 
         webWalletUrl: "https://web.argent.xyz",
         argentMobileOptions: {
           dappName: "SportBlocks",
@@ -25,16 +25,27 @@ export const useStarkNet = () => {
         }
       });
 
-      if (wallet && wallet.isConnected) {
-        const address = wallet.selectedAddress || wallet.account?.address;
-        setWallet({
-          account: wallet.account,
-          address: address,
-          isConnected: true
-        });
+      if (connection && connection.wallet) {
+        // Check if wallet is connected by trying to get the account
+        try {
+          const account = await connection.wallet.request({
+            type: "wallet_requestAccounts"
+          });
+          
+          if (account && account.length > 0) {
+            const address = account[0];
+            setWallet({
+              account: connection.wallet,
+              address: address,
+              isConnected: true
+            });
 
-        // Check if user exists in database
-        await checkUserExists(address);
+            // Check if user exists in database
+            await checkUserExists(address);
+          }
+        } catch (accountError) {
+          console.error('Failed to get account:', accountError);
+        }
       }
     } catch (error) {
       console.error('Failed to connect wallet:', error);
@@ -80,15 +91,25 @@ export const useStarkNet = () => {
     // Try to reconnect on page load
     const tryReconnect = async () => {
       try {
-        const { wallet } = await connect({ modalMode: "neverAsk" });
-        if (wallet && wallet.isConnected) {
-          const address = wallet.selectedAddress || wallet.account?.address;
-          setWallet({
-            account: wallet.account,
-            address: address,
-            isConnected: true
-          });
-          await checkUserExists(address);
+        const connection = await connect({ modalMode: "neverAsk" });
+        if (connection && connection.wallet) {
+          try {
+            const account = await connection.wallet.request({
+              type: "wallet_requestAccounts"
+            });
+            
+            if (account && account.length > 0) {
+              const address = account[0];
+              setWallet({
+                account: connection.wallet,
+                address: address,
+                isConnected: true
+              });
+              await checkUserExists(address);
+            }
+          } catch (accountError) {
+            // Silent fail for auto-reconnect
+          }
         }
       } catch (error) {
         // Silent fail for auto-reconnect
