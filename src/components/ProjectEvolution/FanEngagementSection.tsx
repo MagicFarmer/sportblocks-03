@@ -13,8 +13,8 @@ const FanEngagementSection = () => {
         
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop" 
-            alt="Diverse group of people collaborating and engaging in sports activities"
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop" 
+            alt="People collaborating around laptops showing engagement platforms"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>

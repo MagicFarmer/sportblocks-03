@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import NavigationMenu from "./NavigationMenu";
+import CardsMenu from "./CardsMenu";
 import UserMenu from "./UserMenu";
 
 const Navbar = () => {
@@ -49,6 +50,7 @@ const Navbar = () => {
           {/* Right side menus */}
           <div className="flex items-center space-x-4">
             <NavigationMenu />
+            <CardsMenu />
             <UserMenu />
           </div>
         </div>

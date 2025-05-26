@@ -80,7 +80,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-700 pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           <p className="text-gray-400 text-sm sm:text-base text-center md:text-left">
-            © 2024 SportBlocks. Built on StarkNet. All rights reserved.
+            © 2025 SportBlocks. Built on StarkNet. All rights reserved.
           </p>
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
             <a href="#" className="text-gray-400 hover:text-amber-400 text-sm sm:text-base transition-colors duration-200">

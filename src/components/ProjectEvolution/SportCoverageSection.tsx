@@ -13,8 +13,8 @@ const SportCoverageSection = () => {
         
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop" 
-            alt="Global sports diversity and athletic achievements"
+            src="https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=800&h=400&fit=crop" 
+            alt="Digital stylus and tablet showing sports data visualization and global mapping"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>

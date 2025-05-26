@@ -13,8 +13,8 @@ const FanProjectsSection = () => {
         
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&h=400&fit=crop" 
-            alt="Democratic voting and community decision making process"
+            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop" 
+            alt="Person using laptop showing democratic voting and governance interface"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>
