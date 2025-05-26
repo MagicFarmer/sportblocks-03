@@ -18,6 +18,7 @@ export const useStarkNet = () => {
   const connectWallet = async () => {
     setIsLoading(true);
     try {
+      console.log('Attempting to connect wallet...');
       const connection = await connect({ 
         webWalletUrl: "https://web.argent.xyz",
         argentMobileOptions: {
@@ -34,6 +35,8 @@ export const useStarkNet = () => {
           
           if (account && account.length > 0) {
             const address = account[0];
+            console.log('Wallet connected with address:', address);
+            
             const walletData = {
               account: connection.wallet,
               address: address,
@@ -62,6 +65,7 @@ export const useStarkNet = () => {
 
   const disconnectWallet = async () => {
     try {
+      console.log('Disconnecting wallet...');
       await disconnect();
       setWallet({ isConnected: false });
       setUserData(null);
@@ -77,6 +81,8 @@ export const useStarkNet = () => {
 
   const checkUserExists = async (walletAddress: string) => {
     try {
+      console.log('Checking if user exists for wallet:', walletAddress);
+      
       const { data, error } = await supabase
         .from('users')
         .select('*')
@@ -89,10 +95,12 @@ export const useStarkNet = () => {
       }
 
       if (data) {
+        console.log('User found:', data);
         setUserData(data);
         // Persist user data
         localStorage.setItem('starknet-user-data', JSON.stringify(data));
       } else {
+        console.log('User not found, registration needed');
         // Clear user data if not found
         localStorage.removeItem('starknet-user-data');
       }
@@ -102,6 +110,7 @@ export const useStarkNet = () => {
   };
 
   const handleRegistrationComplete = (newUserData: any) => {
+    console.log('Registration completed for user:', newUserData);
     setUserData(newUserData);
     // Persist user data
     localStorage.setItem('starknet-user-data', JSON.stringify(newUserData));
@@ -112,16 +121,20 @@ export const useStarkNet = () => {
       setIsLoading(true);
       
       try {
+        console.log('Initializing wallet...');
         // Check if wallet was previously connected
         const wasConnected = localStorage.getItem('starknet-wallet-connected');
         const savedAddress = localStorage.getItem('starknet-wallet-address');
         const savedUserData = localStorage.getItem('starknet-user-data');
 
         if (wasConnected === 'true' && savedAddress) {
+          console.log('Found saved wallet connection for:', savedAddress);
+          
           // Try to restore user data first
           if (savedUserData) {
             try {
               const parsedUserData = JSON.parse(savedUserData);
+              console.log('Restored user data:', parsedUserData);
               setUserData(parsedUserData);
             } catch (e) {
               console.error('Error parsing saved user data:', e);
@@ -139,6 +152,7 @@ export const useStarkNet = () => {
                 });
                 
                 if (account && account.length > 0 && account[0] === savedAddress) {
+                  console.log('Wallet reconnected successfully');
                   setWallet({
                     account: connection.wallet,
                     address: savedAddress,
@@ -150,6 +164,7 @@ export const useStarkNet = () => {
                     await checkUserExists(savedAddress);
                   }
                 } else {
+                  console.log('Address mismatch, clearing stored data');
                   // Address mismatch, clear stored data
                   localStorage.removeItem('starknet-wallet-connected');
                   localStorage.removeItem('starknet-wallet-address');
@@ -172,6 +187,7 @@ export const useStarkNet = () => {
       } finally {
         setIsLoading(false);
         setIsInitialized(true);
+        console.log('Wallet initialization complete');
       }
     };
 

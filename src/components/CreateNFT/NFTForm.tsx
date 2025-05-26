@@ -53,40 +53,64 @@ const NFTForm = () => {
         throw new Error('La cantidad de copias debe ser mayor a 0');
       }
 
+      if (!userData?.id) {
+        throw new Error('Usuario no autenticado. Por favor, conéctate primero.');
+      }
+
+      console.log('Creating NFT for user:', userData.id);
+
       let mediaUrl = "";
       let mediaType = "";
 
       // Upload media file if provided
       if (mediaFile && userData) {
+        console.log('Uploading media file...');
         mediaUrl = await uploadMediaFile(mediaFile, userData.id);
         mediaType = mediaFile.type.startsWith('video') ? 'video' : 'image';
+        console.log('Media uploaded successfully:', mediaUrl);
       }
 
-      // Create NFT record in Supabase
-      const { data: nftData, error: nftError } = await supabase
+      // Create NFT record in Supabase with explicit user_id
+      console.log('Creating NFT record in database...');
+      const nftData = {
+        user_id: userData.id, // Explicitly set the user_id
+        name: formData.name,
+        description: formData.description,
+        media_url: mediaUrl,
+        media_type: mediaType,
+        beneficiary_project: formData.beneficiaryProject,
+        rarity: formData.rarity,
+        price: parseFloat(formData.price),
+        total_copies: parseInt(formData.totalCopies)
+      };
+
+      console.log('NFT data to insert:', nftData);
+
+      const { data: insertedNft, error: nftError } = await supabase
         .from('nfts')
-        .insert({
-          user_id: userData!.id,
-          name: formData.name,
-          description: formData.description,
-          media_url: mediaUrl,
-          media_type: mediaType,
-          beneficiary_project: formData.beneficiaryProject,
-          rarity: formData.rarity,
-          price: parseFloat(formData.price),
-          total_copies: parseInt(formData.totalCopies)
-        })
+        .insert(nftData)
         .select()
         .single();
 
-      if (nftError) throw nftError;
+      if (nftError) {
+        console.error('Error inserting NFT:', nftError);
+        throw new Error(`Error al crear NFT: ${nftError.message}`);
+      }
+
+      console.log('NFT created successfully:', insertedNft);
 
       // Mint NFT on contract
-      await mintNFTOnContract(nftData, userData!.id);
+      try {
+        await mintNFTOnContract(insertedNft, userData.id);
+        console.log('NFT minted successfully on contract');
+      } catch (mintError) {
+        console.warn('Contract minting failed, but NFT was saved:', mintError);
+        // Continue even if minting fails
+      }
 
       toast({
-        title: "¡NFT Creado y Minteado Exitosamente!",
-        description: "Tu NFT ha sido guardado en la base de datos y minteado en el contrato.",
+        title: "¡NFT Creado Exitosamente!",
+        description: "Tu NFT ha sido guardado en la base de datos.",
       });
 
       navigate('/dashboard');
@@ -220,7 +244,7 @@ const NFTForm = () => {
             disabled={isSubmitting}
             className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
-            {isSubmitting ? "Creando y Minteando..." : "Crear y Mintear NFT"}
+            {isSubmitting ? "Creando NFT..." : "Crear NFT"}
           </Button>
         </div>
       </form>
