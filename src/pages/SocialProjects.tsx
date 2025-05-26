@@ -153,13 +153,13 @@ const SocialProjects = () => {
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">
-                  {filteredProjects.reduce((total, project) => total + project.supportersCount, 0)}
+                  {filteredProjects.reduce((total, project) => total + project.supporters, 0)}
                 </p>
                 <p className="text-gray-400">Total Supporters</p>
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">
-                  ${filteredProjects.reduce((total, project) => total + project.fundingRaised, 0).toLocaleString()}
+                  ${filteredProjects.reduce((total, project) => total + project.raised, 0).toLocaleString()}
                 </p>
                 <p className="text-gray-400">Funds Raised</p>
               </div>

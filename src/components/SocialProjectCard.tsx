@@ -33,7 +33,7 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
       return;
     }
     // Show project details modal or navigate to details page
-    alert(`Viewing details for ${project.name} - Detailed view coming soon!`);
+    alert(`Viewing details for ${project.title} - Detailed view coming soon!`);
   };
 
   const handleSupport = () => {
@@ -42,10 +42,10 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
       return;
     }
     // Simulate donation process
-    alert(`Supporting ${project.name} - Donation feature coming soon!`);
+    alert(`Supporting ${project.title} - Donation feature coming soon!`);
   };
 
-  const fundingPercentage = Math.round((project.fundingRaised / project.fundingGoal) * 100);
+  const fundingPercentage = Math.round((project.raised / project.goal) * 100);
 
   return (
     <Card className={`transition-all duration-300 hover:scale-105 shadow-2xl backdrop-blur-sm ${
@@ -56,7 +56,7 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
       <div className="relative">
         <img 
           src={project.image} 
-          alt={project.name}
+          alt={project.title}
           className="w-full h-48 object-cover rounded-t-lg"
         />
         <div className="absolute top-3 right-3">
@@ -83,7 +83,7 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
       
       <CardContent className="p-6">
         <div className="mb-4">
-          <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">{project.name}</h3>
+          <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">{project.title}</h3>
           <p className="text-gray-200 text-sm mb-3 line-clamp-2">{project.description}</p>
           
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-2">
@@ -116,8 +116,8 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
             ></div>
           </div>
           <div className="flex justify-between text-xs text-gray-300 mt-1">
-            <span className="font-medium">${project.fundingRaised.toLocaleString()}</span>
-            <span className="font-medium">${project.fundingGoal.toLocaleString()}</span>
+            <span className="font-medium">${project.raised.toLocaleString()}</span>
+            <span className="font-medium">${project.goal.toLocaleString()}</span>
           </div>
         </div>
 
@@ -127,7 +127,7 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
             isWalletConnected ? 'bg-white/15 border-white/30' : 'bg-white/8 border-white/15'
           }`}>
             <Users className={`w-5 h-5 mx-auto mb-1 ${isWalletConnected ? 'text-green-400' : 'text-green-400/60'}`} />
-            <div className="text-lg font-bold text-white">{project.supportersCount}</div>
+            <div className="text-lg font-bold text-white">{project.supporters}</div>
             <div className="text-xs text-gray-300">Supporters</div>
           </div>
           <div className={`backdrop-blur-sm rounded-lg p-3 text-center border ${

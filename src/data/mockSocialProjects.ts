@@ -14,6 +14,8 @@ export interface SocialProject {
   impact: string;
   featured: boolean;
   sdgGoals: string[];
+  status: 'active' | 'completed' | 'planning' | 'paused';
+  startDate: string;
   updates: {
     date: string;
     title: string;
@@ -36,6 +38,8 @@ export const mockSocialProjects: SocialProject[] = [
     deadline: "2024-12-31",
     impact: "Expected to benefit 5,000+ students across 50 schools",
     featured: true,
+    status: "active",
+    startDate: "2024-01-01",
     sdgGoals: ["Quality Education", "Reduced Inequalities"],
     updates: [
       {
@@ -64,6 +68,8 @@ export const mockSocialProjects: SocialProject[] = [
     deadline: "2024-10-15",
     impact: "Will create 15 new courts serving 2,000+ youth annually",
     featured: true,
+    status: "active",
+    startDate: "2023-09-01",
     sdgGoals: ["Sustainable Cities", "Good Health"],
     updates: [
       {
@@ -92,6 +98,8 @@ export const mockSocialProjects: SocialProject[] = [
     deadline: "2024-11-30",
     impact: "Supporting 500+ adaptive athletes worldwide",
     featured: false,
+    status: "active",
+    startDate: "2023-11-15",
     sdgGoals: ["Reduced Inequalities", "Good Health"],
     updates: [
       {
@@ -120,6 +128,8 @@ export const mockSocialProjects: SocialProject[] = [
     deadline: "2024-09-20",
     impact: "Training 200 coaches and 3,000 female players",
     featured: true,
+    status: "active",
+    startDate: "2023-08-01",
     sdgGoals: ["Gender Equality", "Quality Education"],
     updates: [
       {
@@ -148,6 +158,8 @@ export const mockSocialProjects: SocialProject[] = [
     deadline: "2024-08-15",
     impact: "Teaching 1,500 children essential swimming skills",
     featured: false,
+    status: "active",
+    startDate: "2023-10-01",
     sdgGoals: ["Good Health", "Quality Education"],
     updates: [
       {
@@ -176,6 +188,8 @@ export const mockSocialProjects: SocialProject[] = [
     deadline: "2024-12-01",
     impact: "Supporting 800 youth with mental health programs",
     featured: false,
+    status: "planning",
+    startDate: "2024-03-01",
     sdgGoals: ["Good Health", "Quality Education"],
     updates: [
       {
