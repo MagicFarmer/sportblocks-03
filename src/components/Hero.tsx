@@ -1,6 +1,6 @@
 
 import { Button } from "./ui/button";
-import { Play, Award, Users, Trophy, Info } from "lucide-react";
+import { Play, Award, Users, Trophy, Info, Target, Eye, Flag } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
@@ -25,10 +25,12 @@ const Hero = () => {
             <span className="text-white drop-shadow-2xl">Sport</span>
             <span className="text-amber-400 drop-shadow-2xl">Blocks</span>
           </h1>
-          <p className="text-lg sm:text-2xl md:text-3xl font-light mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-4">
-            The ultimate platform for sports NFTs on StarkNet.
-            <br />
-            <span className="text-amber-300 font-medium">Collect legendary moments</span> from your favorite athletes.
+          <p className="text-lg sm:text-2xl md:text-3xl font-light mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-4">
+            Revolutionizing the relationship between athletes, fans, and social impact
+          </p>
+          <p className="text-base sm:text-lg md:text-xl font-light mb-8 sm:mb-12 max-w-5xl mx-auto leading-relaxed drop-shadow-lg px-4 text-gray-200">
+            A Web3 platform that empowers athletes to monetize their journey, connect directly with fans, 
+            and fund social causes through decentralized technology on StarkNet.
           </p>
         </div>
 
@@ -40,7 +42,7 @@ const Hero = () => {
             className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-6 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white text-lg sm:text-xl font-bold rounded-xl border-0 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50 transform"
           >
             <Play className="mr-2 sm:mr-3" size={20} />
-            Explore Collection
+            Explore Legacy Cards
           </Button>
           <Button 
             onClick={() => navigate('/about')}
@@ -53,22 +55,51 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Enhanced Stats Grid */}
+        {/* Enhanced Stats Grid - Updated with new platform stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto px-4">
-          <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl p-6 sm:p-8 border border-white/30 rounded-2xl shadow-2xl transform transition-all duration-300 hover:scale-105">
-            <Award className="text-amber-400 w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 drop-shadow-lg" />
-            <div className="text-3xl sm:text-4xl font-bold text-white mb-2 drop-shadow-md">10K+</div>
-            <div className="text-gray-200 text-base sm:text-lg font-medium">NFTs Minted</div>
-          </div>
           <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl p-6 sm:p-8 border border-white/30 rounded-2xl shadow-2xl transform transition-all duration-300 hover:scale-105">
             <Users className="text-blue-400 w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 drop-shadow-lg" />
             <div className="text-3xl sm:text-4xl font-bold text-white mb-2 drop-shadow-md">500+</div>
             <div className="text-gray-200 text-base sm:text-lg font-medium">Verified Athletes</div>
           </div>
           <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl p-6 sm:p-8 border border-white/30 rounded-2xl shadow-2xl transform transition-all duration-300 hover:scale-105">
+            <Award className="text-amber-400 w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 drop-shadow-lg" />
+            <div className="text-3xl sm:text-4xl font-bold text-white mb-2 drop-shadow-md">50+</div>
+            <div className="text-gray-200 text-base sm:text-lg font-medium">Sports Disciplines</div>
+          </div>
+          <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl p-6 sm:p-8 border border-white/30 rounded-2xl shadow-2xl transform transition-all duration-300 hover:scale-105">
             <Trophy className="text-orange-400 w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-4 drop-shadow-lg" />
-            <div className="text-3xl sm:text-4xl font-bold text-white mb-2 drop-shadow-md">2.5M</div>
-            <div className="text-gray-200 text-base sm:text-lg font-medium">STRK Volume</div>
+            <div className="text-3xl sm:text-4xl font-bold text-white mb-2 drop-shadow-md">Social</div>
+            <div className="text-gray-200 text-base sm:text-lg font-medium">Impact Focus</div>
+          </div>
+        </div>
+
+        {/* Mission Statement */}
+        <div className="mt-16 sm:mt-20 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-8 sm:p-12 border border-white/20 rounded-3xl shadow-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div className="space-y-4">
+                <Eye className="text-blue-400 w-8 h-8 mx-auto" />
+                <h3 className="text-lg font-bold text-white">Vision</h3>
+                <p className="text-gray-200 text-sm leading-relaxed">
+                  Leading platform at the intersection of elite sport, Web3 technology, and social impact
+                </p>
+              </div>
+              <div className="space-y-4">
+                <Flag className="text-amber-400 w-8 h-8 mx-auto" />
+                <h3 className="text-lg font-bold text-white">Mission</h3>
+                <p className="text-gray-200 text-sm leading-relaxed">
+                  Empower athletes to monetize their journey and fund social causes through decentralized tools
+                </p>
+              </div>
+              <div className="space-y-4">
+                <Target className="text-orange-400 w-8 h-8 mx-auto" />
+                <h3 className="text-lg font-bold text-white">Purpose</h3>
+                <p className="text-gray-200 text-sm leading-relaxed">
+                  Democratize sports and social patronage, returning the spotlight to inspiring athletes
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
