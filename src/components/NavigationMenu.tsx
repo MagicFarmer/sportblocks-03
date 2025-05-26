@@ -18,15 +18,15 @@ const NavigationMenu = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const publicItems = [
-    { name: "Inicio", path: "/", icon: BarChart3 },
-    { name: "Galería", path: "/gallery", icon: Image },
+    { name: "Home", path: "/", icon: BarChart3 },
+    { name: "Gallery", path: "/gallery", icon: Image },
     { name: "Marketplace", path: "/marketplace", icon: ShoppingBag },
-    { name: "Atletas", path: "/athletes", icon: Trophy },
+    { name: "Athletes", path: "/athletes", icon: Trophy },
   ];
 
   const authenticatedItems = (wallet.isConnected && userData && isInitialized) ? [
     { name: "Dashboard", path: "/dashboard", icon: BarChart3 },
-    { name: "Crear NFT", path: "/create-nft", icon: Plus },
+    { name: "Create NFT", path: "/create-nft", icon: Plus },
   ] : [];
 
   const allItems = [...publicItems, ...authenticatedItems];
