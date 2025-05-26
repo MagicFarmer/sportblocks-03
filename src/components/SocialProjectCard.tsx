@@ -72,10 +72,13 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
         </div>
         {!isWalletConnected && (
           <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] rounded-t-lg flex items-center justify-center">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2">
+            <button 
+              onClick={handleConnectWallet}
+              className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2 hover:bg-white/20 transition-all duration-200 cursor-pointer"
+            >
               <Lock className="w-4 h-4 text-white mx-auto mb-1" />
               <span className="text-white text-xs font-medium">Connect Wallet</span>
-            </div>
+            </button>
           </div>
         )}
       </div>

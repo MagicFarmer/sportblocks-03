@@ -151,6 +151,16 @@ const Footer = () => {
               </li>
               <li>
                 <a 
+                  href="https://sdgs.un.org/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  UN SDG Goals
+                </a>
+              </li>
+              <li>
+                <a 
                   href="https://olympics.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
