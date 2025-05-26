@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent } from "./ui/card";
 import { TrendingUp, DollarSign, Users, Heart, Target, Trophy } from "lucide-react";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./ui/chart";
-import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const FinancialDashboard = () => {
   const [currentQuote, setCurrentQuote] = useState(0);
@@ -164,7 +164,14 @@ const FinancialDashboard = () => {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
-                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Tooltip 
+                      contentStyle={{ 
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        borderRadius: '8px',
+                        color: 'white'
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
