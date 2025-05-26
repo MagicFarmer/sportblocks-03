@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet } from "lucide-react";
+import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet, Focus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,9 +11,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useStarkNet } from "@/hooks/useStarkNet";
+import { useFocusMode } from "@/contexts/FocusMode";
 
 const UserMenu = () => {
   const { wallet, userData, isInitialized, connectWallet, disconnectWallet } = useStarkNet();
+  const { isFocusMode, toggleFocusMode } = useFocusMode();
 
   const handleConnect = async () => {
     await connectWallet();
@@ -71,6 +73,20 @@ const UserMenu = () => {
             </div>
           </div>
         </div>
+
+        {/* Focus Mode Toggle */}
+        <DropdownMenuItem 
+          onClick={toggleFocusMode}
+          className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+        >
+          <Focus size={18} />
+          <span className="font-medium">
+            {isFocusMode ? "Exit Focus Mode" : "Focus Mode"}
+          </span>
+          <div className={`ml-auto w-2 h-2 rounded-full ${isFocusMode ? "bg-green-500" : "bg-gray-300"}`} />
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator className="bg-gray-200 my-1" />
 
         {isConnected && (
           <>

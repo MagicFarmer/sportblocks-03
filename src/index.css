@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -87,6 +88,78 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Focus Mode - Relaxed color palette with muted tones */
+  .focus-mode {
+    filter: brightness(0.85) contrast(0.9);
+    
+    /* Override specific colors for focus mode */
+    --background: 210 20% 98%;
+    --foreground: 210 10% 25%;
+    --card: 210 20% 96%;
+    --primary: 210 15% 45%;
+    --secondary: 210 25% 92%;
+    --muted: 210 25% 90%;
+    --border: 210 20% 85%;
+  }
+
+  /* Focus mode specific overrides */
+  .focus-mode .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, 
+      rgb(248 250 252), 
+      rgb(241 245 249), 
+      rgb(226 232 240)) !important;
+  }
+
+  .focus-mode .bg-gradient-to-r {
+    background: linear-gradient(to right, 
+      rgb(226 232 240), 
+      rgb(203 213 225)) !important;
+  }
+
+  /* Reduce saturation for colorful elements */
+  .focus-mode .text-blue-600,
+  .focus-mode .text-blue-500,
+  .focus-mode .bg-blue-500,
+  .focus-mode .bg-blue-600 {
+    color: rgb(71 85 105) !important;
+    background-color: rgb(148 163 184) !important;
+  }
+
+  .focus-mode .text-purple-600,
+  .focus-mode .text-purple-500,
+  .focus-mode .bg-purple-500,
+  .focus-mode .bg-purple-600 {
+    color: rgb(71 85 105) !important;
+    background-color: rgb(148 163 184) !important;
+  }
+
+  .focus-mode .text-amber-500,
+  .focus-mode .text-amber-400 {
+    color: rgb(120 113 108) !important;
+  }
+
+  /* Soften gradients */
+  .focus-mode .from-slate-900,
+  .focus-mode .from-blue-900,
+  .focus-mode .from-slate-800 {
+    --tw-gradient-from: rgb(226 232 240) !important;
+  }
+
+  .focus-mode .to-slate-800,
+  .focus-mode .to-blue-900,
+  .focus-mode .to-purple-900,
+  .focus-mode .via-blue-900 {
+    --tw-gradient-to: rgb(203 213 225) !important;
+  }
+
+  .focus-mode .text-white {
+    color: rgb(51 65 85) !important;
+  }
+
+  .focus-mode .text-gray-400 {
+    color: rgb(100 116 139) !important;
   }
 }
 
