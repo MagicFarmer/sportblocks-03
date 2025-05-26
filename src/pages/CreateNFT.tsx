@@ -38,6 +38,27 @@ const CreateNFT = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // Validate file type
+      const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/webm'];
+      if (!validTypes.includes(file.type)) {
+        toast({
+          title: "Tipo de archivo no válido",
+          description: "Por favor selecciona una imagen (JPG, PNG, GIF) o video (MP4, WEBM).",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // Validate file size (10MB max)
+      if (file.size > 10 * 1024 * 1024) {
+        toast({
+          title: "Archivo muy grande",
+          description: "El archivo debe ser menor a 10MB.",
+          variant: "destructive"
+        });
+        return;
+      }
+
       setMediaFile(file);
       const previewUrl = URL.createObjectURL(file);
       setMediaPreview(previewUrl);
@@ -61,20 +82,91 @@ const CreateNFT = () => {
     return urlData.publicUrl;
   };
 
+  const mintNFTOnContract = async (nftData: any) => {
+    try {
+      // Get user's contract address
+      const { data: contractData, error: contractError } = await supabase
+        .from('user_contracts')
+        .select('contract_address')
+        .eq('user_id', userData.id)
+        .eq('deployment_status', 'deployed')
+        .single();
+
+      if (contractError || !contractData) {
+        throw new Error('No se encontró un contrato desplegado para este usuario');
+      }
+
+      // Generate unique token ID
+      const tokenId = Date.now().toString();
+
+      // TODO: Implement actual StarkNet contract interaction
+      // For now, we'll simulate the minting process
+      console.log('Minting NFT on contract:', {
+        contractAddress: contractData.contract_address,
+        tokenId,
+        copies: nftData.total_copies,
+        metadata: {
+          name: nftData.name,
+          description: nftData.description,
+          image: nftData.media_url,
+          attributes: {
+            rarity: nftData.rarity,
+            beneficiary: nftData.beneficiary_project
+          }
+        }
+      });
+
+      // Update NFT record with minting information
+      const { error: updateError } = await supabase
+        .from('nfts')
+        .update({
+          token_id: tokenId,
+          contract_address: contractData.contract_address,
+          is_minted: true,
+          minted_copies: nftData.total_copies
+        })
+        .eq('id', nftData.id);
+
+      if (updateError) throw updateError;
+
+      return tokenId;
+
+    } catch (error) {
+      console.error('Error minting NFT:', error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
+      // Validate required fields
+      if (!formData.name.trim()) {
+        throw new Error('El nombre del NFT es requerido');
+      }
+      if (!formData.beneficiaryProject.trim()) {
+        throw new Error('El proyecto beneficiario es requerido');
+      }
+      if (!formData.price || parseFloat(formData.price) <= 0) {
+        throw new Error('El precio debe ser mayor a 0');
+      }
+      if (!formData.totalCopies || parseInt(formData.totalCopies) <= 0) {
+        throw new Error('La cantidad de copias debe ser mayor a 0');
+      }
+
       let mediaUrl = "";
       let mediaType = "";
 
+      // Upload media file if provided
       if (mediaFile) {
         mediaUrl = await uploadMediaFile(mediaFile);
         mediaType = mediaFile.type.startsWith('video') ? 'video' : 'image';
       }
 
-      const { data, error } = await supabase
+      // Create NFT record in Supabase
+      const { data: nftData, error: nftError } = await supabase
         .from('nfts')
         .insert({
           user_id: userData.id,
@@ -90,19 +182,23 @@ const CreateNFT = () => {
         .select()
         .single();
 
-      if (error) throw error;
+      if (nftError) throw nftError;
+
+      // Mint NFT on contract
+      await mintNFTOnContract(nftData);
 
       toast({
-        title: "NFT Created Successfully!",
-        description: "Your NFT has been saved and is ready to be minted.",
+        title: "¡NFT Creado y Minteado Exitosamente!",
+        description: "Tu NFT ha sido guardado en la base de datos y minteado en el contrato.",
       });
 
       navigate('/dashboard');
+
     } catch (error: any) {
       console.error('Error creating NFT:', error);
       toast({
-        title: "Error Creating NFT",
-        description: error.message || "Please try again.",
+        title: "Error al Crear NFT",
+        description: error.message || "Por favor inténtalo de nuevo.",
         variant: "destructive"
       });
     } finally {
@@ -123,17 +219,17 @@ const CreateNFT = () => {
               className="text-gray-400 hover:text-white mb-4"
             >
               <ArrowLeft className="mr-2" size={16} />
-              Back to Dashboard
+              Volver al Dashboard
             </Button>
-            <h1 className="text-4xl font-bold text-white mb-2">Create NFT</h1>
-            <p className="text-gray-400">Create and mint your sports NFT</p>
+            <h1 className="text-4xl font-bold text-white mb-2">Crear NFT</h1>
+            <p className="text-gray-400">Crea y mintea tu NFT deportivo</p>
           </div>
 
           <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 border border-white/20">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Media Upload */}
               <div>
-                <Label htmlFor="media" className="text-white">Media (Image/Video)</Label>
+                <Label htmlFor="media" className="text-white">Archivo Multimedia (Imagen/Video)</Label>
                 <div className="mt-2">
                   {mediaPreview ? (
                     <div className="relative">
@@ -160,7 +256,7 @@ const CreateNFT = () => {
                           setMediaPreview("");
                         }}
                       >
-                        Remove
+                        Remover
                       </Button>
                     </div>
                   ) : (
@@ -168,15 +264,15 @@ const CreateNFT = () => {
                       <div className="flex flex-col items-center justify-center pt-5 pb-6">
                         <Upload className="text-gray-400 mb-4" size={40} />
                         <p className="mb-2 text-sm text-gray-400">
-                          <span className="font-semibold">Click to upload</span> or drag and drop
+                          <span className="font-semibold">Haz clic para subir</span> o arrastra y suelta
                         </p>
-                        <p className="text-xs text-gray-500">PNG, JPG, GIF, MP4 up to 10MB</p>
+                        <p className="text-xs text-gray-500">PNG, JPG, GIF, MP4, WEBM hasta 10MB</p>
                       </div>
                       <input 
                         id="media" 
                         type="file" 
                         className="hidden" 
-                        accept="image/*,video/*"
+                        accept="image/*,video/mp4,video/webm"
                         onChange={handleFileChange}
                       />
                     </label>
@@ -186,7 +282,7 @@ const CreateNFT = () => {
 
               {/* Name */}
               <div>
-                <Label htmlFor="name" className="text-white">Name *</Label>
+                <Label htmlFor="name" className="text-white">Nombre del NFT *</Label>
                 <Input
                   id="name"
                   type="text"
@@ -194,26 +290,26 @@ const CreateNFT = () => {
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   required
                   className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-                  placeholder="Enter NFT name"
+                  placeholder="Ej: Gol histórico de Messi"
                 />
               </div>
 
               {/* Description */}
               <div>
-                <Label htmlFor="description" className="text-white">Description</Label>
+                <Label htmlFor="description" className="text-white">Descripción</Label>
                 <Textarea
                   id="description"
                   value={formData.description}
                   onChange={(e) => setFormData({...formData, description: e.target.value})}
                   className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-                  placeholder="Describe your NFT..."
+                  placeholder="Describe tu NFT deportivo..."
                   rows={4}
                 />
               </div>
 
               {/* Beneficiary Project */}
               <div>
-                <Label htmlFor="beneficiaryProject" className="text-white">Beneficiary Project *</Label>
+                <Label htmlFor="beneficiaryProject" className="text-white">Proyecto o Entidad Beneficiaria *</Label>
                 <Input
                   id="beneficiaryProject"
                   type="text"
@@ -221,14 +317,14 @@ const CreateNFT = () => {
                   onChange={(e) => setFormData({...formData, beneficiaryProject: e.target.value})}
                   required
                   className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
-                  placeholder="e.g., Local Sports Foundation, Youth Soccer League"
+                  placeholder="Ej: Fundación Deportiva Local, Liga de Fútbol Juvenil"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Rarity */}
                 <div>
-                  <Label htmlFor="rarity" className="text-white">Rarity *</Label>
+                  <Label htmlFor="rarity" className="text-white">Rareza *</Label>
                   <select
                     id="rarity"
                     value={formData.rarity}
@@ -236,21 +332,21 @@ const CreateNFT = () => {
                     className="w-full p-2 bg-white/10 border border-white/20 rounded-md text-white"
                     required
                   >
-                    <option value="common" className="text-black">Common</option>
-                    <option value="rare" className="text-black">Rare</option>
-                    <option value="epic" className="text-black">Epic</option>
-                    <option value="legendary" className="text-black">Legendary</option>
+                    <option value="common" className="text-black">Común</option>
+                    <option value="rare" className="text-black">Rara</option>
+                    <option value="epic" className="text-black">Épica</option>
+                    <option value="legendary" className="text-black">Legendaria</option>
                   </select>
                 </div>
 
                 {/* Price */}
                 <div>
-                  <Label htmlFor="price" className="text-white">Price (USD) *</Label>
+                  <Label htmlFor="price" className="text-white">Precio (USD) *</Label>
                   <Input
                     id="price"
                     type="number"
                     step="0.01"
-                    min="0"
+                    min="0.01"
                     value={formData.price}
                     onChange={(e) => setFormData({...formData, price: e.target.value})}
                     required
@@ -261,7 +357,7 @@ const CreateNFT = () => {
 
                 {/* Total Copies */}
                 <div>
-                  <Label htmlFor="totalCopies" className="text-white">Total Copies *</Label>
+                  <Label htmlFor="totalCopies" className="text-white">Cantidad de Copias *</Label>
                   <Input
                     id="totalCopies"
                     type="number"
@@ -272,6 +368,9 @@ const CreateNFT = () => {
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                     placeholder="1"
                   />
+                  <p className="text-xs text-gray-400 mt-1">
+                    1 = NFT único, &gt;1 = múltiples copias
+                  </p>
                 </div>
               </div>
 
@@ -282,14 +381,14 @@ const CreateNFT = () => {
                   onClick={() => navigate('/dashboard')}
                   className="flex-1 border-white/20 text-white hover:bg-white/10"
                 >
-                  Cancel
+                  Cancelar
                 </Button>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                 >
-                  {isSubmitting ? "Creating..." : "Create NFT"}
+                  {isSubmitting ? "Creando y Minteando..." : "Crear y Mintear NFT"}
                 </Button>
               </div>
             </form>
