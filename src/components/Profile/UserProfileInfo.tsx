@@ -64,6 +64,7 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
     if (!file) return;
 
     try {
+      // First create a storage bucket if it doesn't exist
       const fileExt = file.name.split('.').pop();
       const fileName = `${userData.id}/avatar.${fileExt}`;
       
@@ -216,7 +217,7 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
           <div className="flex justify-between">
             <span className="text-gray-400">Wallet:</span>
             <span className="text-white text-sm font-mono">
-              {userData.wallet_address.slice(0, 6)}...{userData.wallet_address.slice(-4)}
+              {userData.wallet_address?.slice(0, 6)}...{userData.wallet_address?.slice(-4)}
             </span>
           </div>
 

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Trophy, Edit3, Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -15,7 +14,7 @@ interface SportsRecordsProps {
 const SportsRecords = ({ userData, onUpdate }: SportsRecordsProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
-  const [records, setRecords] = useState(userData.sports_records || {});
+  const [records, setRecords] = useState<Record<string, string>>(userData.sports_records || {});
   const [newRecordKey, setNewRecordKey] = useState('');
   const [newRecordValue, setNewRecordValue] = useState('');
   const { toast } = useToast();
@@ -65,6 +64,14 @@ const SportsRecords = ({ userData, onUpdate }: SportsRecordsProps) => {
     }
   };
 
+  const handleRecordKeyChange = (oldKey: string, newKey: string) => {
+    const newRecords = { ...records };
+    const value = newRecords[oldKey];
+    delete newRecords[oldKey];
+    newRecords[newKey] = value;
+    setRecords(newRecords);
+  };
+
   return (
     <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
       <div className="flex items-center justify-between mb-4">
@@ -89,12 +96,7 @@ const SportsRecords = ({ userData, onUpdate }: SportsRecordsProps) => {
             <div key={key} className="flex items-center gap-2">
               <Input
                 value={key}
-                onChange={(e) => {
-                  const newRecords = { ...records };
-                  delete newRecords[key];
-                  newRecords[e.target.value] = value;
-                  setRecords(newRecords);
-                }}
+                onChange={(e) => handleRecordKeyChange(key, e.target.value)}
                 className="bg-white/10 border-white/20 text-white flex-1"
                 placeholder="Título del récord"
               />
@@ -165,7 +167,7 @@ const SportsRecords = ({ userData, onUpdate }: SportsRecordsProps) => {
             Object.entries(records).map(([key, value]) => (
               <div key={key} className="flex justify-between">
                 <span className="text-gray-400">{key}:</span>
-                <span className="text-white font-medium">{value}</span>
+                <span className="text-white font-medium">{String(value)}</span>
               </div>
             ))
           )}
