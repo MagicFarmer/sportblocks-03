@@ -13,8 +13,8 @@ const TransparencySection = () => {
         
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop" 
-            alt="Blockchain transparency and technology"
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop" 
+            alt="Blockchain technology and transparency networks"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>

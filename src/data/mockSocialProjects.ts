@@ -89,7 +89,7 @@ export const mockSocialProjects: SocialProject[] = [
     title: "Adaptive Sports Program",
     organization: "Inclusive Athletics",
     description: "Creating opportunities for athletes with disabilities to participate in competitive sports through specialized equipment, training, and competition programs.",
-    image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=500&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop",
     goal: 75000,
     raised: 41000,
     supporters: 189,

@@ -12,8 +12,8 @@ const BigIdeaSection = () => {
         </div>
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=400&fit=crop" 
-            alt="Sport Blocks vision"
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop" 
+            alt="Athletes inspiring and connecting with their community"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>

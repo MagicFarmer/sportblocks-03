@@ -13,8 +13,8 @@ const MeetGreetsSection = () => {
         
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop" 
-            alt="Meet and greet interactions"
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop" 
+            alt="Athletes meeting and interacting with fans"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>

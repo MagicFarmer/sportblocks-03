@@ -35,8 +35,8 @@ const ExecutionSection = () => {
         </div>
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=400&fit=crop" 
-            alt="Technology and innovation"
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop" 
+            alt="Technology development and team collaboration"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>

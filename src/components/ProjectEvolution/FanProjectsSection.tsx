@@ -13,8 +13,8 @@ const FanProjectsSection = () => {
         
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop" 
-            alt="Digital collaboration and voting"
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop" 
+            alt="Community collaboration and democratic participation"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>
