@@ -1,10 +1,9 @@
-
 import { Contract, Provider, Account, shortString } from 'starknet';
 import { supabase } from "@/integrations/supabase/client";
 
 // StarkNet Sepolia configuration
 const STARKNET_RPC_URL = "https://starknet-sepolia.public.blastapi.io/rpc/v0_7";
-const SPORTBLOCKS_CONTRACT_ADDRESS = process.env.VITE_SPORTBLOCKS_CONTRACT_ADDRESS || "0x0"; // Will be set after deployment
+const SPORTBLOCKS_CONTRACT_ADDRESS = import.meta.env.VITE_SPORTBLOCKS_CONTRACT_ADDRESS || "0x0"; // Will be set after deployment
 
 // Contract ABI (simplified for key functions)
 const CONTRACT_ABI = [
