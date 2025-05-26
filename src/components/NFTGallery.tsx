@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NFTCard from "./NFTCard";
@@ -82,39 +83,39 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
     : mockNFTs.filter(nft => nft.sport === selectedSport);
 
   return (
-    <section id="gallery" className="px-6 py-16">
+    <section id="gallery" className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Featured Sports NFTs
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-6">
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-6 px-4">
             Discover and collect exclusive digital moments from the world's greatest athletes
           </p>
           
           {/* Call to Action for Real Marketplace */}
-          <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-lg rounded-xl p-6 border border-blue-400/30 mb-8">
-            <h3 className="text-xl font-bold text-white mb-2">¡Marketplace Real Disponible!</h3>
-            <p className="text-gray-300 mb-4">
-              Compra NFTs reales creados por atletas verificados en nuestra plataforma
+          <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-lg rounded-xl p-4 sm:p-6 border border-blue-400/30 mb-6 sm:mb-8 mx-4 sm:mx-0">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-2">Real Marketplace Available!</h3>
+            <p className="text-gray-300 mb-4 text-sm sm:text-base">
+              Buy real NFTs created by verified athletes on our platform
             </p>
             <Button
               onClick={() => navigate('/marketplace')}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium"
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium text-sm sm:text-base"
             >
-              <Store className="w-5 h-5 mr-2" />
-              Ir al Marketplace Real
+              <Store className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+              Go to Real Marketplace
             </Button>
           </div>
         </div>
 
         {/* Sport Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4">
           {sports.map((sport) => (
             <button
               key={sport}
               onClick={() => setSelectedSport(sport)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+              className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-200 text-sm sm:text-base ${
                 selectedSport === sport
                   ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
                   : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-white/10'
@@ -126,7 +127,7 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
         </div>
 
         {/* NFT Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4 sm:px-0">
           {filteredNFTs.map((nft) => (
             <NFTCard 
               key={nft.id} 
@@ -138,7 +139,7 @@ const NFTGallery = ({ isWalletConnected }: NFTGalleryProps) => {
 
         {filteredNFTs.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">No NFTs found for {selectedSport}</p>
+            <p className="text-gray-400 text-base sm:text-lg">No NFTs found for {selectedSport}</p>
           </div>
         )}
       </div>
