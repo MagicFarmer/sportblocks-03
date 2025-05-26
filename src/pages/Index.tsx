@@ -33,6 +33,11 @@ const Index = () => {
         <Hero />
       </div>
       
+      {/* Wallet Connect Section - Moved right under Hero */}
+      <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-100 py-16">
+        <WalletConnect />
+      </div>
+      
       {/* Platform Overview Section */}
       <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-100 py-20">
         <div className="max-w-6xl mx-auto px-6">
@@ -151,11 +156,6 @@ const Index = () => {
 
       {/* Dynamic Banners Section */}
       <DynamicBanners />
-      
-      {/* Wallet Connect Section - Light blue gradient */}
-      <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-100 py-16">
-        <WalletConnect />
-      </div>
       
       {/* Featured NFTs Section - Dark blue to purple gradient */}
       <div className="bg-gradient-to-br from-slate-800 via-blue-900 to-purple-900">

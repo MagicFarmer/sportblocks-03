@@ -8,12 +8,12 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image - Sports Training and Athletes */}
+      {/* Background Image - Ancient Greek Olympic Athletes */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-blue-900/80 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop" 
-          alt="Athletes training and competing in various sports" 
+          src="/lovable-uploads/245d226f-42cc-4bf7-bfef-a225155da0ce.png" 
+          alt="Ancient Greek Olympic athletes running with torch" 
           className="w-full h-full object-cover"
         />
       </div>
