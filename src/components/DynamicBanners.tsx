@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
-import { FileText, Target, ArrowRight, Sparkles, TrendingUp } from "lucide-react";
+import { FileText, Target, ArrowRight, Sparkles, TrendingUp, Zap, Rocket } from "lucide-react";
 
 const DynamicBanners = () => {
   const navigate = useNavigate();
@@ -15,11 +15,11 @@ const DynamicBanners = () => {
             Discover More About Sport Blocks
           </h2>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto">
-            Dive deeper into our platform's vision and active campaigns
+            Dive deeper into our platform's vision, evolution plans, and active campaigns
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Executive Summary Banner */}
           <Card className="bg-gradient-to-br from-blue-600 to-purple-700 text-white shadow-2xl border-0 hover:shadow-3xl transition-all duration-300 hover:scale-105 cursor-pointer group overflow-hidden">
             <CardContent className="p-8 relative">
@@ -70,6 +70,62 @@ const DynamicBanners = () => {
                   size="lg"
                 >
                   Read Full Summary
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Project Evolution Banner */}
+          <Card className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white shadow-2xl border-0 hover:shadow-3xl transition-all duration-300 hover:scale-105 cursor-pointer group overflow-hidden">
+            <CardContent className="p-8 relative">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-4 right-4">
+                  <Rocket className="w-32 h-32 text-white/20" />
+                </div>
+                <div className="absolute bottom-4 left-4">
+                  <Zap className="w-24 h-24 text-white/20" />
+                </div>
+              </div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="bg-white/20 rounded-full p-3">
+                    <Zap className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold">Project Evolution</h3>
+                    <p className="text-purple-100">Future Enhancement Plans</p>
+                  </div>
+                </div>
+                
+                <p className="text-lg text-purple-100 mb-6 leading-relaxed">
+                  Explore innovative proposals for enhanced fan engagement, tiered interactions, 
+                  and transparent governance systems that will shape the future of SportBlocks.
+                </p>
+                
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                    <span className="text-sm">Enhanced Fan Engagement</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                    <span className="text-sm">Tiered Meet & Greets</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                    <span className="text-sm">GPS-Integrated Profiles</span>
+                  </div>
+                </div>
+
+                <Button
+                  onClick={() => navigate('/project-evolution')}
+                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 group-hover:bg-white group-hover:text-purple-600 transition-all duration-300"
+                  size="lg"
+                >
+                  Explore Evolution Plans
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>

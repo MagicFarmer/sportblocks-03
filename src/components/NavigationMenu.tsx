@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Home, Info, ShoppingBag, Trophy, Heart, Users, FileText, Target } from "lucide-react";
+import { Menu, Home, Info, ShoppingBag, Trophy, Heart, Users, FileText, Target, Zap } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,6 +22,7 @@ const NavigationMenu = () => {
     { name: "Home", path: "/", icon: Home },
     { name: "About", path: "/about", icon: Info },
     { name: "Executive Summary", path: "/executive-summary", icon: FileText },
+    { name: "Project Evolution", path: "/project-evolution", icon: Zap },
     { name: "Marketplace", path: "/marketplace", icon: ShoppingBag },
     { name: "Campaign Board", path: "/campaign-board", icon: Target },
   ];

@@ -18,6 +18,7 @@ import SocialProjects from "./pages/SocialProjects";
 import FansGallery from "./pages/FansGallery";
 import CampaignBoard from "./pages/CampaignBoard";
 import ExecutiveSummary from "./pages/ExecutiveSummary";
+import ProjectEvolution from "./pages/ProjectEvolution";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/executive-summary" element={<ExecutiveSummary />} />
+          <Route path="/project-evolution" element={<ProjectEvolution />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/marketplace" element={<Marketplace />} />
