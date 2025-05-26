@@ -8,12 +8,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import MediaUpload from "./MediaUpload";
-import { uploadMediaFile, mintNFTOnContract } from "@/utils/nftUtils";
+import { uploadMediaFile, createNFTOnContract } from "@/utils/nftUtils";
 import { supabase } from "@/integrations/supabase/client";
+import { Account } from 'starknet';
 
 const NFTForm = () => {
   const navigate = useNavigate();
-  const { userData } = useStarkNet();
+  const { userData, wallet } = useStarkNet();
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({
@@ -55,6 +56,9 @@ const NFTForm = () => {
       if (!userData?.id) {
         throw new Error('Usuario no autenticado. Por favor, conéctate primero.');
       }
+      if (!wallet.account) {
+        throw new Error('Wallet account not available. Please reconnect your wallet.');
+      }
 
       let mediaUrl = "";
       let mediaType = "";
@@ -70,7 +74,7 @@ const NFTForm = () => {
         }
       }
 
-      // Create NFT record with minimal data structure
+      // Create NFT record in database first
       const nftData = {
         user_id: userData.id,
         name: formData.name.trim(),
@@ -85,12 +89,12 @@ const NFTForm = () => {
         is_minted: false
       };
 
-      console.log('Inserting NFT with data:', nftData);
+      console.log('Creating NFT with data:', nftData);
 
-      // Use upsert instead of insert to avoid conflicts
+      // Insert NFT into database
       const { data: insertedNft, error: nftError } = await supabase
         .from('nfts')
-        .upsert(nftData, { onConflict: 'id' })
+        .insert(nftData)
         .select()
         .single();
 
@@ -99,19 +103,26 @@ const NFTForm = () => {
         throw new Error(`Error al crear NFT: ${nftError.message}`);
       }
 
-      console.log('NFT created successfully:', insertedNft);
+      console.log('NFT created in database:', insertedNft);
 
-      // Try to mint NFT on contract (optional)
+      // Create NFT on StarkNet contract
       try {
-        await mintNFTOnContract(insertedNft, userData.id);
-      } catch (mintError) {
-        console.warn('Contract minting failed, but NFT was saved:', mintError);
-      }
+        const userAccount = wallet.account as Account;
+        await createNFTOnContract(insertedNft, userAccount);
+        
+        toast({
+          title: "¡NFT Creado Exitosamente!",
+          description: "Tu NFT ha sido creado en la blockchain de StarkNet.",
+        });
 
-      toast({
-        title: "¡NFT Creado Exitosamente!",
-        description: "Tu NFT ha sido guardado correctamente.",
-      });
+      } catch (contractError) {
+        console.error('Contract creation failed:', contractError);
+        
+        toast({
+          title: "NFT Guardado",
+          description: "NFT guardado en la base de datos. La funcionalidad blockchain estará disponible pronto.",
+        });
+      }
 
       navigate('/dashboard');
 

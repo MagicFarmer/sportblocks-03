@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useStarkNet } from "@/hooks/useStarkNet";
 import { MarketplaceNFT } from "@/hooks/useMarketplace";
-import { supabase } from "@/integrations/supabase/client";
+import { purchaseNFTFromContract } from "@/utils/nftUtils";
+import { Account } from 'starknet';
 
 interface MarketplaceNFTCardProps {
   nft: MarketplaceNFT;
@@ -48,7 +49,16 @@ const MarketplaceNFTCard = ({ nft, onPurchaseSuccess }: MarketplaceNFTCardProps)
       return;
     }
 
-    if (!nft.contract_address || !nft.token_id) {
+    if (!wallet.account) {
+      toast({
+        title: "Account no disponible",
+        description: "Por favor reconecta tu wallet",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!nft.is_minted || nft.minted_copies <= 0) {
       toast({
         title: "NFT no disponible",
         description: "Este NFT no está disponible para compra",
@@ -60,44 +70,21 @@ const MarketplaceNFTCard = ({ nft, onPurchaseSuccess }: MarketplaceNFTCardProps)
     setIsPurchasing(true);
 
     try {
-      // Simulate contract interaction - buy(token_id)
-      console.log('Executing buy function on contract:', {
-        contractAddress: nft.contract_address,
-        tokenId: nft.token_id,
-        price: nft.price,
+      console.log('Purchasing NFT from blockchain:', {
+        nft: nft,
         buyerWallet: wallet.address
       });
 
-      // Simulate transaction hash
-      const mockTxHash = `0x${Math.random().toString(16).slice(2)}${Date.now().toString(16)}`;
-      
-      // Save purchase to database
-      const { error: purchaseError } = await supabase
-        .from('purchases')
-        .insert({
-          nft_id: nft.id,
-          buyer_wallet: wallet.address,
-          tx_hash: mockTxHash,
-          amount_paid: nft.price
-        });
+      // Purchase NFT from StarkNet contract
+      const userAccount = wallet.account as Account;
+      const txHash = await purchaseNFTFromContract(
+        nft,
+        1, // Amount to purchase
+        userAccount,
+        wallet.address || ''
+      );
 
-      if (purchaseError) {
-        console.error('Purchase save error:', purchaseError);
-        throw new Error('Error al guardar la compra');
-      }
-
-      // Update NFT minted copies
-      const { error: updateError } = await supabase
-        .from('nfts')
-        .update({ 
-          minted_copies: Math.max(0, nft.minted_copies - 1)
-        })
-        .eq('id', nft.id);
-
-      if (updateError) {
-        console.error('NFT update error:', updateError);
-        // Don't throw here as purchase was already saved
-      }
+      console.log('Purchase completed with tx hash:', txHash);
 
       toast({
         title: "¡Compra Exitosa!",
@@ -119,7 +106,7 @@ const MarketplaceNFTCard = ({ nft, onPurchaseSuccess }: MarketplaceNFTCardProps)
   };
 
   const remainingCopies = nft.minted_copies;
-  const isAvailable = remainingCopies > 0;
+  const isAvailable = remainingCopies > 0 && nft.is_minted;
 
   return (
     <div className="group bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105">
@@ -233,6 +220,14 @@ const MarketplaceNFTCard = ({ nft, onPurchaseSuccess }: MarketplaceNFTCardProps)
           <p className="text-xs text-gray-400">Beneficia a:</p>
           <p className="text-sm text-blue-300">{nft.beneficiary_project}</p>
         </div>
+
+        {/* Blockchain Info */}
+        {nft.contract_address && nft.token_id && (
+          <div className="mt-2 pt-2 border-t border-white/10">
+            <p className="text-xs text-gray-400">Token ID: {nft.token_id}</p>
+            <p className="text-xs text-gray-400 truncate">Contrato: {nft.contract_address}</p>
+          </div>
+        )}
       </div>
     </div>
   );
