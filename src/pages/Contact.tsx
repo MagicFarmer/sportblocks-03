@@ -6,8 +6,9 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Users, Heart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import PunchLines from "@/components/PunchLines";
 
 interface ContactFormData {
   name: string;
@@ -53,6 +54,39 @@ const Contact = () => {
     }
   };
 
+  const teamMembers = [
+    {
+      name: "Roberto Lujan",
+      role: "Original Idea & Team Leader",
+      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
+    },
+    {
+      name: "Eliot Rojas",
+      role: "Main Developer",
+      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
+    },
+    {
+      name: "Carlos Vargas",
+      role: "Product Support",
+      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
+    },
+    {
+      name: "Jason Espinoza",
+      role: "Product Support",
+      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
+    },
+    {
+      name: "Keylor Angulo",
+      role: "Marketing Advisor",
+      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
+    },
+    {
+      name: "David Alonso",
+      role: "Marketing Advisor",
+      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       <Navbar />
@@ -67,6 +101,11 @@ const Contact = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Get in touch with the SportBlocks team. We're here to help you with any questions about our platform, NFTs, or partnership opportunities.
           </p>
+          
+          {/* Punch Lines */}
+          <div className="mt-8">
+            <PunchLines style="highlight" className="text-white" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
@@ -226,6 +265,48 @@ const Contact = () => {
                 </form>
               </>
             )}
+          </div>
+        </div>
+
+        {/* Meet the Project Team Section */}
+        <div className="mt-20">
+          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/20">
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center mb-6">
+                <Users className="text-amber-400 w-12 h-12 mr-4" />
+                <h2 className="text-4xl font-bold text-white">Meet the Project Team</h2>
+              </div>
+              <p className="text-xl text-gray-300 mb-6">
+                The passionate team behind SportBlocks, bringing Web3 innovation to the sports world
+              </p>
+              <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl p-6 border border-green-400/30">
+                <p className="text-2xl font-bold text-amber-300 mb-2">
+                  From Costa Rica to the World !!! 
+                </p>
+                <p className="text-3xl font-bold text-green-400">
+                  PURA VIDA DEVELOPMENT !!
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {teamMembers.map((member, index) => (
+                <div 
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 text-center"
+                >
+                  <div className="mb-4">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-amber-400/50 shadow-lg object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                  <p className="text-amber-300 font-semibold">{member.role}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import React from 'react';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FanCard from "@/components/FanCard";
@@ -8,6 +7,8 @@ import { useStarkNet } from "@/hooks/useStarkNet";
 import { mockFans } from "@/data/mockFans";
 import { Star, Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import PunchLines from '@/components/PunchLines';
+import Users from '@/components/Users';
 
 const FansGallery = () => {
   const { wallet, userData } = useStarkNet();
@@ -58,17 +59,26 @@ const FansGallery = () => {
       <Navbar />
       
       <div className="container mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <Star className="text-purple-400 w-12 h-12 mr-4" />
-            <h1 className="text-4xl font-bold text-white">Sports Professionals Gallery</h1>
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 rounded-2xl shadow-2xl mr-4">
+              <Users className="text-white w-12 h-12" />
+            </div>
+            <div>
+              <h1 className="text-5xl font-bold text-white mb-2">Sports Professionals</h1>
+              <p className="text-2xl text-purple-300 font-semibold">The Experts Behind the Game</p>
+            </div>
           </div>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Connect with dedicated sports professionals who support athletes and communities. 
-            Discover nutritionists, coaches, therapists, and other experts making a difference.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Meet the dedicated professionals who support our athletes, from sports medicine specialists to coaches and analysts. Their expertise shapes the sporting world we love.
           </p>
-        </div>
 
+          {/* Punch Lines */}
+          <div className="mt-8">
+            <PunchLines style="highlight" className="text-white" />
+          </div>
+        </div>
+        
         {/* Filters */}
         <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 mb-8">
           <div className="flex items-center gap-2 mb-4">
@@ -194,6 +204,11 @@ const FansGallery = () => {
         )}
       </div>
 
+      {/* Punch Lines Banner */}
+      <div className="my-12">
+        <PunchLines style="banner" />
+      </div>
+      
       {/* Financial Dashboard */}
       <FinancialDashboard />
 

@@ -1,8 +1,9 @@
-
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PunchLines from '@/components/PunchLines';
 import { useNavigate } from "react-router-dom";
 import { 
   Users, Trophy, Heart, Shield, Globe, Zap, 
@@ -14,7 +15,7 @@ const ExecutiveSummary = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-blue-900 to-slate-900">
       <Navbar />
       
       {/* Hero Section */}
@@ -248,6 +249,16 @@ const ExecutiveSummary = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Punch Lines */}
+          <div className="mt-12 mb-20">
+            <PunchLines style="highlight" className="text-white" />
+          </div>
+
+          {/* Punch Lines */}
+          <div className="my-16">
+            <PunchLines style="banner" />
           </div>
 
           {/* Call to Action */}

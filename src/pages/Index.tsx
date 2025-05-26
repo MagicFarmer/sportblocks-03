@@ -9,6 +9,7 @@ import FinancialDashboard from "@/components/FinancialDashboard";
 import DynamicBanners from "@/components/DynamicBanners";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PunchLines from "@/components/PunchLines";
 import { useStarkNet } from "@/hooks/useStarkNet";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,9 @@ const Index = () => {
       <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
         <Hero />
       </div>
+      
+      {/* Punch Lines Banner */}
+      <PunchLines animated={true} style="banner" />
       
       {/* Wallet Connect Section - Moved right under Hero */}
       <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-100 py-16">
@@ -84,6 +88,11 @@ const Index = () => {
                 </p>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Punch Lines */}
+          <div className="my-16">
+            <PunchLines style="highlight" />
           </div>
 
           {/* Key Features Overview */}
@@ -161,6 +170,9 @@ const Index = () => {
       <div className="bg-gradient-to-br from-slate-800 via-blue-900 to-purple-900">
         <FeaturedNFTs isWalletConnected={isWalletConnected} />
       </div>
+
+      {/* Punch Lines Banner */}
+      <PunchLines style="banner" />
 
       {/* Featured Social Projects Section - Dark green gradient */}
       <div className="bg-gradient-to-br from-slate-800 via-green-900 to-emerald-900">

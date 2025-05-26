@@ -1,10 +1,12 @@
-
-import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import MarketplaceFilters from "@/components/Marketplace/MarketplaceFilters";
-import MarketplaceNFTCard from "@/components/Marketplace/MarketplaceNFTCard";
-import { useMarketplace } from "@/hooks/useMarketplace";
+import React from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import MarketplaceFilters from '@/components/Marketplace/MarketplaceFilters';
+import MarketplaceNFTCard from '@/components/Marketplace/MarketplaceNFTCard';
+import { mockNFTs } from '@/data/mockNFTs';
+import { useStarkNet } from '@/hooks/useStarkNet';
+import { useMarketplace } from '@/hooks/useMarketplace';
+import PunchLines from '@/components/PunchLines';
 import { Loader2, Store } from "lucide-react";
 
 const Marketplace = () => {
@@ -15,18 +17,25 @@ const Marketplace = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900">
       <Navbar />
       
       <div className="container mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <Store className="text-blue-400 w-12 h-12 mr-4" />
-            <h1 className="text-4xl font-bold text-white">Marketplace</h1>
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-white mb-4">
+            NFT Marketplace
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Discover and collect rare digital items from your favorite athletes.
+          </p>
+
+          {/* Punch Lines */}
+          <div className="mt-8">
+            <PunchLines style="highlight" className="text-white" />
           </div>
-          <p className="text-gray-400 text-lg">Descubre y compra NFTs deportivos únicos de atletas profesionales</p>
         </div>
-        
+
         {/* Filters */}
         <MarketplaceFilters 
           filters={filters}
@@ -108,6 +117,11 @@ const Marketplace = () => {
         )}
       </div>
 
+      {/* Punch Lines Banner */}
+      <div className="mt-12">
+        <PunchLines style="banner" />
+      </div>
+      
       <Footer />
     </div>
   );

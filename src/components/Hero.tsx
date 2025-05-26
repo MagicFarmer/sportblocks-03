@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import { Play, Award, Users, Trophy, Info, Target, Eye, Flag } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import PunchLines from "./PunchLines";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -25,6 +26,21 @@ const Hero = () => {
             <span className="text-white drop-shadow-2xl">Sport</span>
             <span className="text-amber-400 drop-shadow-2xl">Blocks</span>
           </h1>
+          
+          {/* Animated Punch Lines */}
+          <div className="mb-6 animate-fade-in">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 shadow-2xl">
+              <div className="space-y-4">
+                <p className="text-2xl md:text-3xl font-bold text-amber-300 italic animate-pulse">
+                  "In sport we compete, in life we cooperate"
+                </p>
+                <p className="text-xl md:text-2xl font-bold text-blue-300">
+                  #ForAthletesByAthletes
+                </p>
+              </div>
+            </div>
+          </div>
+          
           <p className="text-lg sm:text-2xl md:text-3xl font-light mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-4">
             Revolutionizing the relationship between athletes, fans, and social impact
           </p>
