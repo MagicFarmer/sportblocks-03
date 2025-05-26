@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, LogOut, Circle } from "lucide-react";
+import { User, LogOut, Circle, LayoutDashboard, Plus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -57,11 +57,11 @@ const UserMenu = () => {
             />
             <div>
               <div className="font-semibold text-slate-900">
-                {isConnected ? "Conectado" : "Desconectado"}
+                {isConnected ? "Connected" : "Disconnected"}
               </div>
               {isConnected && userData && (
                 <div className="text-sm text-gray-600 truncate">
-                  {userData.name || "Usuario"}
+                  {userData.name || "User"}
                 </div>
               )}
             </div>
@@ -72,11 +72,31 @@ const UserMenu = () => {
           <>
             <DropdownMenuItem asChild>
               <Link
+                to="/dashboard"
+                className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+              >
+                <LayoutDashboard size={18} />
+                <span className="font-medium">Dashboard</span>
+              </Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem asChild>
+              <Link
+                to="/create-nft"
+                className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+              >
+                <Plus size={18} />
+                <span className="font-medium">Create NFT</span>
+              </Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem asChild>
+              <Link
                 to="/profile"
                 className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
               >
                 <User size={18} />
-                <span className="font-medium">Mi Perfil</span>
+                <span className="font-medium">My Profile</span>
               </Link>
             </DropdownMenuItem>
 
@@ -87,7 +107,7 @@ const UserMenu = () => {
               className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-red-50 text-red-600 transition-all duration-200"
             >
               <LogOut size={18} />
-              <span className="font-medium">Desconectar</span>
+              <span className="font-medium">Disconnect</span>
             </DropdownMenuItem>
           </>
         )}
@@ -95,7 +115,7 @@ const UserMenu = () => {
         {!isConnected && (
           <div className="px-4 py-3">
             <p className="text-sm text-gray-600 leading-relaxed">
-              Conecta tu wallet para acceder a todas las funciones de SportBlocks
+              Connect your wallet to access all SportBlocks features
             </p>
           </div>
         )}
