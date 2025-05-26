@@ -39,7 +39,8 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
       'Tactical Analyst': 'from-yellow-600 to-orange-600',
       'Mental Performance Coach': 'from-pink-600 to-rose-600',
       'Biomechanics Engineer': 'from-blue-600 to-cyan-600',
-      'Youth Development Coordinator': 'from-lime-600 to-green-600'
+      'Youth Development Coordinator': 'from-lime-600 to-green-600',
+      'Performance Coach': 'from-red-600 to-orange-600'
     };
     return colors[role as keyof typeof colors] || 'from-gray-600 to-slate-600';
   };
@@ -109,14 +110,14 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
             isWalletConnected ? 'bg-white/15 border-white/30' : 'bg-white/8 border-white/15'
           }`}>
             <Heart className={`w-5 h-5 mx-auto mb-1 ${isWalletConnected ? 'text-purple-400' : 'text-purple-400/60'}`} />
-            <div className="text-lg font-bold text-white">{fan.projectsHelped}</div>
+            <div className="text-lg font-bold text-white">{fan.projectsHelped || 0}</div>
             <div className="text-xs text-gray-300">Projects Helped</div>
           </div>
           <div className={`backdrop-blur-sm rounded-lg p-3 text-center border ${
             isWalletConnected ? 'bg-white/15 border-white/30' : 'bg-white/8 border-white/15'
           }`}>
             <TrendingUp className={`w-5 h-5 mx-auto mb-1 ${isWalletConnected ? 'text-blue-400' : 'text-blue-400/60'}`} />
-            <div className="text-lg font-bold text-white">${fan.totalDonated.toLocaleString()}</div>
+            <div className="text-lg font-bold text-white">${(fan.totalDonated || 0).toLocaleString()}</div>
             <div className="text-xs text-gray-300">Total Donated</div>
           </div>
         </div>
