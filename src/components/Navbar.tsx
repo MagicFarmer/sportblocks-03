@@ -1,13 +1,13 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useStarkNet } from "@/hooks/useStarkNet";
 
-interface NavbarProps {
-  isWalletConnected: boolean;
-}
-
-const Navbar = ({ isWalletConnected }: NavbarProps) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { wallet, userData } = useStarkNet();
+
+  const isWalletConnected = wallet.isConnected && userData;
 
   return (
     <nav className="relative z-50 px-6 py-4">
@@ -39,7 +39,7 @@ const Navbar = ({ isWalletConnected }: NavbarProps) => {
           <div className="flex items-center space-x-2">
             <div className={`w-2 h-2 rounded-full ${isWalletConnected ? 'bg-green-400' : 'bg-red-400'}`}></div>
             <span className="text-sm text-gray-300">
-              {isWalletConnected ? 'Connected' : 'Not Connected'}
+              {isWalletConnected ? `Connected as ${userData?.name}` : 'Not Connected'}
             </span>
           </div>
         </div>
@@ -72,7 +72,7 @@ const Navbar = ({ isWalletConnected }: NavbarProps) => {
             <div className="flex items-center space-x-2 pt-2">
               <div className={`w-2 h-2 rounded-full ${isWalletConnected ? 'bg-green-400' : 'bg-red-400'}`}></div>
               <span className="text-sm text-gray-300">
-                {isWalletConnected ? 'Wallet Connected' : 'Wallet Not Connected'}
+                {isWalletConnected ? `Connected as ${userData?.name}` : 'Wallet Not Connected'}
               </span>
             </div>
           </div>

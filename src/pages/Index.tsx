@@ -5,9 +5,11 @@ import WalletConnect from "@/components/WalletConnect";
 import NFTGallery from "@/components/NFTGallery";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useStarkNet } from "@/hooks/useStarkNet";
 
 const Index = () => {
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const { wallet, userData } = useStarkNet();
+  const isWalletConnected = wallet.isConnected && userData;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
@@ -20,13 +22,9 @@ const Index = () => {
         </div>
 
         <div className="relative z-10">
-          <Navbar isWalletConnected={isWalletConnected} />
+          <Navbar />
           <Hero />
-          <WalletConnect 
-            isConnected={isWalletConnected} 
-            onConnect={() => setIsWalletConnected(true)}
-            onDisconnect={() => setIsWalletConnected(false)}
-          />
+          <WalletConnect />
           <NFTGallery isWalletConnected={isWalletConnected} />
           <Footer />
         </div>

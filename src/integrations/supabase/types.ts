@@ -9,51 +9,80 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      nfts: {
+      user_contracts: {
         Row: {
-          athlete: string
+          contract_address: string
+          contract_type: string
           created_at: string
-          description: string | null
+          deployment_status: string
           id: string
-          ipfs_url: string | null
-          is_minted: boolean | null
-          name: string
-          price: number | null
-          rarity: string | null
-          sport: string | null
-          token_id: string | null
           updated_at: string
-          wallet_address: string | null
+          user_id: string
         }
         Insert: {
-          athlete: string
+          contract_address: string
+          contract_type?: string
           created_at?: string
-          description?: string | null
+          deployment_status?: string
           id?: string
-          ipfs_url?: string | null
-          is_minted?: boolean | null
-          name: string
-          price?: number | null
-          rarity?: string | null
-          sport?: string | null
-          token_id?: string | null
           updated_at?: string
-          wallet_address?: string | null
+          user_id: string
         }
         Update: {
-          athlete?: string
+          contract_address?: string
+          contract_type?: string
           created_at?: string
-          description?: string | null
+          deployment_status?: string
           id?: string
-          ipfs_url?: string | null
-          is_minted?: boolean | null
-          name?: string
-          price?: number | null
-          rarity?: string | null
-          sport?: string | null
-          token_id?: string | null
           updated_at?: string
-          wallet_address?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_contracts_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      users: {
+        Row: {
+          category: string
+          country: string
+          created_at: string
+          email: string
+          id: string
+          name: string
+          sport: string
+          updated_at: string
+          user_type: string
+          wallet_address: string
+        }
+        Insert: {
+          category: string
+          country: string
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          sport: string
+          updated_at?: string
+          user_type: string
+          wallet_address: string
+        }
+        Update: {
+          category?: string
+          country?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          sport?: string
+          updated_at?: string
+          user_type?: string
+          wallet_address?: string
         }
         Relationships: []
       }
