@@ -86,7 +86,7 @@ export class StarkNetIntegration {
   private contract: Contract;
 
   constructor() {
-    this.provider = new Provider({ rpc: { nodeUrl: STARKNET_RPC_URL } });
+    this.provider = new Provider({ nodeUrl: STARKNET_RPC_URL });
     this.contract = new Contract(CONTRACT_ABI, SPORTBLOCKS_CONTRACT_ADDRESS, this.provider);
   }
 
