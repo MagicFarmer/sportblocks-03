@@ -7,7 +7,7 @@ const TractionSection = () => {
     {
       icon: CheckCircle,
       title: "Functional MVP",
-      description: "Flutter + StarkNet MVP with core functionality developed and tested"
+      description: "A Web3 Cairo StarkNet MVP with core functionality developed and tested"
     },
     {
       icon: Trophy,
@@ -30,7 +30,7 @@ const TractionSection = () => {
     <div className="mb-20">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-white mb-4 flex items-center justify-center">
-          🔧 <span className="ml-3">Traction & Roadmap</span>
+          🔧 <span className="ml-3">5. Traction & Roadmap</span>
         </h2>
         <p className="text-xl text-gray-200 max-w-3xl mx-auto">
           Proven progress and clear path to market leadership
@@ -61,8 +61,8 @@ const TractionSection = () => {
       <div className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 rounded-3xl p-8 border border-amber-400/30">
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop" 
-            alt="Team collaboration and project planning"
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop" 
+            alt="Development progress and team collaboration"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>

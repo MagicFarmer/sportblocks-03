@@ -25,27 +25,27 @@ const BusinessPitch = () => {
           <PunchLines style="highlight" className="text-white" />
         </div>
         
-        {/* Problem */}
+        {/* 1. Problem */}
         <ProblemSection />
         
-        {/* Solution */}
+        {/* 2. Solution */}
         <SolutionSection />
         
-        {/* Target Market */}
+        {/* 3. Target Market */}
         <TargetMarketSection />
+        
+        {/* 4. Business Model */}
+        <BusinessModelSection />
         
         {/* Punch Lines */}
         <div className="my-16">
           <PunchLines style="banner" />
         </div>
         
-        {/* Business Model */}
-        <BusinessModelSection />
-        
-        {/* Traction */}
+        {/* 5. Traction */}
         <TractionSection />
         
-        {/* Why Now */}
+        {/* 6. Why Now */}
         <WhyNowSection />
       </div>
       

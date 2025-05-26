@@ -387,68 +387,55 @@ const About = () => {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-8 text-center">Sustainable Development Goals</h3>
+                <h3 className="text-2xl font-bold text-white mb-8 text-center">Mission & Vision</h3>
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Health & Well-being</h4>
-                      <p className="text-gray-200">Promote health and well-being through sport</p>
-                    </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-blue-400 mb-3">Mission</h4>
+                    <p className="text-gray-200">Empower people to freely implement and use any social function they desire.</p>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Quality Education</h4>
-                      <p className="text-gray-200">Provides digital education on Web3 and sports values</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">5</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Gender Equality</h4>
-                      <p className="text-gray-200">Promotes equal opportunities for athletes of all genders</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center text-white font-bold text-sm">8</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Economic Growth</h4>
-                      <p className="text-gray-200">Generates new forms of decent work and economic growth</p>
-                    </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-purple-400 mb-3">Vision</h4>
+                    <p className="text-gray-200">Build a decentralized and transparent network that facilitates social functions, ensuring integrity through mathematical proofs and distributing power equitably.</p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-8 text-center">Olympic Agenda 2020+5</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <Users className="text-blue-400 w-6 h-6 mt-1" />
+                <h3 className="text-2xl font-bold text-white mb-8 text-center">Core Values</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <Shield className="text-blue-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">Athletes' Rights</h4>
-                      <p className="text-gray-200">Economic and narrative empowerment</p>
+                      <h4 className="text-sm font-bold text-white">Decentralization</h4>
+                      <p className="text-gray-200 text-sm">Avoiding the concentration of power and authority</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <Coins className="text-amber-400 w-6 h-6 mt-1" />
+                  <div className="flex items-start space-x-3">
+                    <Eye className="text-amber-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">Revenue Innovation</h4>
-                      <p className="text-gray-200">Innovation in revenue models via blockchain</p>
+                      <h4 className="text-sm font-bold text-white">Transparency</h4>
+                      <p className="text-gray-200 text-sm">Public and open governance</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <Zap className="text-green-400 w-6 h-6 mt-1" />
+                  <div className="flex items-start space-x-3">
+                    <Globe className="text-green-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">Digital Engagement</h4>
-                      <p className="text-gray-200">Direct and educational connection with fans</p>
+                      <h4 className="text-sm font-bold text-white">Neutrality</h4>
+                      <p className="text-gray-200 text-sm">Open platform for all social functions</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <HandHeart className="text-purple-400 w-6 h-6 mt-1" />
+                  <div className="flex items-start space-x-3">
+                    <Zap className="text-purple-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">SDG Enablement</h4>
-                      <p className="text-gray-200">Sport as an enabler of SDGs through financing social causes</p>
+                      <h4 className="text-sm font-bold text-white">Censorship Resistance</h4>
+                      <p className="text-gray-200 text-sm">Interference-free transaction processing</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <Users className="text-cyan-400 w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="text-sm font-bold text-white">Individual Empowerment</h4>
+                      <p className="text-gray-200 text-sm">Education and culture centered on Starknet's mission and values</p>
                     </div>
                   </div>
                 </div>
@@ -469,68 +456,55 @@ const About = () => {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-8 text-center">Sustainable Development Goals</h3>
+                <h3 className="text-2xl font-bold text-white mb-8 text-center">Mission & Vision</h3>
                 <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Health & Well-being</h4>
-                      <p className="text-gray-200">Promote health and well-being through sport</p>
-                    </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-blue-400 mb-3">Mission</h4>
+                    <p className="text-gray-200">Empower people to freely implement and use any social function they desire.</p>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Quality Education</h4>
-                      <p className="text-gray-200">Provides digital education on Web3 and sports values</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">5</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Gender Equality</h4>
-                      <p className="text-gray-200">Promotes equal opportunities for athletes of all genders</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center text-white font-bold text-sm">8</div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white">Economic Growth</h4>
-                      <p className="text-gray-200">Generates new forms of decent work and economic growth</p>
-                    </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-purple-400 mb-3">Vision</h4>
+                    <p className="text-gray-200">Build a decentralized and transparent network that facilitates social functions, ensuring integrity through mathematical proofs and distributing power equitably.</p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-8 text-center">Olympic Agenda 2020+5</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <Users className="text-blue-400 w-6 h-6 mt-1" />
+                <h3 className="text-2xl font-bold text-white mb-8 text-center">Core Values</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <Shield className="text-blue-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">Athletes' Rights</h4>
-                      <p className="text-gray-200">Economic and narrative empowerment</p>
+                      <h4 className="text-sm font-bold text-white">Decentralization</h4>
+                      <p className="text-gray-200 text-sm">Avoiding the concentration of power and authority</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <Coins className="text-amber-400 w-6 h-6 mt-1" />
+                  <div className="flex items-start space-x-3">
+                    <Eye className="text-amber-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">Revenue Innovation</h4>
-                      <p className="text-gray-200">Innovation in revenue models via blockchain</p>
+                      <h4 className="text-sm font-bold text-white">Transparency</h4>
+                      <p className="text-gray-200 text-sm">Public and open governance</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <Zap className="text-green-400 w-6 h-6 mt-1" />
+                  <div className="flex items-start space-x-3">
+                    <Globe className="text-green-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">Digital Engagement</h4>
-                      <p className="text-gray-200">Direct and educational connection with fans</p>
+                      <h4 className="text-sm font-bold text-white">Neutrality</h4>
+                      <p className="text-gray-200 text-sm">Open platform for all social functions</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <HandHeart className="text-purple-400 w-6 h-6 mt-1" />
+                  <div className="flex items-start space-x-3">
+                    <Zap className="text-purple-400 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="text-lg font-bold text-white">SDG Enablement</h4>
-                      <p className="text-gray-200">Sport as an enabler of SDGs through financing social causes</p>
+                      <h4 className="text-sm font-bold text-white">Censorship Resistance</h4>
+                      <p className="text-gray-200 text-sm">Interference-free transaction processing</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <Users className="text-cyan-400 w-5 h-5 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="text-sm font-bold text-white">Individual Empowerment</h4>
+                      <p className="text-gray-200 text-sm">Education and culture centered on Starknet's mission and values</p>
                     </div>
                   </div>
                 </div>
