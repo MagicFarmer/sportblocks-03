@@ -17,11 +17,11 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [formData, setFormData] = useState({
-    name: userData.name || '',
-    email: userData.email || '',
-    sport: userData.sport || '',
-    country: userData.country || '',
-    category: userData.category || ''
+    name: userData?.name || '',
+    email: userData?.email || '',
+    sport: userData?.sport || '',
+    country: userData?.country || '',
+    category: userData?.category || ''
   });
   const { toast } = useToast();
 
@@ -35,8 +35,9 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
           email: formData.email,
           sport: formData.sport,
           country: formData.country,
-          category: formData.category
-        })
+          category: formData.category,
+          updated_at: new Date().toISOString()
+        } as any)
         .eq('id', userData.id);
 
       if (error) throw error;
@@ -64,33 +65,12 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
     if (!file) return;
 
     try {
-      // First create a storage bucket if it doesn't exist
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${userData.id}/avatar.${fileExt}`;
-      
-      const { data, error } = await supabase.storage
-        .from('nft-media')
-        .upload(fileName, file, { upsert: true });
-
-      if (error) throw error;
-
-      const { data: urlData } = supabase.storage
-        .from('nft-media')
-        .getPublicUrl(data.path);
-
-      const { error: updateError } = await supabase
-        .from('users')
-        .update({ avatar_url: urlData.publicUrl })
-        .eq('id', userData.id);
-
-      if (updateError) throw updateError;
-
+      // Upload file to storage (we'll handle this without the storage bucket for now)
+      // For now, we'll just show a message that the feature is coming soon
       toast({
-        title: "Avatar actualizado",
-        description: "Tu foto de perfil ha sido actualizada.",
+        title: "Función próximamente",
+        description: "La subida de avatares estará disponible pronto.",
       });
-
-      onUpdate();
     } catch (error: any) {
       toast({
         title: "Error al subir imagen",
@@ -100,14 +80,22 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
     }
   };
 
+  if (!userData) {
+    return (
+      <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+        <p className="text-gray-400">Cargando información del perfil...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
       <div className="text-center mb-6">
         <div className="relative inline-block">
           <Avatar className="w-24 h-24 mx-auto mb-4">
-            <AvatarImage src={userData.avatar_url} alt={userData.name} />
+            <AvatarImage src={userData?.avatar_url} alt={userData?.name} />
             <AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xl">
-              {userData.name?.charAt(0)?.toUpperCase() || <User size={32} />}
+              {userData?.name?.charAt(0)?.toUpperCase() || <User size={32} />}
             </AvatarFallback>
           </Avatar>
           <label htmlFor="avatar-upload" className="absolute bottom-0 right-0 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full cursor-pointer transition-colors">
@@ -122,8 +110,8 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
           </label>
         </div>
         
-        <h2 className="text-xl font-bold text-white">{userData.name}</h2>
-        <p className="text-gray-300 capitalize">{userData.user_type}</p>
+        <h2 className="text-xl font-bold text-white">{userData?.name}</h2>
+        <p className="text-gray-300 capitalize">{userData?.user_type}</p>
       </div>
 
       {isEditing ? (
@@ -200,24 +188,24 @@ const UserProfileInfo = ({ userData, onUpdate }: UserProfileInfoProps) => {
         <div className="space-y-3">
           <div className="flex justify-between">
             <span className="text-gray-400">Email:</span>
-            <span className="text-white">{userData.email}</span>
+            <span className="text-white">{userData?.email}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-gray-400">Deporte:</span>
-            <span className="text-white">{userData.sport}</span>
+            <span className="text-white">{userData?.sport}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-gray-400">País:</span>
-            <span className="text-white">{userData.country}</span>
+            <span className="text-white">{userData?.country}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-gray-400">Categoría:</span>
-            <span className="text-white">{userData.category}</span>
+            <span className="text-white">{userData?.category}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-gray-400">Wallet:</span>
             <span className="text-white text-sm font-mono">
-              {userData.wallet_address?.slice(0, 6)}...{userData.wallet_address?.slice(-4)}
+              {userData?.wallet_address?.slice(0, 6)}...{userData?.wallet_address?.slice(-4)}
             </span>
           </div>
 

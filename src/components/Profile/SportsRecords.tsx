@@ -14,7 +14,7 @@ interface SportsRecordsProps {
 const SportsRecords = ({ userData, onUpdate }: SportsRecordsProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
-  const [records, setRecords] = useState<Record<string, string>>(userData.sports_records || {});
+  const [records, setRecords] = useState<Record<string, string>>(userData?.sports_records || {});
   const [newRecordKey, setNewRecordKey] = useState('');
   const [newRecordValue, setNewRecordValue] = useState('');
   const { toast } = useToast();
@@ -41,7 +41,10 @@ const SportsRecords = ({ userData, onUpdate }: SportsRecordsProps) => {
     try {
       const { error } = await supabase
         .from('users')
-        .update({ sports_records: records })
+        .update({ 
+          sports_records: records,
+          updated_at: new Date().toISOString()
+        } as any)
         .eq('id', userData.id);
 
       if (error) throw error;
@@ -150,7 +153,7 @@ const SportsRecords = ({ userData, onUpdate }: SportsRecordsProps) => {
             <Button
               onClick={() => {
                 setIsEditing(false);
-                setRecords(userData.sports_records || {});
+                setRecords(userData?.sports_records || {});
               }}
               variant="outline"
               className="flex-1 border-white/20 text-white hover:bg-white/10"

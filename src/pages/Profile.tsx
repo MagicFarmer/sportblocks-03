@@ -26,6 +26,8 @@ const Profile = () => {
   }, [wallet.isConnected, userData, navigate]);
 
   const fetchUserData = async () => {
+    if (!userData?.id) return;
+    
     try {
       // Fetch user's NFTs
       const { data: nftData, error: nftError } = await supabase
@@ -34,37 +36,16 @@ const Profile = () => {
         .eq('user_id', userData.id)
         .order('created_at', { ascending: false });
 
-      if (nftError) throw nftError;
-      setNfts(nftData || []);
+      if (nftError) {
+        console.error('Error fetching NFTs:', nftError);
+      } else {
+        setNfts(nftData || []);
+      }
 
-      // For fans, try to fetch purchases if the table exists
+      // For fans, try to fetch purchases (this table might not exist yet)
       if (userData.user_type === 'fan') {
-        try {
-          const { data: purchaseData, error: purchaseError } = await supabase
-            .from('nft_purchases')
-            .select(`
-              *,
-              nfts:nft_id (
-                id,
-                name,
-                description,
-                media_url,
-                rarity,
-                price
-              )
-            `)
-            .eq('buyer_id', userData.id)
-            .order('purchased_at', { ascending: false });
-
-          if (purchaseError && purchaseError.code !== 'PGRST116') {
-            console.error('Error fetching purchases:', purchaseError);
-          } else {
-            setPurchases(purchaseData || []);
-          }
-        } catch (purchaseError) {
-          console.log('Purchases table not accessible, skipping...');
-          setPurchases([]);
-        }
+        // Skip purchases for now since the table doesn't exist in the current schema
+        setPurchases([]);
       }
 
     } catch (error) {
