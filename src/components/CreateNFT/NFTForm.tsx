@@ -39,6 +39,12 @@ const NFTForm = () => {
     setIsSubmitting(true);
 
     try {
+      console.log('=== DEBUGGING NFT CREATION ===');
+      console.log('userData:', userData);
+      console.log('userData type:', typeof userData);
+      console.log('userData.id:', userData?.id);
+      console.log('userData.id type:', typeof userData?.id);
+
       // Validate required fields
       if (!formData.name.trim()) {
         throw new Error('El nombre del NFT es requerido');
@@ -53,8 +59,14 @@ const NFTForm = () => {
         throw new Error('La cantidad de copias debe ser mayor a 0');
       }
 
-      if (!userData?.id) {
+      if (!userData) {
+        console.error('userData is null or undefined');
         throw new Error('Usuario no autenticado. Por favor, conéctate primero.');
+      }
+
+      if (!userData.id) {
+        console.error('userData.id is null or undefined');
+        throw new Error('ID de usuario no disponible. Por favor, reconéctate.');
       }
 
       console.log('Creating NFT for user:', userData.id);
@@ -63,28 +75,28 @@ const NFTForm = () => {
       let mediaType = "";
 
       // Upload media file if provided
-      if (mediaFile && userData) {
+      if (mediaFile) {
         console.log('Uploading media file...');
         mediaUrl = await uploadMediaFile(mediaFile, userData.id);
         mediaType = mediaFile.type.startsWith('video') ? 'video' : 'image';
         console.log('Media uploaded successfully:', mediaUrl);
       }
 
-      // Create NFT record in Supabase with explicit user_id
+      // Create NFT record in Supabase
       console.log('Creating NFT record in database...');
       const nftData = {
-        user_id: userData.id, // Explicitly set the user_id
-        name: formData.name,
-        description: formData.description,
-        media_url: mediaUrl,
-        media_type: mediaType,
-        beneficiary_project: formData.beneficiaryProject,
+        user_id: userData.id,
+        name: formData.name.trim(),
+        description: formData.description.trim() || null,
+        media_url: mediaUrl || null,
+        media_type: mediaType || null,
+        beneficiary_project: formData.beneficiaryProject.trim(),
         rarity: formData.rarity,
         price: parseFloat(formData.price),
         total_copies: parseInt(formData.totalCopies)
       };
 
-      console.log('NFT data to insert:', nftData);
+      console.log('NFT data to insert:', JSON.stringify(nftData, null, 2));
 
       const { data: insertedNft, error: nftError } = await supabase
         .from('nfts')
@@ -93,7 +105,12 @@ const NFTForm = () => {
         .single();
 
       if (nftError) {
-        console.error('Error inserting NFT:', nftError);
+        console.error('Supabase error details:', {
+          message: nftError.message,
+          details: nftError.details,
+          hint: nftError.hint,
+          code: nftError.code
+        });
         throw new Error(`Error al crear NFT: ${nftError.message}`);
       }
 
@@ -116,7 +133,12 @@ const NFTForm = () => {
       navigate('/dashboard');
 
     } catch (error: any) {
-      console.error('Error creating NFT:', error);
+      console.error('=== ERROR CREATING NFT ===');
+      console.error('Error type:', typeof error);
+      console.error('Error message:', error.message);
+      console.error('Error details:', error);
+      console.error('Full error object:', JSON.stringify(error, null, 2));
+      
       toast({
         title: "Error al Crear NFT",
         description: error.message || "Por favor inténtalo de nuevo.",
@@ -127,8 +149,25 @@ const NFTForm = () => {
     }
   };
 
+  // Add debug info to UI
+  const renderDebugInfo = () => {
+    if (process.env.NODE_ENV === 'development') {
+      return (
+        <div className="mb-4 p-3 bg-gray-800 rounded text-xs text-gray-300">
+          <strong>Debug Info:</strong><br/>
+          userData exists: {userData ? 'Yes' : 'No'}<br/>
+          userData.id: {userData?.id || 'undefined'}<br/>
+          wallet address: {userData?.wallet_address || 'undefined'}
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 border border-white/20">
+      {renderDebugInfo()}
+      
       <form onSubmit={handleSubmit} className="space-y-6">
         <MediaUpload 
           mediaFile={mediaFile}
