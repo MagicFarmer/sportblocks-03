@@ -1,7 +1,7 @@
 
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
-import { Heart, Users, Target, Calendar, MapPin, TrendingUp } from "lucide-react";
+import { Heart, Users, Target, Calendar, MapPin, TrendingUp, Lock } from "lucide-react";
 import { SocialProject } from "../data/mockSocialProjects";
 
 interface SocialProjectCardProps {
@@ -12,18 +12,20 @@ interface SocialProjectCardProps {
 const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProps) => {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'text-green-400 bg-green-400/20';
-      case 'active': return 'text-blue-400 bg-blue-400/20';
-      case 'planning': return 'text-yellow-400 bg-yellow-400/20';
-      case 'paused': return 'text-orange-400 bg-orange-400/20';
-      default: return 'text-gray-400 bg-gray-400/20';
+      case 'completed': return 'text-green-400 bg-green-400/30 border border-green-400/50';
+      case 'active': return 'text-blue-400 bg-blue-400/30 border border-blue-400/50';
+      case 'planning': return 'text-yellow-400 bg-yellow-400/30 border border-yellow-400/50';
+      case 'paused': return 'text-orange-400 bg-orange-400/30 border border-orange-400/50';
+      default: return 'text-gray-400 bg-gray-400/30 border border-gray-400/50';
     }
   };
 
   const fundingPercentage = Math.round((project.fundingRaised / project.fundingGoal) * 100);
 
   return (
-    <Card className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 border-green-400/30 hover:border-green-400/60 transition-all duration-300 hover:scale-105 shadow-2xl backdrop-blur-sm">
+    <Card className={`bg-gradient-to-br from-green-900/60 to-emerald-900/60 border-green-400/40 hover:border-green-400/70 transition-all duration-300 hover:scale-105 shadow-2xl backdrop-blur-sm ${
+      !isWalletConnected ? 'opacity-90' : ''
+    }`}>
       <div className="relative">
         <img 
           src={project.image} 
@@ -31,27 +33,35 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
           className="w-full h-48 object-cover rounded-t-lg"
         />
         <div className="absolute top-3 right-3">
-          <span className={`px-2 py-1 rounded-full text-xs font-bold ${getStatusColor(project.status)}`}>
+          <span className={`px-3 py-1 rounded-full text-xs font-bold ${getStatusColor(project.status)}`}>
             {project.status.toUpperCase()}
           </span>
         </div>
-        <div className="absolute top-3 left-3 bg-green-600/90 backdrop-blur-sm px-2 py-1 rounded-full">
+        <div className="absolute top-3 left-3 bg-green-600/95 backdrop-blur-sm px-3 py-1 rounded-full border border-green-400/50">
           <span className="text-white text-xs font-bold">SOCIAL PROJECT</span>
         </div>
+        {!isWalletConnected && (
+          <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] rounded-t-lg flex items-center justify-center">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2">
+              <Lock className="w-4 h-4 text-white mx-auto mb-1" />
+              <span className="text-white text-xs font-medium">Connect Wallet</span>
+            </div>
+          </div>
+        )}
       </div>
       
       <CardContent className="p-6">
         <div className="mb-4">
           <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">{project.name}</h3>
-          <p className="text-gray-300 text-sm mb-3 line-clamp-2">{project.description}</p>
+          <p className="text-gray-200 text-sm mb-3 line-clamp-2">{project.description}</p>
           
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-            <MapPin size={14} />
+          <div className="flex items-center gap-2 text-sm text-gray-300 mb-2">
+            <MapPin size={14} className="text-green-400" />
             <span>{project.location}</span>
           </div>
           
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
-            <Calendar size={14} />
+          <div className="flex items-center gap-2 text-sm text-gray-300 mb-3">
+            <Calendar size={14} className="text-green-400" />
             <span>Started: {new Date(project.startDate).toLocaleDateString()}</span>
           </div>
         </div>
@@ -59,52 +69,52 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
         {/* Funding Progress */}
         <div className="mb-4">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-300">Funding Progress</span>
-            <span className="text-sm font-bold text-green-400">{fundingPercentage}%</span>
+            <span className="text-sm text-gray-200 font-medium">Funding Progress</span>
+            <span className="text-sm font-bold text-green-300">{fundingPercentage}%</span>
           </div>
-          <div className="w-full bg-gray-700 rounded-full h-2">
+          <div className="w-full bg-gray-700/70 rounded-full h-3 border border-gray-600/50">
             <div 
-              className="bg-gradient-to-r from-green-500 to-emerald-400 h-2 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-green-500 to-emerald-400 h-3 rounded-full transition-all duration-300 shadow-lg"
               style={{ width: `${Math.min(fundingPercentage, 100)}%` }}
             ></div>
           </div>
-          <div className="flex justify-between text-xs text-gray-400 mt-1">
-            <span>${project.fundingRaised.toLocaleString()}</span>
-            <span>${project.fundingGoal.toLocaleString()}</span>
+          <div className="flex justify-between text-xs text-gray-300 mt-1">
+            <span className="font-medium">${project.fundingRaised.toLocaleString()}</span>
+            <span className="font-medium">${project.fundingGoal.toLocaleString()}</span>
           </div>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 text-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 text-center border border-white/20">
             <Users className="text-green-400 w-5 h-5 mx-auto mb-1" />
             <div className="text-lg font-bold text-white">{project.supportersCount}</div>
-            <div className="text-xs text-gray-400">Supporters</div>
+            <div className="text-xs text-gray-300">Supporters</div>
           </div>
-          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-3 text-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 text-center border border-white/20">
             <Target className="text-emerald-400 w-5 h-5 mx-auto mb-1" />
             <div className="text-lg font-bold text-white">{project.category}</div>
-            <div className="text-xs text-gray-400">Category</div>
+            <div className="text-xs text-gray-300">Category</div>
           </div>
         </div>
 
         {/* Impact */}
-        <div className="mb-4 p-3 bg-green-500/10 rounded-lg border border-green-400/20">
+        <div className="mb-4 p-3 bg-green-500/20 rounded-lg border border-green-400/30">
           <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="text-green-400 w-4 h-4" />
-            <span className="text-sm font-bold text-green-400">Impact Achieved</span>
+            <TrendingUp className="text-green-300 w-4 h-4" />
+            <span className="text-sm font-bold text-green-300">Impact Achieved</span>
           </div>
-          <p className="text-xs text-gray-300">{project.impact}</p>
+          <p className="text-xs text-gray-200">{project.impact}</p>
         </div>
 
         {/* SDG Goals */}
         <div className="mb-4">
-          <div className="text-xs text-gray-400 mb-2">UN SDG Goals:</div>
+          <div className="text-xs text-gray-300 mb-2 font-medium">UN SDG Goals:</div>
           <div className="flex flex-wrap gap-1">
             {project.sdgGoals.map((goal, index) => (
               <span 
                 key={index}
-                className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full"
+                className="px-2 py-1 bg-blue-500/30 text-blue-200 text-xs rounded-full border border-blue-400/30"
               >
                 {goal}
               </span>
@@ -114,11 +124,15 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
 
         {/* Action Button */}
         <Button 
-          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold"
+          className={`w-full font-bold transition-all duration-200 ${
+            isWalletConnected 
+              ? "bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg" 
+              : "bg-gray-600/50 text-gray-300 cursor-not-allowed border border-gray-500/30"
+          }`}
           disabled={!isWalletConnected}
         >
           <Heart className="w-4 h-4 mr-2" />
-          {isWalletConnected ? "Support Project" : "Connect Wallet to Support"}
+          {isWalletConnected ? "View Project Details" : "Connect Wallet for Details"}
         </Button>
       </CardContent>
     </Card>

@@ -26,7 +26,7 @@ const FeaturedSocialProjects = ({ isWalletConnected }: FeaturedSocialProjectsPro
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Featured Social Projects
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 px-4">
+          <p className="text-gray-200 text-base sm:text-lg max-w-2xl mx-auto mb-8 px-4 font-medium">
             Support meaningful projects that create lasting impact through sports
           </p>
         </div>
@@ -44,11 +44,11 @@ const FeaturedSocialProjects = ({ isWalletConnected }: FeaturedSocialProjectsPro
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-green-500/20 to-emerald-600/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 border border-green-400/30 max-w-2xl mx-auto">
+          <div className="bg-gradient-to-r from-green-500/30 to-emerald-600/30 backdrop-blur-lg rounded-2xl p-6 sm:p-8 border border-green-400/40 max-w-2xl mx-auto shadow-2xl">
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
               Explore All Social Projects
             </h3>
-            <p className="text-gray-300 mb-6 text-sm sm:text-base">
+            <p className="text-gray-100 mb-6 text-sm sm:text-base font-medium">
               Discover projects making real impact in communities worldwide. 
               Filter by cause, location, funding status, and UN SDG goals.
             </p>
@@ -56,18 +56,18 @@ const FeaturedSocialProjects = ({ isWalletConnected }: FeaturedSocialProjectsPro
               <Button
                 onClick={() => navigate('/social-projects')}
                 size="lg"
-                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-sm sm:text-base"
+                className="w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-sm sm:text-base shadow-lg"
               >
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 View All Projects
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Button>
             </div>
-            <div className="flex items-center justify-center mt-4 text-gray-400 text-sm">
+            <div className="flex items-center justify-center mt-4 text-gray-200 text-sm">
               <span className="mr-2">🌍</span>
-              <span>{mockSocialProjects.length}+ active projects</span>
+              <span className="font-medium">{mockSocialProjects.length}+ active projects</span>
               <span className="mx-2">•</span>
-              <span>Real impact tracking</span>
+              <span className="font-medium">Real impact tracking</span>
             </div>
           </div>
         </div>
