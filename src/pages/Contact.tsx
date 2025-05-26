@@ -293,7 +293,7 @@ const Contact = () => {
                     <p className="text-white text-sm font-semibold">Team SportBlocks</p>
                   </div>
                   <div className="absolute bottom-4 right-4 bg-gradient-to-r from-blue-600/80 to-purple-600/80 backdrop-blur-sm rounded-lg px-3 py-2">
-                    <p className="text-white text-xs font-medium">Costa Rica 2024</p>
+                    <p className="text-white text-xs font-medium">May 24th, 2025</p>
                   </div>
                 </div>
               </div>

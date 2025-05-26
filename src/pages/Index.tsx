@@ -190,6 +190,8 @@ const Index = () => {
       {/* Footer Section - Dark gradient */}
       <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black">
         <Footer />
+        {/* Bottom Anchor */}
+        <div id="_bottom" className="h-1"></div>
       </div>
     </div>
   );

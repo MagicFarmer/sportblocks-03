@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { User, LogIn, LogOut, Settings, UserPlus, Languages } from "lucide-react";
+import { User, LogIn, LogOut, Settings, UserPlus, Languages, Focus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,10 +13,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useStarkNet } from "@/hooks/useStarkNet";
+import { useFocusMode } from "@/contexts/FocusMode";
 
 const UserMenu = () => {
   const navigate = useNavigate();
   const { wallet, userData, isInitialized, connectWallet, disconnectWallet } = useStarkNet();
+  const { isFocusMode, toggleFocusMode } = useFocusMode();
   
   const handleLinkClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -104,6 +106,17 @@ const UserMenu = () => {
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <button
+                onClick={toggleFocusMode}
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 w-full text-left ${
+                  isFocusMode ? 'text-amber-600' : 'text-gray-700'
+                }`}
+              >
+                <Focus size={16} />
+                <span>{isFocusMode ? 'Exit Focus Mode' : 'Focus Mode'}</span>
+              </button>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <button
                 onClick={handleTranslateClick}
                 className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 w-full text-left"
               >
@@ -135,6 +148,17 @@ const UserMenu = () => {
               </button>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+              <button
+                onClick={toggleFocusMode}
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 w-full text-left ${
+                  isFocusMode ? 'text-amber-600' : 'text-gray-700'
+                }`}
+              >
+                <Focus size={16} />
+                <span>{isFocusMode ? 'Exit Focus Mode' : 'Focus Mode'}</span>
+              </button>
+            </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <button
                 onClick={handleTranslateClick}

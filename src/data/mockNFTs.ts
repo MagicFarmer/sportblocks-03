@@ -1,4 +1,3 @@
-
 export const mockNFTs = [
   {
     id: 1,
@@ -74,7 +73,7 @@ export const mockNFTs = [
     event: "Floor Exercise Final",
     country: "Russia",
     price: "2.1 ETH",
-    image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop",
     rarity: "Epic",
     description: "Flawless floor routine earning perfect 10s",
     date: "August 2023",
@@ -184,7 +183,7 @@ export const mockNFTs = [
     event: "Downhill Olympic Final",
     country: "Sweden",
     price: "2.4 ETH",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    image: "https://images.unsplash.com/photo-1551524164-6cf96ac6d4ba?w=400&h=300&fit=crop",
     rarity: "Legendary",
     description: "Olympic gold medal in alpine skiing downhill",
     date: "February 2024",
