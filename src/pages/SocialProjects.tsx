@@ -2,10 +2,9 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SocialProjectCard from '@/components/SocialProjectCard';
 import { mockSocialProjects } from '@/data/mockSocialProjects';
 import { useStarkNet } from '@/hooks/useStarkNet';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import PunchLines from '@/components/PunchLines';
 import { HandHeart } from 'lucide-react';
@@ -48,93 +47,57 @@ const SocialProjects = () => {
             <TabsTrigger value="education" className="data-[state=active]:bg-green-500 data-[state=active]:text-white">Education</TabsTrigger>
             <TabsTrigger value="health" className="data-[state=active]:bg-green-500 data-[state=active]:text-white">Health</TabsTrigger>
           </TabsList>
+          
           <TabsContent value="all" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {mockSocialProjects.map((project) => (
-                <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
-                  <CardContent className="p-6">
-                    <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                    <p className="text-gray-300 mb-4">{project.description}</p>
-                    <p className="text-green-300 font-semibold mb-2">
-                      Impact: {project.impact}
-                    </p>
-                    <p className="text-gray-400 mb-4">
-                      Raised: ${project.currentAmount} / ${project.targetAmount}
-                    </p>
-                    <Button variant="secondary" className="w-full">
-                      Learn More
-                    </Button>
-                  </CardContent>
-                </Card>
+                <SocialProjectCard 
+                  key={project.id} 
+                  project={project} 
+                  isWalletConnected={isWalletConnected}
+                />
               ))}
             </div>
           </TabsContent>
+          
           <TabsContent value="environment" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {mockSocialProjects
                 .filter((project) => project.category === "environment")
                 .map((project) => (
-                  <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                      <p className="text-gray-300 mb-4">{project.description}</p>
-                      <p className="text-green-300 font-semibold mb-2">
-                        Impact: {project.impact}
-                      </p>
-                      <p className="text-gray-400 mb-4">
-                        Raised: ${project.currentAmount} / ${project.targetAmount}
-                      </p>
-                      <Button variant="secondary" className="w-full">
-                        Learn More
-                      </Button>
-                    </CardContent>
-                  </Card>
+                  <SocialProjectCard 
+                    key={project.id} 
+                    project={project} 
+                    isWalletConnected={isWalletConnected}
+                  />
                 ))}
             </div>
           </TabsContent>
+          
           <TabsContent value="education" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {mockSocialProjects
                 .filter((project) => project.category === "education")
                 .map((project) => (
-                  <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                      <p className="text-gray-300 mb-4">{project.description}</p>
-                      <p className="text-green-300 font-semibold mb-2">
-                        Impact: {project.impact}
-                      </p>
-                      <p className="text-gray-400 mb-4">
-                        Raised: ${project.currentAmount} / ${project.targetAmount}
-                      </p>
-                      <Button variant="secondary" className="w-full">
-                        Learn More
-                      </Button>
-                    </CardContent>
-                  </Card>
+                  <SocialProjectCard 
+                    key={project.id} 
+                    project={project} 
+                    isWalletConnected={isWalletConnected}
+                  />
                 ))}
             </div>
           </TabsContent>
+          
           <TabsContent value="health" className="mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {mockSocialProjects
                 .filter((project) => project.category === "health")
                 .map((project) => (
-                  <Card key={project.id} className="bg-white/5 backdrop-blur-lg border border-white/10 text-white hover:scale-105 transition-all duration-300">
-                    <CardContent className="p-6">
-                      <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                      <p className="text-gray-300 mb-4">{project.description}</p>
-                      <p className="text-green-300 font-semibold mb-2">
-                        Impact: {project.impact}
-                      </p>
-                      <p className="text-gray-400 mb-4">
-                        Raised: ${project.currentAmount} / ${project.targetAmount}
-                      </p>
-                      <Button variant="secondary" className="w-full">
-                        Learn More
-                      </Button>
-                    </CardContent>
-                  </Card>
+                  <SocialProjectCard 
+                    key={project.id} 
+                    project={project} 
+                    isWalletConnected={isWalletConnected}
+                  />
                 ))}
             </div>
           </TabsContent>

@@ -16,7 +16,11 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
   const handleConnectWallet = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    await connectWallet();
+    try {
+      await connectWallet();
+    } catch (error) {
+      console.error('Failed to connect wallet:', error);
+    }
   };
 
   const getRoleColor = (role: string) => {
@@ -71,9 +75,9 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
           <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] rounded-t-lg flex items-center justify-center">
             <Button
               onClick={handleConnectWallet}
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2 text-white text-xs font-medium hover:bg-white/30 transition-all duration-200"
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2 text-white text-xs font-medium hover:bg-white/30 transition-all duration-200 flex items-center gap-2"
             >
-              <Lock className="w-4 h-4 mr-2" />
+              <Lock className="w-4 h-4" />
               Connect Wallet
             </Button>
           </div>

@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet, Focus, Image, Languages } from "lucide-react";
+import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet, Focus, Image } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,38 +22,6 @@ const UserMenu = () => {
 
   const handleDisconnect = async () => {
     await disconnectWallet();
-  };
-
-  const handleTranslate = () => {
-    // Initialize Google Translate
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    document.head.appendChild(script);
-
-    // Define the callback function
-    (window as any).googleTranslateElementInit = function() {
-      new (window as any).google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,es,pt,fr,de,it,zh,ja,ko,ar',
-        layout: (window as any).google.translate.TranslateElement.InlineLayout.HORIZONTAL
-      }, 'google_translate_element');
-    };
-
-    // Create the translate element if it doesn't exist
-    if (!document.getElementById('google_translate_element')) {
-      const translateDiv = document.createElement('div');
-      translateDiv.id = 'google_translate_element';
-      translateDiv.style.position = 'fixed';
-      translateDiv.style.top = '100px';
-      translateDiv.style.right = '20px';
-      translateDiv.style.zIndex = '9999';
-      translateDiv.style.backgroundColor = 'white';
-      translateDiv.style.padding = '10px';
-      translateDiv.style.borderRadius = '8px';
-      translateDiv.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-      document.body.appendChild(translateDiv);
-    }
   };
 
   const isConnected = wallet.isConnected && userData && isInitialized;
@@ -116,15 +83,6 @@ const UserMenu = () => {
             {isFocusMode ? "Exit Focus Mode" : "Focus Mode"}
           </span>
           <div className={`ml-auto w-2 h-2 rounded-full ${isFocusMode ? "bg-green-500" : "bg-gray-300"}`} />
-        </DropdownMenuItem>
-
-        {/* Google Translate */}
-        <DropdownMenuItem 
-          onClick={handleTranslate}
-          className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
-        >
-          <Languages size={18} />
-          <span className="font-medium">Translate Page</span>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator className="bg-gray-200 my-1" />

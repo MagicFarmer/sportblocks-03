@@ -1,10 +1,42 @@
 
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Linkedin, Github, Mail } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Github, Mail, Languages } from "lucide-react";
 import PunchLines from "./PunchLines";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const handleTranslate = () => {
+    // Initialize Google Translate
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+
+    // Define the callback function
+    (window as any).googleTranslateElementInit = function() {
+      new (window as any).google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,pt,fr,de,it,zh,ja,ko,ar',
+        layout: (window as any).google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      }, 'google_translate_element');
+    };
+
+    // Create the translate element if it doesn't exist
+    if (!document.getElementById('google_translate_element')) {
+      const translateDiv = document.createElement('div');
+      translateDiv.id = 'google_translate_element';
+      translateDiv.style.position = 'fixed';
+      translateDiv.style.top = '100px';
+      translateDiv.style.right = '20px';
+      translateDiv.style.zIndex = '9999';
+      translateDiv.style.backgroundColor = 'white';
+      translateDiv.style.padding = '10px';
+      translateDiv.style.borderRadius = '8px';
+      translateDiv.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+      document.body.appendChild(translateDiv);
+    }
+  };
 
   return (
     <footer className="pt-12 pb-6 text-white">
@@ -199,7 +231,35 @@ const Footer = () => {
                   Wikimedia Foundation
                 </a>
               </li>
+              <li>
+                <a 
+                  href="https://github.com/MagicFarmer/sportblocks-03" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2"
+                >
+                  <Github size={16} />
+                  <span>GitHub Repository</span>
+                </a>
+              </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Google Translate Section */}
+        <div className="mb-8 text-center">
+          <div className="border-t border-gray-800 pt-8">
+            <h3 className="font-bold text-lg mb-4 text-amber-400">Translate This Page</h3>
+            <button
+              onClick={handleTranslate}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 mx-auto"
+            >
+              <Languages size={20} />
+              <span>Translate Page</span>
+            </button>
+            <p className="text-gray-400 text-sm mt-2">
+              Translate this website into your preferred language
+            </p>
           </div>
         </div>
 
