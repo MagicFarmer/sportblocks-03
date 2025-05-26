@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Heart, ShoppingCart, Eye, X, Calendar, Trophy, Target, Users } from "lucide-react";
+import { Heart, ShoppingCart, Eye, X, Calendar, Trophy, Target, Users, MapPin, Star } from "lucide-react";
 import { formatPrice, convertEthToStrk } from "@/utils/priceUtils";
 
 interface NFT {
@@ -8,6 +8,8 @@ interface NFT {
   name: string;
   athlete: string;
   sport: string;
+  event?: string;
+  country?: string;
   price: string;
   image: string;
   rarity: string;
@@ -39,6 +41,7 @@ const NFTCard = ({ nft, isWalletConnected }: NFTCardProps) => {
       case "Legendary": return "from-amber-400 to-yellow-500";
       case "Epic": return "from-purple-400 to-pink-500";
       case "Rare": return "from-blue-400 to-cyan-500";
+      case "Common": return "from-gray-400 to-gray-500";
       default: return "from-gray-400 to-gray-500";
     }
   };
@@ -112,6 +115,18 @@ const NFTCard = ({ nft, isWalletConnected }: NFTCardProps) => {
           <div className="mb-6">
             <h3 className="text-xl font-bold text-slate-900 mb-2">{nft.name}</h3>
             <p className="text-gray-600 font-medium">{nft.athlete} • {nft.sport}</p>
+            {nft.event && (
+              <div className="flex items-center mt-1 text-gray-500 text-sm">
+                <Star size={14} className="mr-1" />
+                <span>{nft.event}</span>
+              </div>
+            )}
+            {nft.country && (
+              <div className="flex items-center mt-1 text-gray-500 text-sm">
+                <MapPin size={14} className="mr-1" />
+                <span>{nft.country}</span>
+              </div>
+            )}
             {nft.date && (
               <p className="text-gray-500 text-sm mt-1">{nft.date}</p>
             )}
@@ -193,6 +208,18 @@ const NFTCard = ({ nft, isWalletConnected }: NFTCardProps) => {
               <div className="mb-6">
                 <h2 className="text-3xl font-bold text-slate-900 mb-2">{nft.name}</h2>
                 <p className="text-xl text-gray-600 font-medium">{nft.athlete} • {nft.sport}</p>
+                {nft.event && (
+                  <div className="flex items-center mt-2 text-gray-500">
+                    <Star size={16} className="mr-2" />
+                    <span>{nft.event}</span>
+                  </div>
+                )}
+                {nft.country && (
+                  <div className="flex items-center mt-2 text-gray-500">
+                    <MapPin size={16} className="mr-2" />
+                    <span>{nft.country}</span>
+                  </div>
+                )}
                 {nft.date && (
                   <div className="flex items-center mt-2 text-gray-500">
                     <Calendar size={16} className="mr-2" />
