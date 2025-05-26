@@ -8,12 +8,12 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image - Panathenaic Stadium */}
+      {/* Background Image - Greek Olympic Runners */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-blue-900/80 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1539650116574-75c0c6d73a6e?w=1920&h=1080&fit=crop" 
-          alt="Estadio Panatenaico en Atenas" 
+          src="/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png" 
+          alt="Corredores olímpicos griegos" 
           className="w-full h-full object-cover"
         />
       </div>
