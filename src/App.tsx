@@ -20,6 +20,7 @@ import CampaignBoard from "./pages/CampaignBoard";
 import ExecutiveSummary from "./pages/ExecutiveSummary";
 import ProjectEvolution from "./pages/ProjectEvolution";
 import BusinessPitch from "./pages/BusinessPitch";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/social-projects" element={<SocialProjects />} />
           <Route path="/fans-gallery" element={<FansGallery />} />
           <Route path="/campaign-board" element={<CampaignBoard />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

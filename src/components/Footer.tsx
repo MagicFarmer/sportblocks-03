@@ -1,9 +1,12 @@
 
+import { Link } from "react-router-dom";
+import { Instagram, Facebook, Linkedin, Github, Mail } from "lucide-react";
+
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 sm:gap-12 mb-8 sm:mb-12">
           {/* Logo and Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -20,37 +23,56 @@ const Footer = () => {
               from your favorite athletes and own a piece of sports history.
             </p>
             <div className="flex space-x-4">
+              <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                <Instagram size={20} />
+              </a>
               <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
-                <span className="text-xl">𝕏</span>
+                <Facebook size={20} />
               </a>
-              <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-red-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
-                <span className="text-xl">📺</span>
+              <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-blue-500 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                <Linkedin size={20} />
               </a>
-              <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-purple-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
-                <span className="text-xl">💬</span>
+              <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-gray-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                <Github size={20} />
               </a>
+              <Link to="/contact" className="w-12 h-12 bg-gray-800 hover:bg-green-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300">
+                <Mail size={20} />
+              </Link>
             </div>
           </div>
 
-          {/* Marketplace */}
+          {/* Main Navigation */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Marketplace</h4>
+            <h4 className="text-white font-bold text-lg mb-6">Navigation</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Explore NFTs</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Featured Athletes</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Trending Collections</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Activity</a></li>
+              <li><Link to="/" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Home</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">About</Link></li>
+              <li><Link to="/executive-summary" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Executive Summary</Link></li>
+              <li><Link to="/marketplace" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Marketplace</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Gallery */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Resources</h4>
+            <h4 className="text-white font-bold text-lg mb-6">Gallery</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Help Center</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Platform Status</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Partners</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Bug Bounty</a></li>
+              <li><Link to="/gallery" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Athletes NFTs</Link></li>
+              <li><Link to="/social-projects" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Social Projects</Link></li>
+              <li><Link to="/fans-gallery" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Sports Professionals</Link></li>
+              <li><Link to="/campaign-board" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Campaign Board</Link></li>
+            </ul>
+          </div>
+
+          {/* Important Links */}
+          <div>
+            <h4 className="text-white font-bold text-lg mb-6">Important Links</h4>
+            <ul className="space-y-4">
+              <li><a href="https://www.starknet.io/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">StarkNet Foundation</a></li>
+              <li><a href="https://olympics.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Olympics.com</a></li>
+              <li><a href="https://www.worldolympians.org/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">World Olympians</a></li>
+              <li><a href="https://www.paralympic.org/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Paralympic Committee</a></li>
+              <li><a href="https://wikimediafoundation.org/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-400 transition-colors duration-200 text-base">Wikimedia Foundation</a></li>
             </ul>
           </div>
         </div>

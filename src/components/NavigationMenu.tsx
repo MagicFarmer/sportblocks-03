@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Home, Info, ShoppingBag, Trophy, Heart, Users, FileText, Target, Zap, TrendingUp } from "lucide-react";
+import { Menu, Home, Info, ShoppingBag, Trophy, Heart, Users, FileText, Target, Zap, TrendingUp, Mail } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,7 +25,6 @@ const NavigationMenu = () => {
     { name: "Executive Summary", path: "/executive-summary", icon: FileText },
     { name: "Project Evolution", path: "/project-evolution", icon: Zap },
     { name: "Business Pitch", path: "/business-pitch", icon: TrendingUp },
-    { name: "Marketplace", path: "/marketplace", icon: ShoppingBag },
     { name: "Campaign Board", path: "/campaign-board", icon: Target },
   ];
 
@@ -72,6 +71,28 @@ const NavigationMenu = () => {
 
         <DropdownMenuSeparator className="bg-gray-200 my-1" />
 
+        {/* Marketplace - Featured */}
+        <DropdownMenuItem asChild>
+          <Link
+            to="/marketplace"
+            className={`flex items-center space-x-3 px-4 py-4 rounded-lg cursor-pointer transition-all duration-200 bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 hover:border-amber-300 ${
+              isActive("/marketplace")
+                ? "from-amber-100 to-orange-100 border-amber-400"
+                : ""
+            }`}
+          >
+            <div className="p-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg">
+              <ShoppingBag size={18} className="text-white" />
+            </div>
+            <div>
+              <span className="font-bold text-amber-700">🔥 Marketplace</span>
+              <div className="text-xs text-amber-600">Discover & Trade NFTs</div>
+            </div>
+          </Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator className="bg-gray-200 my-1" />
+
         {/* Gallery Section */}
         <DropdownMenuLabel className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
           Gallery
@@ -94,6 +115,23 @@ const NavigationMenu = () => {
             </DropdownMenuItem>
           );
         })}
+
+        <DropdownMenuSeparator className="bg-gray-200 my-1" />
+
+        {/* Contact */}
+        <DropdownMenuItem asChild>
+          <Link
+            to="/contact"
+            className={`flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+              isActive("/contact")
+                ? "bg-blue-50 text-blue-700 border-l-4 border-blue-600"
+                : "hover:bg-gray-50 text-slate-700"
+            }`}
+          >
+            <Mail size={20} />
+            <span className="font-medium">Contact</span>
+          </Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
