@@ -13,6 +13,7 @@ import Athletes from "./pages/Athletes";
 import CreateNFT from "./pages/CreateNFT";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
+import MyCollections from "./pages/MyCollections";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/athletes" element={<Athletes />} />
           <Route path="/create-nft" element={<CreateNFT />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/my-collections" element={<MyCollections />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

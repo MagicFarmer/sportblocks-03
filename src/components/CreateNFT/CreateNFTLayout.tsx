@@ -25,10 +25,10 @@ const CreateNFTLayout = ({ children }: CreateNFTLayoutProps) => {
               className="text-gray-400 hover:text-white mb-4"
             >
               <ArrowLeft className="mr-2" size={16} />
-              Volver al Dashboard
+              Back to Dashboard
             </Button>
-            <h1 className="text-4xl font-bold text-white mb-2">Crear NFT</h1>
-            <p className="text-gray-400">Crea y mintea tu NFT deportivo</p>
+            <h1 className="text-4xl font-bold text-white mb-2">Create NFT</h1>
+            <p className="text-gray-400">Create and mint your sports NFT</p>
           </div>
 
           {children}

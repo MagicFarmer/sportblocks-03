@@ -66,7 +66,7 @@ const Profile = () => {
         <div className="container mx-auto px-6 py-12">
           <div className="text-center py-12">
             <div className="w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
-            <p className="text-gray-400 mt-4">Inicializando...</p>
+            <p className="text-gray-400 mt-4">Initializing...</p>
           </div>
         </div>
         <Footer />
@@ -86,14 +86,14 @@ const Profile = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-white mb-2">Mi Perfil</h1>
-            <p className="text-gray-400">Información personal y actividad en SportBlocks</p>
+            <h1 className="text-4xl font-bold text-white mb-2">My Profile</h1>
+            <p className="text-gray-400">Personal information and SportBlocks activity</p>
           </div>
 
           {loading ? (
             <div className="text-center py-12">
               <div className="w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
-              <p className="text-gray-400 mt-4">Cargando perfil...</p>
+              <p className="text-gray-400 mt-4">Loading profile...</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

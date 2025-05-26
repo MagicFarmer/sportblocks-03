@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, BarChart3, Image, Trophy, ShoppingBag, Plus, Info } from "lucide-react";
+import { Menu, Image, Trophy, ShoppingBag, Info } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,16 +18,15 @@ const NavigationMenu = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const publicItems = [
-    { name: "Home", path: "/", icon: BarChart3 },
     { name: "About", path: "/about", icon: Info },
     { name: "Gallery", path: "/gallery", icon: Image },
     { name: "Marketplace", path: "/marketplace", icon: ShoppingBag },
     { name: "Athletes", path: "/athletes", icon: Trophy },
   ];
 
+  // Add My Collections for authenticated users
   const authenticatedItems = (wallet.isConnected && userData && isInitialized) ? [
-    { name: "Dashboard", path: "/dashboard", icon: BarChart3 },
-    { name: "Create NFT", path: "/create-nft", icon: Plus },
+    { name: "My Collections", path: "/my-collections", icon: Image },
   ] : [];
 
   const allItems = [...publicItems, ...authenticatedItems];

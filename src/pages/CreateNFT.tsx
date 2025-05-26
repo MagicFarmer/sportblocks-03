@@ -14,7 +14,7 @@ const CreateNFT = () => {
       <CreateNFTLayout>
         <div className="text-center py-12">
           <div className="w-8 h-8 border-2 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p className="text-gray-400 mt-4">Inicializando...</p>
+          <p className="text-gray-400 mt-4">Initializing...</p>
         </div>
       </CreateNFTLayout>
     );
