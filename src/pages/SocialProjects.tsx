@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SocialProjectCard from "@/components/SocialProjectCard";
+import FinancialDashboard from "@/components/FinancialDashboard";
 import { useStarkNet } from "@/hooks/useStarkNet";
 import { mockSocialProjects } from "@/data/mockSocialProjects";
 import { Target, Filter, X } from "lucide-react";
@@ -144,7 +145,7 @@ const SocialProjects = () => {
 
         {/* Stats Section */}
         {filteredProjects.length > 0 && (
-          <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/20">
+          <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 border border-white/20 mb-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
               <div>
                 <p className="text-2xl font-bold text-white">{filteredProjects.length}</p>
@@ -172,6 +173,9 @@ const SocialProjects = () => {
           </div>
         )}
       </div>
+
+      {/* Financial Dashboard */}
+      <FinancialDashboard />
 
       <Footer />
     </div>

@@ -27,6 +27,15 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
     connectWallet();
   };
 
+  const handleViewDetails = () => {
+    if (!isWalletConnected) {
+      handleConnectWallet();
+      return;
+    }
+    // Show project details modal or navigate to details page
+    alert(`Viewing details for ${project.name} - Detailed view coming soon!`);
+  };
+
   const handleSupport = () => {
     if (!isWalletConnected) {
       handleConnectWallet();
@@ -167,13 +176,12 @@ const SocialProjectCard = ({ project, isWalletConnected }: SocialProjectCardProp
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-2">
           <Button 
-            onClick={handleConnectWallet}
+            onClick={handleViewDetails}
             className={`font-bold transition-all duration-200 ${
               isWalletConnected 
                 ? "bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg" 
                 : "bg-gray-600/50 text-gray-300 cursor-pointer border border-gray-500/30 hover:bg-gray-600/70"
             }`}
-            disabled={isWalletConnected}
           >
             <Heart className="w-4 h-4 mr-2" />
             {isWalletConnected ? "View Details" : "Connect Wallet"}

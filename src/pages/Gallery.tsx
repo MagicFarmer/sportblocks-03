@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import NFTGallery from "@/components/NFTGallery";
 import MyCollections from "@/components/MyCollections";
 import FeaturedNFTs from "@/components/FeaturedNFTs";
+import FinancialDashboard from "@/components/FinancialDashboard";
 
 const Gallery = () => {
   const { wallet, userData, isInitialized } = useStarkNet();
@@ -61,6 +62,9 @@ const Gallery = () => {
           <MyCollections />
         )}
       </div>
+
+      {/* Financial Dashboard */}
+      <FinancialDashboard />
 
       <Footer />
     </div>

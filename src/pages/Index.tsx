@@ -5,6 +5,7 @@ import WalletConnect from "@/components/WalletConnect";
 import FeaturedNFTs from "@/components/FeaturedNFTs";
 import FeaturedSocialProjects from "@/components/FeaturedSocialProjects";
 import FeaturedFans from "@/components/FeaturedFans";
+import FinancialDashboard from "@/components/FinancialDashboard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useStarkNet } from "@/hooks/useStarkNet";
@@ -166,6 +167,9 @@ const Index = () => {
       <div className="bg-gradient-to-br from-slate-800 via-purple-900 to-blue-900">
         <FeaturedFans isWalletConnected={isWalletConnected} />
       </div>
+
+      {/* Financial Dashboard Section */}
+      <FinancialDashboard />
       
       {/* Footer Section - Dark gradient */}
       <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black">
