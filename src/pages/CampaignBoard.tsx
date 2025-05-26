@@ -24,24 +24,24 @@ const CampaignBoard = () => {
           <PunchLines style="highlight" className="text-white" />
         </div>
         
-        {/* Big Idea */}
-        <BigIdeaSection />
-        
-        {/* Problem */}
+        {/* 1. Problem */}
         <ProblemSection />
+        
+        {/* 2. Insights */}
+        <InsightsSection />
         
         {/* Punch Lines */}
         <div className="my-16">
           <PunchLines style="banner" />
         </div>
         
-        {/* Execution */}
+        {/* 3. Big Idea */}
+        <BigIdeaSection />
+        
+        {/* 4. Execution */}
         <ExecutionSection />
         
-        {/* Insights */}
-        <InsightsSection />
-        
-        {/* Potential Results */}
+        {/* 5. Potential Results */}
         <PotentialResultsSection />
       </div>
       

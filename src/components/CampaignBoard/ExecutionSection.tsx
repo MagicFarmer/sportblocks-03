@@ -6,7 +6,7 @@ const ExecutionSection = () => {
   const executionItems = [
     {
       title: "● The Platform",
-      content: "Developed in Flutter with Starknet support (starknet.dart) for a fluid and accessible UX. No initial wallet required. Learn as you participate. Almost invisible transactions, thanks to Starknet's low cost and speed."
+      content: "Developed in Cairo with Starknet support for a fluid and accessible UX. Learn as you participate. Almost invisible transactions, thanks to Starknet's low cost and speed."
     },
     {
       title: "● Legacy Cards",

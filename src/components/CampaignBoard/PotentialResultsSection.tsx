@@ -31,8 +31,8 @@ const PotentialResultsSection = () => {
         </div>
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=800&h=400&fit=crop" 
-            alt="Success and achievement"
+            src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?w=800&h=400&fit=crop" 
+            alt="Success and achievement celebration"
             className="w-full h-64 object-cover rounded-lg mb-6"
           />
         </div>
