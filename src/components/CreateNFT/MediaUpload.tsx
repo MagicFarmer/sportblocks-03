@@ -13,48 +13,54 @@ interface MediaUploadProps {
 const MediaUpload = ({ mediaFile, mediaPreview, onFileChange }: MediaUploadProps) => {
   const { toast } = useToast();
 
+  const validateAndProcessFile = (file: File) => {
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'video/mp4', 'video/webm', 'video/mov'];
+    if (!validTypes.includes(file.type.toLowerCase())) {
+      toast({
+        title: "Tipo de archivo no válido",
+        description: "Por favor selecciona una imagen (JPG, PNG, GIF, WEBP) o video (MP4, WEBM, MOV).",
+        variant: "destructive"
+      });
+      return false;
+    }
+
+    // Validate file size (10MB max)
+    const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+    if (file.size > maxSize) {
+      toast({
+        title: "Archivo muy grande",
+        description: `El archivo debe ser menor a 10MB. Tu archivo es de ${(file.size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive"
+      });
+      return false;
+    }
+
+    try {
+      const previewUrl = URL.createObjectURL(file);
+      onFileChange(file, previewUrl);
+      toast({
+        title: "Archivo cargado",
+        description: `${file.name} ha sido cargado exitosamente.`,
+      });
+      return true;
+    } catch (error) {
+      console.error('Error creating preview:', error);
+      toast({
+        title: "Error al procesar archivo",
+        description: "No se pudo procesar el archivo seleccionado.",
+        variant: "destructive"
+      });
+      return false;
+    }
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Validate file type
-      const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'video/mp4', 'video/webm', 'video/mov'];
-      if (!validTypes.includes(file.type.toLowerCase())) {
-        toast({
-          title: "Tipo de archivo no válido",
-          description: "Por favor selecciona una imagen (JPG, PNG, GIF, WEBP) o video (MP4, WEBM, MOV).",
-          variant: "destructive"
-        });
-        e.target.value = ''; // Clear the input
-        return;
-      }
-
-      // Validate file size (10MB max)
-      const maxSize = 10 * 1024 * 1024; // 10MB in bytes
-      if (file.size > maxSize) {
-        toast({
-          title: "Archivo muy grande",
-          description: `El archivo debe ser menor a 10MB. Tu archivo es de ${(file.size / 1024 / 1024).toFixed(1)}MB.`,
-          variant: "destructive"
-        });
-        e.target.value = ''; // Clear the input
-        return;
-      }
-
-      try {
-        const previewUrl = URL.createObjectURL(file);
-        onFileChange(file, previewUrl);
-        toast({
-          title: "Archivo cargado",
-          description: `${file.name} ha sido cargado exitosamente.`,
-        });
-      } catch (error) {
-        console.error('Error creating preview:', error);
-        toast({
-          title: "Error al procesar archivo",
-          description: "No se pudo procesar el archivo seleccionado.",
-          variant: "destructive"
-        });
-        e.target.value = ''; // Clear the input
+      const success = validateAndProcessFile(file);
+      if (!success) {
+        e.target.value = ''; // Clear the input on validation failure
       }
     }
   };
@@ -84,11 +90,7 @@ const MediaUpload = ({ mediaFile, mediaPreview, onFileChange }: MediaUploadProps
     const files = e.dataTransfer.files;
     if (files.length > 0) {
       const file = files[0];
-      // Create a fake event to reuse existing validation logic
-      const fakeEvent = {
-        target: { files: [file], value: '' }
-      } as React.ChangeEvent<HTMLInputElement>;
-      handleFileChange(fakeEvent);
+      validateAndProcessFile(file);
     }
   };
 
