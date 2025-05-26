@@ -11,7 +11,7 @@ const Athletes = () => {
       title: "Perfect Gymnastics Routine",
       athlete: "Simone Biles",
       sport: "Gymnastics",
-      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=300&fit=crop",
       description: "Flawless execution in women's floor exercise"
     },
     {
@@ -19,7 +19,7 @@ const Athletes = () => {
       title: "Olympic Skiing Gold",
       athlete: "Mikaela Shiffrin",
       sport: "Alpine Skiing",
-      image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
       description: "Record-breaking slalom performance"
     },
     {

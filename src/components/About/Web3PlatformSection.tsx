@@ -49,8 +49,8 @@ const Web3PlatformSection = () => {
           <h3 className="text-3xl font-bold text-white text-center mb-8">Legacy Cards - Digital Tokens</h3>
           <div className="mb-8">
             <img 
-              src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=800&h=300&fit=crop" 
-              alt="Digital NFT cards representing athlete legacy" 
+              src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=800&h=300&fit=crop" 
+              alt="Digital collectible cards representing athlete legacy and achievements" 
               className="w-full h-48 object-cover rounded-xl mb-6"
             />
           </div>

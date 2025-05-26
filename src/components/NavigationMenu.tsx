@@ -19,6 +19,10 @@ const NavigationMenu = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const publicItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "About", path: "/about", icon: Info },
@@ -50,6 +54,7 @@ const NavigationMenu = () => {
             <DropdownMenuItem key={item.path} asChild>
               <Link
                 to={item.path}
+                onClick={handleLinkClick}
                 className={`flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
                   isActive(item.path)
                     ? "bg-blue-50 text-blue-700 border-l-4 border-blue-600"
@@ -69,6 +74,7 @@ const NavigationMenu = () => {
         <DropdownMenuItem asChild>
           <Link
             to="/contact"
+            onClick={handleLinkClick}
             className={`flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
               isActive("/contact")
                 ? "bg-blue-50 text-blue-700 border-l-4 border-blue-600"

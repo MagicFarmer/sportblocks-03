@@ -10,7 +10,7 @@ import MeetGreetsSection from '@/components/ProjectEvolution/MeetGreetsSection';
 import SportCoverageSection from '@/components/ProjectEvolution/SportCoverageSection';
 import PunchLines from '@/components/PunchLines';
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Users } from "lucide-react";
+import { Heart, Users, Trophy, Target } from "lucide-react";
 
 const ProjectEvolution = () => {
   return (
@@ -32,19 +32,19 @@ const ProjectEvolution = () => {
         {/* 2. Fan Projects */}
         <FanProjectsSection />
         
-        {/* 3. Transparency */}
-        <TransparencySection />
+        {/* 3. Meet & Greets */}
+        <MeetGreetsSection />
         
+        {/* 4. Sport Coverage */}
+        <SportCoverageSection />
+
         {/* Punch Lines */}
         <div className="my-16">
           <PunchLines style="banner" />
         </div>
         
-        {/* 4. Meet & Greets */}
-        <MeetGreetsSection />
-        
-        {/* 5. Sport Coverage */}
-        <SportCoverageSection />
+        {/* 5. Transparency */}
+        <TransparencySection />
 
         {/* 6. SportBlocks Foundation */}
         <Card className="bg-white/10 backdrop-blur-lg border border-white/20 mb-12 shadow-2xl">

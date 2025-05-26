@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet, Focus, Image } from "lucide-react";
+import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet, Focus, Image, Languages } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,6 +23,13 @@ const UserMenu = () => {
 
   const handleDisconnect = async () => {
     await disconnectWallet();
+  };
+
+  const handleTranslateClick = () => {
+    const translateElement = document.getElementById('google-translate');
+    if (translateElement) {
+      translateElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const isConnected = wallet.isConnected && userData && isInitialized;
@@ -85,6 +93,15 @@ const UserMenu = () => {
           <div className={`ml-auto w-2 h-2 rounded-full ${isFocusMode ? "bg-green-500" : "bg-gray-300"}`} />
         </DropdownMenuItem>
 
+        {/* Translate Website */}
+        <DropdownMenuItem 
+          onClick={handleTranslateClick}
+          className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+        >
+          <Languages size={18} />
+          <span className="font-medium">Translate Website</span>
+        </DropdownMenuItem>
+
         <DropdownMenuSeparator className="bg-gray-200 my-1" />
 
         {isConnected && (
@@ -93,6 +110,7 @@ const UserMenu = () => {
               <Link
                 to="/dashboard"
                 className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 <LayoutDashboard size={18} />
                 <span className="font-medium">Dashboard</span>
@@ -103,6 +121,7 @@ const UserMenu = () => {
               <Link
                 to="/my-collections"
                 className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 <Image size={18} />
                 <span className="font-medium">My Collections</span>
@@ -113,6 +132,7 @@ const UserMenu = () => {
               <Link
                 to="/create-nft"
                 className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 <Plus size={18} />
                 <span className="font-medium">Create NFT</span>
@@ -123,6 +143,7 @@ const UserMenu = () => {
               <Link
                 to="/profile"
                 className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 <User size={18} />
                 <span className="font-medium">My Profile</span>

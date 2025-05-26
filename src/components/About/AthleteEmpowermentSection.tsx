@@ -43,8 +43,8 @@ const AthleteEmpowermentSection = () => {
           
           <div className="bg-white rounded-2xl p-8 shadow-2xl border border-orange-100">
             <img 
-              src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=500&h=400&fit=crop" 
-              alt="Athletes taking control of their digital presence" 
+              src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=500&h=400&fit=crop" 
+              alt="Athletes empowered to control their digital presence and revenue streams" 
               className="w-full h-64 object-cover rounded-xl mb-6"
             />
             <h4 className="text-xl font-bold text-slate-900 mb-3">Taking Control</h4>
