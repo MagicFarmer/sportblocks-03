@@ -6,6 +6,7 @@ import FeaturedNFTs from "@/components/FeaturedNFTs";
 import FeaturedSocialProjects from "@/components/FeaturedSocialProjects";
 import FeaturedFans from "@/components/FeaturedFans";
 import FinancialDashboard from "@/components/FinancialDashboard";
+import DynamicBanners from "@/components/DynamicBanners";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useStarkNet } from "@/hooks/useStarkNet";
@@ -147,6 +148,9 @@ const Index = () => {
           </div>
         </div>
       </div>
+
+      {/* Dynamic Banners Section */}
+      <DynamicBanners />
       
       {/* Wallet Connect Section - Light blue gradient */}
       <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-100 py-16">

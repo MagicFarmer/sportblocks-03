@@ -17,6 +17,7 @@ import MyCollections from "./pages/MyCollections";
 import SocialProjects from "./pages/SocialProjects";
 import FansGallery from "./pages/FansGallery";
 import CampaignBoard from "./pages/CampaignBoard";
+import ExecutiveSummary from "./pages/ExecutiveSummary";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
+          <Route path="/executive-summary" element={<ExecutiveSummary />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/marketplace" element={<Marketplace />} />
