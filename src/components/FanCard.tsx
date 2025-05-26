@@ -3,6 +3,7 @@ import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { User, Trophy, Heart, MapPin, Star, TrendingUp, Lock } from "lucide-react";
 import { Fan } from "../data/mockFans";
+import { useStarkNet } from "@/hooks/useStarkNet";
 
 interface FanCardProps {
   fan: Fan;
@@ -10,6 +11,12 @@ interface FanCardProps {
 }
 
 const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
+  const { connectWallet } = useStarkNet();
+
+  const handleConnectWallet = () => {
+    connectWallet();
+  };
+
   const getRoleColor = (role: string) => {
     const colors = {
       'Sports Nutritionist': 'from-purple-600 to-pink-600',
@@ -32,8 +39,10 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
   };
 
   return (
-    <Card className={`bg-gradient-to-br from-purple-900/60 to-blue-900/60 border-purple-400/40 hover:border-purple-400/70 transition-all duration-300 hover:scale-105 shadow-2xl backdrop-blur-sm ${
-      !isWalletConnected ? 'opacity-90' : ''
+    <Card className={`transition-all duration-300 hover:scale-105 shadow-2xl backdrop-blur-sm ${
+      isWalletConnected 
+        ? 'bg-gradient-to-br from-purple-900/80 to-blue-900/80 border-purple-400/60 hover:border-purple-400/90' 
+        : 'bg-gradient-to-br from-purple-900/40 to-blue-900/40 border-purple-400/30 hover:border-purple-400/50 opacity-75'
     }`}>
       <div className="relative">
         <img 
@@ -41,15 +50,23 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
           alt={fan.name}
           className="w-full h-48 object-cover rounded-t-lg"
         />
-        <div className="absolute top-3 left-3 bg-purple-600/95 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-400/50">
+        <div className={`absolute top-3 left-3 backdrop-blur-sm px-3 py-1 rounded-full border ${
+          isWalletConnected 
+            ? 'bg-purple-600/95 border-purple-400/50' 
+            : 'bg-purple-600/60 border-purple-400/30'
+        }`}>
           <span className="text-white text-xs font-bold">SPORTS PROFESSIONAL</span>
         </div>
-        <div className="absolute top-3 right-3 bg-yellow-500/95 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 border border-yellow-400/50">
+        <div className={`absolute top-3 right-3 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 border ${
+          isWalletConnected 
+            ? 'bg-yellow-500/95 border-yellow-400/50' 
+            : 'bg-yellow-500/60 border-yellow-400/30'
+        }`}>
           <Star className="w-3 h-3 text-white" />
           <span className="text-white text-xs font-bold">PRO</span>
         </div>
         {!isWalletConnected && (
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px] rounded-t-lg flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] rounded-t-lg flex items-center justify-center">
             <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg px-3 py-2">
               <Lock className="w-4 h-4 text-white mx-auto mb-1" />
               <span className="text-white text-xs font-medium">Connect Wallet</span>
@@ -79,23 +96,33 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 text-center border border-white/20">
-            <Heart className="text-purple-400 w-5 h-5 mx-auto mb-1" />
+          <div className={`backdrop-blur-sm rounded-lg p-3 text-center border ${
+            isWalletConnected ? 'bg-white/15 border-white/30' : 'bg-white/8 border-white/15'
+          }`}>
+            <Heart className={`w-5 h-5 mx-auto mb-1 ${isWalletConnected ? 'text-purple-400' : 'text-purple-400/60'}`} />
             <div className="text-lg font-bold text-white">{fan.projectsHelped}</div>
             <div className="text-xs text-gray-300">Projects Helped</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 text-center border border-white/20">
-            <TrendingUp className="text-blue-400 w-5 h-5 mx-auto mb-1" />
+          <div className={`backdrop-blur-sm rounded-lg p-3 text-center border ${
+            isWalletConnected ? 'bg-white/15 border-white/30' : 'bg-white/8 border-white/15'
+          }`}>
+            <TrendingUp className={`w-5 h-5 mx-auto mb-1 ${isWalletConnected ? 'text-blue-400' : 'text-blue-400/60'}`} />
             <div className="text-lg font-bold text-white">${fan.totalDonated.toLocaleString()}</div>
             <div className="text-xs text-gray-300">Total Donated</div>
           </div>
         </div>
 
         {/* Specialty */}
-        <div className="mb-4 p-3 bg-purple-500/20 rounded-lg border border-purple-400/30">
+        <div className={`mb-4 p-3 rounded-lg border ${
+          isWalletConnected 
+            ? 'bg-purple-500/25 border-purple-400/40' 
+            : 'bg-purple-500/15 border-purple-400/25'
+        }`}>
           <div className="flex items-center gap-2 mb-2">
-            <Star className="text-purple-300 w-4 h-4" />
-            <span className="text-sm font-bold text-purple-300">Specialty</span>
+            <Star className={`w-4 h-4 ${isWalletConnected ? 'text-purple-300' : 'text-purple-300/70'}`} />
+            <span className={`text-sm font-bold ${isWalletConnected ? 'text-purple-300' : 'text-purple-300/70'}`}>
+              Specialty
+            </span>
           </div>
           <p className="text-xs text-gray-200">{fan.specialty}</p>
         </div>
@@ -107,7 +134,11 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
             {fan.expertise.slice(0, 3).map((expertise, index) => (
               <span 
                 key={index}
-                className="px-2 py-1 bg-blue-500/30 text-blue-200 text-xs rounded-full border border-blue-400/30"
+                className={`px-2 py-1 text-xs rounded-full border ${
+                  isWalletConnected 
+                    ? 'bg-blue-500/30 text-blue-200 border-blue-400/30' 
+                    : 'bg-blue-500/20 text-blue-200/70 border-blue-400/20'
+                }`}
               >
                 {expertise}
               </span>
@@ -125,12 +156,12 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
 
         {/* Action Button */}
         <Button 
+          onClick={isWalletConnected ? () => alert(`Viewing ${fan.name}'s profile - Feature coming soon!`) : handleConnectWallet}
           className={`w-full font-bold transition-all duration-200 ${
             isWalletConnected 
               ? "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg" 
-              : "bg-gray-600/50 text-gray-300 cursor-not-allowed border border-gray-500/30"
+              : "bg-gray-600/50 text-gray-300 cursor-pointer border border-gray-500/30 hover:bg-gray-600/70"
           }`}
-          disabled={!isWalletConnected}
         >
           <User className="w-4 h-4 mr-2" />
           {isWalletConnected ? "View Professional Profile" : "Connect Wallet for Details"}
