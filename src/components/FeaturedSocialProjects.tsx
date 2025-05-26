@@ -60,7 +60,7 @@ const FeaturedSocialProjects = ({ isWalletConnected }: FeaturedSocialProjectsPro
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 View All Projects
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-              </div>
+              </Button>
             </div>
             <div className="flex items-center justify-center mt-4 text-gray-200 text-sm">
               <span className="mr-2">🌍</span>
