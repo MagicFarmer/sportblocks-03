@@ -1,157 +1,267 @@
-export interface NFT {
-  id: number;
-  name: string;
-  athlete: string;
-  sport: string;
-  event?: string;
-  country?: string;
-  price: string;
-  image: string;
-  rarity: string;
-  description: string;
-  date?: string;
-  edition?: string;
-  totalSupply?: number;
-  minted?: number;
-  attributes?: {
-    category: string;
-    achievement: string;
-    location: string;
-    season: string;
-  };
-}
 
 export const mockNFTs = [
   {
     id: 1,
-    name: "Golden Slam Victory",
-    athlete: "Maria Gonzalez",
-    sport: "Tennis",
-    event: "Wimbledon 2023",
-    country: "Spain",
+    name: "Legendary Goal",
+    athlete: "Lionel Messi",
+    sport: "Football",
+    event: "FIFA World Cup 2022",
+    country: "Argentina",
     price: "2.5",
-    image: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400&h=300&fit=crop", // Tennis victory moment
+    image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?w=500&h=500&fit=crop",
     rarity: "Legendary",
-    description: "Historic match-winning point at Wimbledon, capturing the exact moment of victory.",
-    date: "July 15, 2023",
-    edition: "1/50",
-    totalSupply: 50,
-    minted: 32,
+    description: "The decisive moment that crowned Argentina as World Champions. A legacy-defining goal captured forever.",
+    date: "December 18, 2022",
+    edition: "1/100",
+    totalSupply: 100,
+    minted: 87,
     attributes: {
-      category: "Championship Moment",
-      achievement: "Tournament Winner",
-      location: "All England Club",
-      season: "2023"
+      category: "World Cup",
+      achievement: "Final Goal",
+      location: "Qatar",
+      season: "2022"
     }
   },
   {
     id: 2,
-    name: "Marathon Personal Best",
-    athlete: "James Wilson",
-    sport: "Athletics",
-    event: "Boston Marathon 2024",
-    country: "USA",
+    name: "Marathon Victory",
+    athlete: "Eliud Kipchoge",
+    sport: "Marathon",
+    event: "Berlin Marathon 2022",
+    country: "Kenya",
     price: "1.8",
-    image: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=400&h=300&fit=crop", // Marathon finish line
+    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=500&h=500&fit=crop",
     rarity: "Epic",
-    description: "Breaking personal record at the iconic Boston Marathon finish line.",
-    date: "April 21, 2024",
-    edition: "12/100",
-    totalSupply: 100,
-    minted: 78,
+    description: "Breaking barriers once again. The moment of triumph as the greatest marathoner crosses the finish line.",
+    date: "September 25, 2022",
+    edition: "1/250",
+    totalSupply: 250,
+    minted: 203,
     attributes: {
-      category: "Personal Achievement",
-      achievement: "Personal Record",
-      location: "Boston",
-      season: "2024"
+      category: "Marathon",
+      achievement: "Course Record",
+      location: "Berlin",
+      season: "2022"
     }
   },
   {
     id: 3,
-    name: "Olympic Debut",
-    athlete: "Sophie Chen",
-    sport: "Swimming",
-    event: "Paris Olympics 2024",
-    country: "Canada",
-    price: "3.2",
-    image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400&h=300&fit=crop", // Olympic swimming pool
+    name: "Championship Spike",
+    athlete: "Novak Djokovic",
+    sport: "Tennis",
+    event: "Wimbledon 2023",
+    country: "Serbia",
+    price: "2.2",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=500&h=500&fit=crop",
     rarity: "Legendary",
-    description: "First-ever Olympic appearance in the 200m freestyle final.",
-    date: "August 3, 2024",
-    edition: "5/25",
-    totalSupply: 25,
-    minted: 18,
+    description: "The championship-winning spike that secured yet another Grand Slam title for the tennis legend.",
+    date: "July 16, 2023",
+    edition: "1/150",
+    totalSupply: 150,
+    minted: 142,
     attributes: {
-      category: "Olympic Moment",
-      achievement: "Olympic Debut",
-      location: "Paris La Défense Arena",
-      season: "2024"
+      category: "Grand Slam",
+      achievement: "Championship Point",
+      location: "London",
+      season: "2023"
     }
   },
   {
     id: 4,
-    name: "Championship Goal",
-    athlete: "Diego Rodriguez",
-    sport: "Football",
-    event: "Copa America Final",
-    country: "Argentina",
-    price: "4.1",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop", // Soccer goal celebration
+    name: "Perfect Dunk",
+    athlete: "LeBron James",
+    sport: "Basketball",
+    event: "NBA Finals 2023",
+    country: "USA",
+    price: "3.0",
+    image: "https://images.unsplash.com/photo-1458668383970-8ddd3927deed?w=500&h=500&fit=crop",
     rarity: "Legendary",
-    description: "The winning goal that secured the Copa America title in extra time.",
-    date: "July 14, 2024",
-    edition: "1/10",
-    totalSupply: 10,
-    minted: 10,
+    description: "The thunderous dunk that ignited the crowd and shifted momentum in the championship game.",
+    date: "June 12, 2023",
+    edition: "1/75",
+    totalSupply: 75,
+    minted: 68,
     attributes: {
-      category: "Historic Goal",
-      achievement: "Tournament Winner",
-      location: "MetLife Stadium",
-      season: "2024"
+      category: "NBA Finals",
+      achievement: "Game Winner",
+      location: "Miami",
+      season: "2023"
     }
   },
   {
     id: 5,
-    name: "Perfect 10 Routine",
-    athlete: "Anna Petrov",
-    sport: "Gymnastics",
-    event: "World Championships",
-    country: "Russia",
-    price: "2.9",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop", // Gymnastics routine
+    name: "Golden Sprint",
+    athlete: "Sydney McLaughlin",
+    sport: "Track & Field",
+    event: "World Championships 2023",
+    country: "USA",
+    price: "1.5",
+    image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=500&h=500&fit=crop",
     rarity: "Epic",
-    description: "Flawless floor routine earning a perfect score from all judges.",
-    date: "October 8, 2023",
-    edition: "3/75",
-    totalSupply: 75,
-    minted: 45,
+    description: "World record-breaking performance in the 400m hurdles, redefining what's possible in athletics.",
+    date: "July 22, 2023",
+    edition: "1/200",
+    totalSupply: 200,
+    minted: 156,
     attributes: {
-      category: "Perfect Performance",
-      achievement: "Perfect Score",
-      location: "Antwerp",
+      category: "World Record",
+      achievement: "400m Hurdles",
+      location: "Budapest",
       season: "2023"
     }
   },
   {
     id: 6,
-    name: "Slam Dunk Championship",
-    athlete: "Michael Johnson",
-    sport: "Basketball",
-    event: "NBA All-Star Weekend",
+    name: "Championship Swing",
+    athlete: "Scottie Scheffler",
+    sport: "Golf",
+    event: "Masters Tournament 2023",
     country: "USA",
-    price: "1.5",
-    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=300&fit=crop", // Basketball slam dunk
+    price: "1.9",
+    image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=500&h=500&fit=crop",
     rarity: "Rare",
-    description: "Winning dunk that secured the NBA Slam Dunk Championship.",
-    date: "February 17, 2024",
-    edition: "25/200",
-    totalSupply: 200,
-    minted: 156,
+    description: "The precise swing that secured the green jacket at Augusta National Golf Club.",
+    date: "April 9, 2023",
+    edition: "1/300",
+    totalSupply: 300,
+    minted: 234,
     attributes: {
-      category: "All-Star Moment",
-      achievement: "Contest Winner",
-      location: "Indianapolis",
+      category: "Major Championship",
+      achievement: "Winning Shot",
+      location: "Augusta",
+      season: "2023"
+    }
+  },
+  {
+    id: 7,
+    name: "Olympic Dive",
+    athlete: "Katie Ledecky",
+    sport: "Swimming",
+    event: "Paris Olympics 2024",
+    country: "USA",
+    price: "2.1",
+    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=500&h=500&fit=crop",
+    rarity: "Epic",
+    description: "The perfect dive that started another gold medal-winning performance in the pool.",
+    date: "July 28, 2024",
+    edition: "1/180",
+    totalSupply: 180,
+    minted: 167,
+    attributes: {
+      category: "Olympic Games",
+      achievement: "Gold Medal",
+      location: "Paris",
       season: "2024"
+    }
+  },
+  {
+    id: 8,
+    name: "Victory Celebration",
+    athlete: "Max Verstappen",
+    sport: "Formula 1",
+    event: "Monaco Grand Prix 2023",
+    country: "Netherlands",
+    price: "2.7",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=500&fit=crop",
+    rarity: "Legendary",
+    description: "The euphoric moment of victory celebration at the most prestigious circuit in Formula 1.",
+    date: "May 28, 2023",
+    edition: "1/120",
+    totalSupply: 120,
+    minted: 98,
+    attributes: {
+      category: "Grand Prix",
+      achievement: "Race Victory",
+      location: "Monaco",
+      season: "2023"
+    }
+  },
+  {
+    id: 9,
+    name: "Championship Serve",
+    athlete: "Iga Swiatek",
+    sport: "Tennis",
+    event: "French Open 2023",
+    country: "Poland",
+    price: "1.7",
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=500&h=500&fit=crop",
+    rarity: "Rare",
+    description: "The powerful serve that secured another clay court championship at Roland Garros.",
+    date: "June 10, 2023",
+    edition: "1/280",
+    totalSupply: 280,
+    minted: 201,
+    attributes: {
+      category: "Grand Slam",
+      achievement: "Championship Serve",
+      location: "Paris",
+      season: "2023"
+    }
+  },
+  {
+    id: 10,
+    name: "Perfect Routine",
+    athlete: "Simone Biles",
+    sport: "Gymnastics",
+    event: "World Championships 2023",
+    country: "USA",
+    price: "2.4",
+    image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?w=500&h=500&fit=crop",
+    rarity: "Legendary",
+    description: "The flawless routine that showcased why she remains the greatest gymnast of all time.",
+    date: "October 1, 2023",
+    edition: "1/90",
+    totalSupply: 90,
+    minted: 83,
+    attributes: {
+      category: "World Championships",
+      achievement: "Perfect 10",
+      location: "Antwerp",
+      season: "2023"
+    }
+  },
+  {
+    id: 11,
+    name: "Championship Point",
+    athlete: "Carlos Alcaraz",
+    sport: "Tennis",
+    event: "US Open 2023",
+    country: "Spain",
+    price: "2.0",
+    image: "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=500&h=500&fit=crop",
+    rarity: "Epic",
+    description: "The match point that clinched another Grand Slam title for the young Spanish sensation.",
+    date: "September 10, 2023",
+    edition: "1/220",
+    totalSupply: 220,
+    minted: 189,
+    attributes: {
+      category: "Grand Slam",
+      achievement: "Match Point",
+      location: "New York",
+      season: "2023"
+    }
+  },
+  {
+    id: 12,
+    name: "Record Breaking Run",
+    athlete: "Ryan Crouser",
+    sport: "Shot Put",
+    event: "World Championships 2023",
+    country: "USA",
+    price: "1.6",
+    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=500&h=500&fit=crop",
+    rarity: "Rare",
+    description: "The record-breaking throw that pushed the boundaries of what's possible in shot put.",
+    date: "July 21, 2023",
+    edition: "1/350",
+    totalSupply: 350,
+    minted: 278,
+    attributes: {
+      category: "World Record",
+      achievement: "Shot Put",
+      location: "Budapest",
+      season: "2023"
     }
   }
 ];

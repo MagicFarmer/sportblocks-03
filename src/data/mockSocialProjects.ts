@@ -29,7 +29,7 @@ export const mockSocialProjects: SocialProject[] = [
     title: "Sports Equipment for Rural Schools",
     organization: "Global Sports Foundation",
     description: "Providing essential sports equipment to underserved rural schools across Africa, enabling thousands of children to participate in physical education and discover their athletic potential.",
-    image: "https://images.unsplash.com/photo-1594736797933-d0d44ad1bb91?w=500&h=300&fit=crop", // Children playing soccer
+    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=300&fit=crop",
     goal: 50000,
     raised: 32000,
     supporters: 245,
@@ -59,7 +59,7 @@ export const mockSocialProjects: SocialProject[] = [
     title: "Youth Basketball Courts Initiative",
     organization: "Urban Sports Alliance",
     description: "Building and renovating basketball courts in urban communities to provide safe spaces for youth to engage in sports and stay away from negative influences.",
-    image: "https://images.unsplash.com/photo-1559692048-79a3f837883d?w=500&h=300&fit=crop", // Basketball court construction
+    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=500&h=300&fit=crop",
     goal: 100000,
     raised: 67000,
     supporters: 412,
@@ -89,7 +89,7 @@ export const mockSocialProjects: SocialProject[] = [
     title: "Adaptive Sports Program",
     organization: "Inclusive Athletics",
     description: "Creating opportunities for athletes with disabilities to participate in competitive sports through specialized equipment, training, and competition programs.",
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=500&h=300&fit=crop", // Paralympic sports
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop",
     goal: 75000,
     raised: 41000,
     supporters: 189,
@@ -119,7 +119,7 @@ export const mockSocialProjects: SocialProject[] = [
     title: "Women's Football Development",
     organization: "Women In Sports International",
     description: "Promoting women's football in developing countries through coaching education, equipment provision, and league establishment to break gender barriers in sports.",
-    image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=500&h=300&fit=crop", // Women's soccer team
+    image: "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=500&h=300&fit=crop",
     goal: 80000,
     raised: 52000,
     supporters: 356,
@@ -149,7 +149,7 @@ export const mockSocialProjects: SocialProject[] = [
     title: "Swimming Safety Education",
     organization: "Aquatic Safety Alliance",
     description: "Teaching swimming and water safety skills to children in coastal communities to prevent drowning and promote aquatic sports participation.",
-    image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&h=300&fit=crop", // Swimming lessons for children
+    image: "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=500&h=300&fit=crop",
     goal: 60000,
     raised: 38000,
     supporters: 278,
@@ -179,7 +179,7 @@ export const mockSocialProjects: SocialProject[] = [
     title: "Mental Health Through Sports",
     organization: "MindSport Wellness",
     description: "Using sports and physical activity as therapy for youth struggling with mental health challenges, providing structured programs and professional support.",
-    image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=500&h=300&fit=crop", // Youth therapy through sports
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop",
     goal: 90000,
     raised: 45000,
     supporters: 203,
