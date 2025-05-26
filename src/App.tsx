@@ -19,6 +19,7 @@ import FansGallery from "./pages/FansGallery";
 import CampaignBoard from "./pages/CampaignBoard";
 import ExecutiveSummary from "./pages/ExecutiveSummary";
 import ProjectEvolution from "./pages/ProjectEvolution";
+import BusinessPitch from "./pages/BusinessPitch";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/executive-summary" element={<ExecutiveSummary />} />
           <Route path="/project-evolution" element={<ProjectEvolution />} />
+          <Route path="/business-pitch" element={<BusinessPitch />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/marketplace" element={<Marketplace />} />
