@@ -55,37 +55,17 @@ const Contact = () => {
   };
 
   const teamMembers = [
-    {
-      name: "Roberto Lujan",
-      role: "Original Idea & Team Leader",
-      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
-    },
-    {
-      name: "Eliot Rojas",
-      role: "Main Developer",
-      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
-    },
-    {
-      name: "Carlos Vargas",
-      role: "Product Support",
-      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
-    },
-    {
-      name: "Jason Espinoza",
-      role: "Product Support",
-      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
-    },
-    {
-      name: "Keylor Angulo",
-      role: "Marketing Advisor",
-      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
-    },
-    {
-      name: "David Alonso",
-      role: "Marketing Advisor",
-      image: "/lovable-uploads/cb48ca98-3796-4b8b-a77f-463f20642d6a.png"
-    }
+    { name: "Roberto Lujan", role: "Original Idea & Team Leader" },
+    { name: "Eliot Rojas", role: "Main Developer" },
+    { name: "Carlos Vargas", role: "Product Support" },
+    { name: "Jason Espinoza", role: "Product Support" },
+    { name: "Keylor Angulo", role: "Marketing Advisor" },
+    { name: "David Alonso", role: "Marketing Advisor" }
   ];
+
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/50684139006', '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
@@ -130,10 +110,16 @@ const Contact = () => {
                   <div className="p-3 bg-green-500/20 rounded-lg">
                     <Phone className="w-6 h-6 text-green-400" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Support</h3>
-                    <p className="text-gray-300">24/7 Community Support</p>
-                    <p className="text-sm text-gray-400 mt-1">Join our Discord for instant help</p>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-white mb-2">WhatsApp Support</h3>
+                    <p className="text-gray-300 mb-2">+506 8413-9006</p>
+                    <Button 
+                      onClick={handleWhatsAppClick}
+                      className="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2"
+                    >
+                      Contact via WhatsApp
+                    </Button>
+                    <p className="text-sm text-gray-400 mt-2">Direct line for instant support</p>
                   </div>
                 </div>
 
@@ -279,33 +265,60 @@ const Contact = () => {
               <p className="text-xl text-gray-300 mb-6">
                 The passionate team behind SportBlocks, bringing Web3 innovation to the sports world
               </p>
-              <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl p-6 border border-green-400/30">
-                <p className="text-2xl font-bold text-amber-300 mb-2">
-                  From Costa Rica to the World !!! 
-                </p>
-                <p className="text-3xl font-bold text-green-400">
-                  PURA VIDA DEVELOPMENT !!
-                </p>
+              <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl p-6 border border-green-400/30 mb-8">
+                <div className="flex items-center justify-center mb-4">
+                  <span className="text-6xl mr-4">🇨🇷</span>
+                  <div>
+                    <p className="text-2xl font-bold text-amber-300 mb-2">
+                      From Costa Rica to the World !!! 
+                    </p>
+                    <p className="text-3xl font-bold text-green-400">
+                      PURA VIDA DEVELOPMENT !!
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {teamMembers.map((member, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 text-center"
-                >
-                  <div className="mb-4">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-amber-400/50 shadow-lg object-cover"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                  <p className="text-amber-300 font-semibold">{member.role}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Team Photo */}
+              <div className="relative">
+                <img
+                  src="/lovable-uploads/3296473a-da66-4064-ab09-c4e8c4e56254.png"
+                  alt="SportBlocks Team at Blockchain Event"
+                  className="w-full rounded-2xl shadow-2xl border-4 border-amber-400/50"
+                />
+                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm rounded-lg px-3 py-2">
+                  <p className="text-white text-sm font-semibold">Team SportBlocks</p>
                 </div>
-              ))}
+              </div>
+
+              {/* Team Members List */}
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-white mb-6 text-center lg:text-left">Our Amazing Team</h3>
+                <div className="space-y-4">
+                  {teamMembers.map((member, index) => (
+                    <div 
+                      key={index}
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300"
+                    >
+                      <h4 className="text-xl font-bold text-white mb-1">{member.name}</h4>
+                      <p className="text-amber-300 font-semibold">{member.role}</p>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl p-6 border border-blue-400/30 mt-8">
+                  <div className="flex items-center mb-3">
+                    <Heart className="text-pink-400 w-6 h-6 mr-3" />
+                    <h4 className="text-lg font-bold text-white">Passionate About Innovation</h4>
+                  </div>
+                  <p className="text-gray-200 text-sm leading-relaxed">
+                    Our diverse team combines expertise in blockchain technology, sports marketing, 
+                    and community building to create revolutionary solutions in the sports NFT space.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
