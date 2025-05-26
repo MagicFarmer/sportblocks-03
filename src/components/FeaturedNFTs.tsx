@@ -13,10 +13,10 @@ interface FeaturedNFTsProps {
 const FeaturedNFTs = ({ isWalletConnected }: FeaturedNFTsProps) => {
   const navigate = useNavigate();
 
-  // Get 5 random NFTs
+  // Get 3 random NFTs each time the component renders
   const featuredNFTs = useMemo(() => {
     const shuffled = [...mockNFTs].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 5);
+    return shuffled.slice(0, 3);
   }, []);
 
   return (
@@ -31,8 +31,8 @@ const FeaturedNFTs = ({ isWalletConnected }: FeaturedNFTsProps) => {
           </p>
         </div>
 
-        {/* Featured NFTs Grid - 2 columns layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 px-4 sm:px-0 mb-12 max-w-4xl mx-auto">
+        {/* Featured NFTs Grid - 3 columns layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4 sm:px-0 mb-12 max-w-6xl mx-auto">
           {featuredNFTs.map((nft) => (
             <NFTCard 
               key={nft.id} 
@@ -54,12 +54,12 @@ const FeaturedNFTs = ({ isWalletConnected }: FeaturedNFTsProps) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={() => navigate('/gallery')}
+                onClick={() => navigate('/marketplace')}
                 size="lg"
                 className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-sm sm:text-base"
               >
                 <Eye className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                View Full Gallery
+                View Marketplace
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Button>
             </div>

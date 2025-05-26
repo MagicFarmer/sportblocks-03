@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import NFTGallery from "@/components/NFTGallery";
 import MyCollections from "@/components/MyCollections";
+import FeaturedNFTs from "@/components/FeaturedNFTs";
 
 const Gallery = () => {
   const { wallet, userData, isInitialized } = useStarkNet();
@@ -22,6 +23,9 @@ const Gallery = () => {
           </p>
         </div>
 
+        {/* Featured NFTs Section */}
+        <FeaturedNFTs isWalletConnected={wallet.isConnected && !!userData} />
+
         {/* Tab Navigation */}
         <div className="flex justify-center mb-8">
           <div className="bg-white/10 backdrop-blur-lg rounded-xl p-2 border border-white/20">
@@ -33,7 +37,7 @@ const Gallery = () => {
                   : 'text-gray-300 hover:text-white hover:bg-white/10'
               }`}
             >
-              Featured NFTs
+              All NFTs
             </button>
             {wallet.isConnected && userData && (
               <button
