@@ -18,7 +18,7 @@ const SocialProjects = () => {
   });
 
   const categories = ["All", ...new Set(mockSocialProjects.map(p => p.category))];
-  const statuses = ["All", "active", "completed", "planning", "paused"];
+  const statuses = ["All", "Active", "Completed", "Upcoming"];
   const sdgGoals = ["All", ...new Set(mockSocialProjects.flatMap(p => p.sdgGoals))];
 
   const filteredProjects = mockSocialProjects.filter(project => {
@@ -77,7 +77,7 @@ const SocialProjects = () => {
               >
                 {statuses.map(status => (
                   <option key={status} value={status}>
-                    {status === "All" ? "All Statuses" : status.charAt(0).toUpperCase() + status.slice(1)}
+                    {status === "All" ? "All Statuses" : status}
                   </option>
                 ))}
               </select>
@@ -153,19 +153,19 @@ const SocialProjects = () => {
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">
-                  {filteredProjects.reduce((total, project) => total + project.supporters, 0)}
+                  {filteredProjects.reduce((total, project) => total + project.backers, 0)}
                 </p>
-                <p className="text-gray-400">Total Supporters</p>
+                <p className="text-gray-400">Total Backers</p>
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">
-                  ${filteredProjects.reduce((total, project) => total + project.raised, 0).toLocaleString()}
+                  ${filteredProjects.reduce((total, project) => total + project.currentAmount, 0).toLocaleString()}
                 </p>
                 <p className="text-gray-400">Funds Raised</p>
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">
-                  {filteredProjects.filter(p => p.status === 'completed').length}
+                  {filteredProjects.filter(p => p.status === 'Completed').length}
                 </p>
                 <p className="text-gray-400">Completed Projects</p>
               </div>

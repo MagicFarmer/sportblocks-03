@@ -46,7 +46,7 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
     }`}>
       <div className="relative">
         <img 
-          src={fan.image} 
+          src={fan.avatar} 
           alt={fan.name}
           className="w-full h-48 object-cover rounded-t-lg"
         />
@@ -81,7 +81,7 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
           <div className={`bg-gradient-to-r ${getRoleColor(fan.role)} text-white px-3 py-1 rounded-full text-xs font-bold mb-2 inline-block shadow-lg`}>
             {fan.role}
           </div>
-          <p className="text-gray-200 text-sm mb-3 line-clamp-2">{fan.description}</p>
+          <p className="text-gray-200 text-sm mb-3 line-clamp-2">{fan.bio}</p>
           
           <div className="flex items-center gap-2 text-sm text-gray-300 mb-2">
             <MapPin size={14} className="text-purple-400" />
@@ -112,7 +112,7 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
           </div>
         </div>
 
-        {/* Specialty */}
+        {/* Specialties */}
         <div className={`mb-4 p-3 rounded-lg border ${
           isWalletConnected 
             ? 'bg-purple-500/25 border-purple-400/40' 
@@ -121,17 +121,17 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
           <div className="flex items-center gap-2 mb-2">
             <Star className={`w-4 h-4 ${isWalletConnected ? 'text-purple-300' : 'text-purple-300/70'}`} />
             <span className={`text-sm font-bold ${isWalletConnected ? 'text-purple-300' : 'text-purple-300/70'}`}>
-              Specialty
+              Specialties
             </span>
           </div>
-          <p className="text-xs text-gray-200">{fan.specialty}</p>
+          <p className="text-xs text-gray-200">{fan.specialties.join(", ")}</p>
         </div>
 
-        {/* Expertise Tags */}
+        {/* Achievements */}
         <div className="mb-4">
-          <div className="text-xs text-gray-300 mb-2 font-medium">Expertise:</div>
+          <div className="text-xs text-gray-300 mb-2 font-medium">Achievements:</div>
           <div className="flex flex-wrap gap-1">
-            {fan.expertise.slice(0, 3).map((expertise, index) => (
+            {fan.achievements.slice(0, 2).map((achievement, index) => (
               <span 
                 key={index}
                 className={`px-2 py-1 text-xs rounded-full border ${
@@ -140,17 +140,17 @@ const FanCard = ({ fan, isWalletConnected }: FanCardProps) => {
                     : 'bg-blue-500/20 text-blue-200/70 border-blue-400/20'
                 }`}
               >
-                {expertise}
+                {achievement}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Favorite Athletes */}
+        {/* Current Projects */}
         <div className="mb-4">
-          <div className="text-xs text-gray-300 mb-2 font-medium">Supports:</div>
+          <div className="text-xs text-gray-300 mb-2 font-medium">Current Projects:</div>
           <div className="text-xs text-gray-200">
-            {fan.favoriteAthletes.slice(0, 2).join(", ")}
+            {fan.currentProjects.slice(0, 2).join(", ")}
           </div>
         </div>
 
