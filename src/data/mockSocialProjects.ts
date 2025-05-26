@@ -1,263 +1,193 @@
 
 export interface SocialProject {
-  id: string;
-  name: string;
+  id: number;
+  title: string;
+  organization: string;
   description: string;
   image: string;
+  goal: number;
+  raised: number;
+  supporters: number;
   category: string;
   location: string;
-  fundingGoal: number;
-  fundingRaised: number;
-  status: 'planning' | 'active' | 'completed' | 'paused';
-  supportersCount: number;
-  athletePartner: string;
-  startDate: string;
-  endDate?: string;
+  deadline: string;
   impact: string;
+  featured: boolean;
   sdgGoals: string[];
+  updates: {
+    date: string;
+    title: string;
+    description: string;
+  }[];
 }
 
 export const mockSocialProjects: SocialProject[] = [
   {
-    id: "sp1",
-    name: "Football for Peace - Colombia",
-    description: "Building football fields in post-conflict areas to promote peace and reconciliation through sport",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400",
-    category: "Community Development",
-    location: "Medellín, Colombia",
-    fundingGoal: 50000,
-    fundingRaised: 32500,
-    status: "active",
-    supportersCount: 127,
-    athletePartner: "James Rodríguez",
-    startDate: "2024-01-15",
-    impact: "3 football fields built, 450 children participating",
-    sdgGoals: ["Peace & Justice", "Quality Education"]
+    id: 1,
+    title: "Sports Equipment for Rural Schools",
+    organization: "Global Sports Foundation",
+    description: "Providing essential sports equipment to underserved rural schools across Africa, enabling thousands of children to participate in physical education and discover their athletic potential.",
+    image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=500&h=300&fit=crop",
+    goal: 50000,
+    raised: 32000,
+    supporters: 245,
+    category: "Education",
+    location: "Kenya, Tanzania, Uganda",
+    deadline: "2024-12-31",
+    impact: "Expected to benefit 5,000+ students across 50 schools",
+    featured: true,
+    sdgGoals: ["Quality Education", "Reduced Inequalities"],
+    updates: [
+      {
+        date: "2024-01-15",
+        title: "Equipment Distribution Begins",
+        description: "First batch of football equipment delivered to 10 schools in Kenya"
+      },
+      {
+        date: "2024-02-01",
+        title: "Partnership Announcement",
+        description: "New partnership with local sports clubs for coaching support"
+      }
+    ]
   },
   {
-    id: "sp2",
-    name: "Clean Water Through Sport",
-    description: "Installing water purification systems in rural schools with sports programs",
-    image: "https://images.unsplash.com/photo-1594736797933-d0d4a732b0af?w=400",
-    category: "Water & Sanitation",
-    location: "Kenya",
-    fundingGoal: 75000,
-    fundingRaised: 68200,
-    status: "active",
-    supportersCount: 203,
-    athletePartner: "Eliud Kipchoge",
-    startDate: "2023-10-01",
-    impact: "15 schools with clean water access, 2,800 students benefited",
-    sdgGoals: ["Clean Water", "Good Health"]
-  },
-  {
-    id: "sp3",
-    name: "Girls Basketball Academy",
-    description: "Empowering young girls through basketball education and leadership training",
-    image: "https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?w=400",
-    category: "Gender Equality",
-    location: "Lagos, Nigeria",
-    fundingGoal: 40000,
-    fundingRaised: 40000,
-    status: "completed",
-    supportersCount: 89,
-    athletePartner: "Nneka Ogwumike",
-    startDate: "2023-06-01",
-    endDate: "2024-05-31",
-    impact: "120 girls trained, 85% continued education",
-    sdgGoals: ["Gender Equality", "Quality Education"]
-  },
-  {
-    id: "sp4",
-    name: "Paralympic Dreams",
-    description: "Supporting adaptive sports equipment for athletes with disabilities",
-    image: "https://images.unsplash.com/photo-1594736797933-d0d4a732b0af?w=400",
-    category: "Inclusion",
-    location: "São Paulo, Brazil",
-    fundingGoal: 30000,
-    fundingRaised: 18750,
-    status: "active",
-    supportersCount: 156,
-    athletePartner: "Daniel Dias",
-    startDate: "2024-03-01",
-    impact: "45 athletes equipped, 3 regional competitions supported",
-    sdgGoals: ["Reduced Inequalities", "Good Health"]
-  },
-  {
-    id: "sp5",
-    name: "Mountain Rescue Training",
-    description: "Training local communities in mountain rescue using climbing and skiing techniques",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400",
-    category: "Safety & Rescue",
-    location: "Nepal",
-    fundingGoal: 25000,
-    fundingRaised: 15300,
-    status: "active",
-    supportersCount: 78,
-    athletePartner: "Nirmal Purja",
-    startDate: "2024-02-01",
-    impact: "32 rescuers trained, 8 successful rescue operations",
-    sdgGoals: ["Good Health", "Sustainable Communities"]
-  },
-  {
-    id: "sp6",
-    name: "Boxing Against Violence",
-    description: "Using boxing training to prevent youth violence and build discipline",
-    image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400",
-    category: "Youth Development",
-    location: "Chicago, USA",
-    fundingGoal: 45000,
-    fundingRaised: 33800,
-    status: "active",
-    supportersCount: 134,
-    athletePartner: "Claressa Shields",
-    startDate: "2023-09-01",
-    impact: "89 youth enrolled, 78% reduction in violent incidents",
-    sdgGoals: ["Peace & Justice", "Good Health"]
-  },
-  {
-    id: "sp7",
-    name: "Swimming for Autism",
-    description: "Specialized swimming programs for children with autism spectrum disorders",
-    image: "https://images.unsplash.com/photo-1574968504005-e03bef4a4e18?w=400",
-    category: "Health & Therapy",
-    location: "Melbourne, Australia",
-    fundingGoal: 35000,
-    fundingRaised: 35000,
-    status: "completed",
-    supportersCount: 92,
-    athletePartner: "Katie Ledecky",
-    startDate: "2023-04-01",
-    endDate: "2024-03-31",
-    impact: "65 children in program, 90% improvement in social skills",
-    sdgGoals: ["Good Health", "Quality Education"]
-  },
-  {
-    id: "sp8",
-    name: "Rural Tennis Courts",
-    description: "Building tennis courts in underserved rural communities",
-    image: "https://images.unsplash.com/photo-1622163642998-1ea32b0bbc8b?w=400",
+    id: 2,
+    title: "Youth Basketball Courts Initiative",
+    organization: "Urban Sports Alliance",
+    description: "Building and renovating basketball courts in urban communities to provide safe spaces for youth to engage in sports and stay away from negative influences.",
+    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=500&h=300&fit=crop",
+    goal: 100000,
+    raised: 67000,
+    supporters: 412,
     category: "Infrastructure",
-    location: "Rural India",
-    fundingGoal: 60000,
-    fundingRaised: 42100,
-    status: "active",
-    supportersCount: 187,
-    athletePartner: "Sania Mirza",
-    startDate: "2024-01-01",
-    impact: "4 courts built, 320 children learning tennis",
-    sdgGoals: ["Quality Education", "Sustainable Communities"]
+    location: "Chicago, Detroit, Philadelphia",
+    deadline: "2024-10-15",
+    impact: "Will create 15 new courts serving 2,000+ youth annually",
+    featured: true,
+    sdgGoals: ["Sustainable Cities", "Good Health"],
+    updates: [
+      {
+        date: "2024-01-20",
+        title: "First Court Completed",
+        description: "Successfully opened the first renovated court in Chicago"
+      },
+      {
+        date: "2024-02-10",
+        title: "Community Engagement",
+        description: "Over 200 youth participated in the inaugural tournament"
+      }
+    ]
   },
   {
-    id: "sp9",
-    name: "Wheelchair Basketball League",
-    description: "Establishing the first professional wheelchair basketball league in Central America",
-    image: "https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?w=400",
-    category: "Professional Sports",
-    location: "Guatemala",
-    fundingGoal: 80000,
-    fundingRaised: 56700,
-    status: "active",
-    supportersCount: 234,
-    athletePartner: "Various Paralympic Athletes",
-    startDate: "2023-11-01",
-    impact: "6 teams formed, 72 athletes competing",
-    sdgGoals: ["Reduced Inequalities", "Economic Growth"]
+    id: 3,
+    title: "Adaptive Sports Program",
+    organization: "Inclusive Athletics",
+    description: "Creating opportunities for athletes with disabilities to participate in competitive sports through specialized equipment, training, and competition programs.",
+    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=500&h=300&fit=crop",
+    goal: 75000,
+    raised: 41000,
+    supporters: 189,
+    category: "Inclusion",
+    location: "Global - Online & Local Centers",
+    deadline: "2024-11-30",
+    impact: "Supporting 500+ adaptive athletes worldwide",
+    featured: false,
+    sdgGoals: ["Reduced Inequalities", "Good Health"],
+    updates: [
+      {
+        date: "2024-01-25",
+        title: "Equipment Grant Awarded",
+        description: "Received major grant for adaptive sports equipment"
+      },
+      {
+        date: "2024-02-15",
+        title: "Training Program Launch",
+        description: "New online coaching certification program for adaptive sports"
+      }
+    ]
   },
   {
-    id: "sp10",
-    name: "Surf Therapy for PTSD",
-    description: "Using surf therapy to help veterans and trauma survivors heal",
-    image: "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=400",
+    id: 4,
+    title: "Women's Football Development",
+    organization: "Women In Sports International",
+    description: "Promoting women's football in developing countries through coaching education, equipment provision, and league establishment to break gender barriers in sports.",
+    image: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d?w=500&h=300&fit=crop",
+    goal: 80000,
+    raised: 52000,
+    supporters: 356,
+    category: "Gender Equality",
+    location: "India, Bangladesh, Nepal",
+    deadline: "2024-09-20",
+    impact: "Training 200 coaches and 3,000 female players",
+    featured: true,
+    sdgGoals: ["Gender Equality", "Quality Education"],
+    updates: [
+      {
+        date: "2024-01-30",
+        title: "Coach Training Workshop",
+        description: "First regional coaching workshop completed with 50 participants"
+      },
+      {
+        date: "2024-02-20",
+        title: "Equipment Delivery",
+        description: "Football equipment distributed to 20 schools in rural areas"
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Swimming Safety Education",
+    organization: "Aquatic Safety Alliance",
+    description: "Teaching swimming and water safety skills to children in coastal communities to prevent drowning and promote aquatic sports participation.",
+    image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?w=500&h=300&fit=crop",
+    goal: 60000,
+    raised: 38000,
+    supporters: 278,
+    category: "Safety & Health",
+    location: "Philippines, Indonesia, Thailand",
+    deadline: "2024-08-15",
+    impact: "Teaching 1,500 children essential swimming skills",
+    featured: false,
+    sdgGoals: ["Good Health", "Quality Education"],
+    updates: [
+      {
+        date: "2024-02-01",
+        title: "Instructor Certification",
+        description: "30 local instructors completed safety certification program"
+      },
+      {
+        date: "2024-02-25",
+        title: "Community Partnership",
+        description: "Partnership with local schools to integrate swimming education"
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "Mental Health Through Sports",
+    organization: "MindSport Wellness",
+    description: "Using sports and physical activity as therapy for youth struggling with mental health challenges, providing structured programs and professional support.",
+    image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=500&h=300&fit=crop",
+    goal: 90000,
+    raised: 45000,
+    supporters: 203,
     category: "Mental Health",
-    location: "California, USA",
-    fundingGoal: 28000,
-    fundingRaised: 21400,
-    status: "active",
-    supportersCount: 145,
-    athletePartner: "Kelly Slater",
-    startDate: "2024-04-01",
-    impact: "38 veterans participated, 85% reported improvement",
-    sdgGoals: ["Good Health", "Mental Well-being"]
-  },
-  {
-    id: "sp11",
-    name: "Arctic Sports Heritage",
-    description: "Preserving traditional Arctic sports and games through documentation and education",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
-    category: "Cultural Preservation",
-    location: "Greenland",
-    fundingGoal: 22000,
-    fundingRaised: 16800,
-    status: "active",
-    supportersCount: 67,
-    athletePartner: "Inuit Athletes Collective",
-    startDate: "2024-01-01",
-    impact: "12 traditional games documented, 150 youth trained",
-    sdgGoals: ["Cultural Heritage", "Quality Education"]
-  },
-  {
-    id: "sp12",
-    name: "Cycling for Climate",
-    description: "Promoting cycling as sustainable transport through community bike-sharing programs",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
-    category: "Environment",
-    location: "Amsterdam, Netherlands",
-    fundingGoal: 55000,
-    fundingRaised: 48300,
-    status: "active",
-    supportersCount: 289,
-    athletePartner: "Marianne Vos",
-    startDate: "2023-08-01",
-    impact: "500 bikes in circulation, 40% reduction in car trips",
-    sdgGoals: ["Climate Action", "Sustainable Cities"]
-  },
-  {
-    id: "sp13",
-    name: "Martial Arts for Discipline",
-    description: "Teaching martial arts to at-risk youth to build discipline and confidence",
-    image: "https://images.unsplash.com/photo-1595992376039-2dd6e3c8d2b1?w=400",
-    category: "Youth Development",
-    location: "Manila, Philippines",
-    fundingGoal: 38000,
-    fundingRaised: 29200,
-    status: "active",
-    supportersCount: 112,
-    athletePartner: "Manny Pacquiao",
-    startDate: "2023-12-01",
-    impact: "95 youth enrolled, 88% attendance rate",
-    sdgGoals: ["Quality Education", "Peace & Justice"]
-  },
-  {
-    id: "sp14",
-    name: "Winter Sports Access",
-    description: "Making winter sports accessible to low-income families through equipment lending",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
-    category: "Access & Inclusion",
-    location: "Colorado, USA",
-    fundingGoal: 42000,
-    fundingRaised: 32600,
-    status: "active",
-    supportersCount: 178,
-    athletePartner: "Mikaela Shiffrin",
-    startDate: "2023-11-01",
-    impact: "234 families served, 450 equipment loans",
-    sdgGoals: ["Reduced Inequalities", "Good Health"]
-  },
-  {
-    id: "sp15",
-    name: "Ocean Conservation Through Sailing",
-    description: "Teaching sailing while conducting ocean cleanup and marine conservation education",
-    image: "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=400",
-    category: "Environment",
-    location: "Mediterranean Sea",
-    fundingGoal: 65000,
-    fundingRaised: 49700,
-    status: "active",
-    supportersCount: 198,
-    athletePartner: "Ben Ainslie",
-    startDate: "2024-02-01",
-    impact: "2.5 tons of plastic removed, 180 youth trained",
-    sdgGoals: ["Life Below Water", "Quality Education"]
+    location: "UK, Ireland, Netherlands",
+    deadline: "2024-12-01",
+    impact: "Supporting 800 youth with mental health programs",
+    featured: false,
+    sdgGoals: ["Good Health", "Quality Education"],
+    updates: [
+      {
+        date: "2024-02-05",
+        title: "Program Expansion",
+        description: "Extended program to 5 additional cities across the UK"
+      },
+      {
+        date: "2024-02-28",
+        title: "Success Stories",
+        description: "Published impact report showing 85% improvement in participant wellbeing"
+      }
+    ]
   }
 ];
