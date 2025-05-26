@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet, Focus } from "lucide-react";
+import { User, LogOut, Circle, LayoutDashboard, Plus, Wallet, Focus, Image } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -97,6 +97,16 @@ const UserMenu = () => {
               >
                 <LayoutDashboard size={18} />
                 <span className="font-medium">Dashboard</span>
+              </Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem asChild>
+              <Link
+                to="/my-collections"
+                className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
+              >
+                <Image size={18} />
+                <span className="font-medium">My Collections</span>
               </Link>
             </DropdownMenuItem>
 
