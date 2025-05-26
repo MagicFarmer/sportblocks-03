@@ -35,16 +35,16 @@ const NavigationMenu = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button 
-          variant="ghost" 
+          variant="outline" 
           size="icon"
-          className="text-white hover:bg-white/10 border border-white/20"
+          className="text-slate-700 border-gray-300 hover:bg-gray-50 hover:border-gray-400 w-12 h-12"
         >
           <Menu size={20} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         align="end" 
-        className="w-56 bg-black/90 backdrop-blur-lg border-white/20 text-white"
+        className="w-64 bg-white border-gray-200 shadow-xl rounded-lg p-2"
       >
         {allItems.map((item) => {
           const Icon = item.icon;
@@ -52,14 +52,14 @@ const NavigationMenu = () => {
             <DropdownMenuItem key={item.path} asChild>
               <Link
                 to={item.path}
-                className={`flex items-center space-x-2 px-3 py-2 cursor-pointer ${
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
                   isActive(item.path)
-                    ? "bg-blue-500/20 text-blue-400"
-                    : "hover:bg-white/10"
+                    ? "bg-blue-50 text-blue-700 border-l-4 border-blue-600"
+                    : "hover:bg-gray-50 text-slate-700"
                 }`}
               >
-                <Icon size={16} />
-                <span>{item.name}</span>
+                <Icon size={20} />
+                <span className="font-medium">{item.name}</span>
               </Link>
             </DropdownMenuItem>
           );

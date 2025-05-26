@@ -25,9 +25,9 @@ const UserMenu = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button 
-          variant="ghost" 
+          variant="outline" 
           size="icon"
-          className="text-white hover:bg-white/10 border border-white/20 relative"
+          className="text-slate-700 border-gray-300 hover:bg-gray-50 hover:border-gray-400 w-12 h-12 relative"
         >
           <User size={20} />
           {/* Connection status indicator */}
@@ -35,70 +35,69 @@ const UserMenu = () => {
             size={8} 
             className={`absolute -top-1 -right-1 ${
               isConnected 
-                ? "text-green-400 fill-green-400" 
-                : "text-red-400 fill-red-400"
+                ? "text-green-500 fill-green-500" 
+                : "text-red-500 fill-red-500"
             }`} 
           />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         align="end" 
-        className="w-56 bg-black/90 backdrop-blur-lg border-white/20 text-white"
+        className="w-72 bg-white border-gray-200 shadow-xl rounded-lg p-2"
       >
         {/* Connection Status */}
-        <div className="px-3 py-2 text-sm">
-          <div className="flex items-center space-x-2">
+        <div className="px-4 py-3 border-b border-gray-100">
+          <div className="flex items-center space-x-3">
             <Circle 
-              size={8} 
+              size={10} 
               className={isConnected 
-                ? "text-green-400 fill-green-400" 
-                : "text-red-400 fill-red-400"
+                ? "text-green-500 fill-green-500" 
+                : "text-red-500 fill-red-500"
               } 
             />
-            <span className="text-gray-300">
-              {isConnected ? "Conectado" : "Desconectado"}
-            </span>
-          </div>
-          {isConnected && userData && (
-            <div className="mt-1 text-xs text-gray-400 truncate">
-              {userData.name || "Usuario"}
+            <div>
+              <div className="font-semibold text-slate-900">
+                {isConnected ? "Conectado" : "Desconectado"}
+              </div>
+              {isConnected && userData && (
+                <div className="text-sm text-gray-600 truncate">
+                  {userData.name || "Usuario"}
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
 
         {isConnected && (
           <>
-            <DropdownMenuSeparator className="bg-white/20" />
-            
             <DropdownMenuItem asChild>
               <Link
                 to="/profile"
-                className="flex items-center space-x-2 px-3 py-2 cursor-pointer hover:bg-white/10"
+                className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-gray-50 text-slate-700 transition-all duration-200"
               >
-                <User size={16} />
-                <span>Mi Perfil</span>
+                <User size={18} />
+                <span className="font-medium">Mi Perfil</span>
               </Link>
             </DropdownMenuItem>
 
-            <DropdownMenuSeparator className="bg-white/20" />
+            <DropdownMenuSeparator className="bg-gray-200 my-1" />
 
             <DropdownMenuItem 
               onClick={handleDisconnect}
-              className="flex items-center space-x-2 px-3 py-2 cursor-pointer hover:bg-white/10 text-red-400"
+              className="flex items-center space-x-3 px-4 py-3 rounded-lg cursor-pointer hover:bg-red-50 text-red-600 transition-all duration-200"
             >
-              <LogOut size={16} />
-              <span>Desconectar</span>
+              <LogOut size={18} />
+              <span className="font-medium">Desconectar</span>
             </DropdownMenuItem>
           </>
         )}
 
         {!isConnected && (
-          <>
-            <DropdownMenuSeparator className="bg-white/20" />
-            <div className="px-3 py-2 text-sm text-gray-400">
-              Conecta tu wallet para acceder a más funciones
-            </div>
-          </>
+          <div className="px-4 py-3">
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Conecta tu wallet para acceder a todas las funciones de SportBlocks
+            </p>
+          </div>
         )}
       </DropdownMenuContent>
     </DropdownMenu>
