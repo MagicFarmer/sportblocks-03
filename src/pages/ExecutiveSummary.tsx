@@ -69,8 +69,8 @@ const ExecutiveSummary = () => {
                   </div>
                   <div className="relative">
                     <img 
-                      src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop" 
-                      alt="Digital community and Web3 technology" 
+                      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" 
+                      alt="Athletes using digital technology and blockchain platforms" 
                       className="rounded-xl shadow-lg w-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-xl"></div>
@@ -92,36 +92,36 @@ const ExecutiveSummary = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                  <div className="text-center">
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                      <Trophy className="text-amber-500 w-10 h-10" />
+                  <div className="text-center bg-white rounded-xl p-6 shadow-lg">
+                    <div className="bg-gradient-to-r from-amber-400 to-orange-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <Trophy className="text-white w-10 h-10" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 mb-2">Achievements</h3>
                     <p className="text-slate-600">Digital representation of athletic accomplishments and milestones</p>
                   </div>
-                  <div className="text-center">
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                      <Sparkles className="text-purple-500 w-10 h-10" />
+                  <div className="text-center bg-white rounded-xl p-6 shadow-lg">
+                    <div className="bg-gradient-to-r from-purple-400 to-pink-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <Sparkles className="text-white w-10 h-10" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 mb-2">Exclusive Content</h3>
                     <p className="text-slate-600">Access to immersive experiences and behind-the-scenes content</p>
                   </div>
-                  <div className="text-center">
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                      <Users className="text-blue-500 w-10 h-10" />
+                  <div className="text-center bg-white rounded-xl p-6 shadow-lg">
+                    <div className="bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <Users className="text-white w-10 h-10" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 mb-2">Governance</h3>
                     <p className="text-slate-600">Participatory governance and social impact decision-making</p>
                   </div>
                 </div>
 
-                <div className="relative">
+                <div className="relative rounded-xl overflow-hidden shadow-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1594736797933-d0101ba2fe65?w=600&h=300&fit=crop" 
-                    alt="Athletes and sports equipment" 
-                    className="rounded-xl shadow-lg w-full"
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop" 
+                    alt="Athletes celebrating achievements and connecting with fans" 
+                    className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-purple-600/60 rounded-xl flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-purple-600/60 flex items-center justify-center">
                     <div className="text-center text-white">
                       <h3 className="text-2xl font-bold mb-2">Legacy Cards in Action</h3>
                       <p className="text-lg">Connecting athletes with fans through meaningful digital assets</p>
@@ -209,8 +209,8 @@ const ExecutiveSummary = () => {
                   </div>
                   <div>
                     <img 
-                      src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&h=400&fit=crop" 
-                      alt="Global impact and sustainable goals" 
+                      src="https://images.unsplash.com/photo-1594736797933-d0101ba2fe65?w=600&h=400&fit=crop" 
+                      alt="Global sustainable development and Olympic values" 
                       className="rounded-xl shadow-lg w-full"
                     />
                   </div>

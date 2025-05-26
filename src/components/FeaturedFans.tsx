@@ -13,10 +13,9 @@ interface FeaturedFansProps {
 const FeaturedFans = ({ isWalletConnected }: FeaturedFansProps) => {
   const navigate = useNavigate();
 
-  // Get 3 random fans each time
+  // Get first 3 fans to ensure consistency
   const featuredFans = useMemo(() => {
-    const shuffled = [...mockFans].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 3);
+    return mockFans.slice(0, 3);
   }, []);
 
   return (

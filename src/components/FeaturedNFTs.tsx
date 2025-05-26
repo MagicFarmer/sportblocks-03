@@ -13,10 +13,9 @@ interface FeaturedNFTsProps {
 const FeaturedNFTs = ({ isWalletConnected }: FeaturedNFTsProps) => {
   const navigate = useNavigate();
 
-  // Get 3 random NFTs each time the component renders
+  // Get first 3 NFTs to ensure consistency
   const featuredNFTs = useMemo(() => {
-    const shuffled = [...mockNFTs].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 3);
+    return mockNFTs.slice(0, 3);
   }, []);
 
   return (

@@ -13,10 +13,9 @@ interface FeaturedSocialProjectsProps {
 const FeaturedSocialProjects = ({ isWalletConnected }: FeaturedSocialProjectsProps) => {
   const navigate = useNavigate();
 
-  // Get 3 random social projects each time
+  // Get first 3 social projects to ensure consistency
   const featuredProjects = useMemo(() => {
-    const shuffled = [...mockSocialProjects].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 3);
+    return mockSocialProjects.slice(0, 3);
   }, []);
 
   return (
@@ -61,7 +60,7 @@ const FeaturedSocialProjects = ({ isWalletConnected }: FeaturedSocialProjectsPro
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 View All Projects
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-              </Button>
+              </div>
             </div>
             <div className="flex items-center justify-center mt-4 text-gray-200 text-sm">
               <span className="mr-2">🌍</span>
